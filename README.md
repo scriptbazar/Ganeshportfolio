@@ -1,5 +1,4 @@
-# 🚀 Ganesh Kumar — Senior Full-Stack Engineer & UI/UX Specialist Portfolio v2.0
-
+[![Live Website](https://img.shields.io/badge/Live_Website-ganeshkumar--delta.vercel.app-f15d31.svg?style=for-the-badge&logo=vercel)](https://ganeshkumar-delta.vercel.app/)
 ![License](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)
 ![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=for-the-badge)
 ![Lighthouse](https://img.shields.io/badge/Google_Lighthouse-100%2F100-success.svg?style=for-the-badge)
@@ -8,6 +7,8 @@
 ![Node](https://img.shields.io/badge/Node.js-v16+-339933.svg?style=for-the-badge&logo=nodedotjs)
 
 An ultra-fast, glassmorphic, enterprise-grade developer portfolio engineered for high client conversion, sub-second page rendering, and interactive user engagement. Designed and architected by **Ganesh Kumar** (`@scriptbazar`).
+
+🌐 **Live Production URL**: [https://ganeshkumar-delta.vercel.app/](https://ganeshkumar-delta.vercel.app/)
 
 ---
 
