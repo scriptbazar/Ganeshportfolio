@@ -2337,6 +2337,7 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
 }
 
 @media (max-width: 768px) {
+    .nav-actions .btn { display: none !important; }
     .custom-cursor-dot, .custom-cursor-ring { display: none !important; }
     .github-stats-grid { grid-template-columns: repeat(2, 1fr); }
     .gh-repos-grid { grid-template-columns: 1fr; }
