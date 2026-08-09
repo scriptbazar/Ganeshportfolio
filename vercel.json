@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    {
+      "src": "/sw.js",
+      "dest": "/sw.js",
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/frames/(.*)",
+      "dest": "/frames/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
