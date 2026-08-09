@@ -2338,11 +2338,42 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
 
 @media (max-width: 768px) {
     .nav-actions .btn { display: none !important; }
+    .desktop-only-dock { display: none !important; }
     .custom-cursor-dot, .custom-cursor-ring { display: none !important; }
-    .github-stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .gh-repos-grid { grid-template-columns: 1fr; }
-    .faq-container { grid-template-columns: 1fr !important; }
-    .matrix-cells { grid-template-columns: repeat(25, 1fr); }
+    .github-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.8rem !important;
+    }
+
+    .github-header .btn {
+        width: 100% !important;
+        justify-content: center !important;
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.8rem !important;
+        white-space: nowrap !important;
+    }
+
+    .github-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+    }
+
+    .gh-stat {
+        padding: 0.8rem 0.4rem !important;
+        overflow: hidden !important;
+    }
+
+    .gh-stat .gh-number {
+        font-size: 1.3rem !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        line-height: 1.2 !important;
+    }
+
+    .gh-stat .gh-label {
+        font-size: 0.72rem !important;
+    }
     
     .comparison-slider-container {
         height: 220px !important;
