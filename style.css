@@ -2364,6 +2364,11 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
         gap: 0.8rem !important;
     }
 
+    .faq-container {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
     .gh-stat {
         padding: 0.8rem 0.4rem !important;
         overflow: hidden !important;
