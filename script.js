@@ -748,65 +748,39 @@ if (matrixCells) {
 // Asynchronous Live GitHub REST API Data Sync for @scriptbazar
 async function fetchLiveGitHubStats() {
     try {
-        // 1. Fetch User Profile for live public_repos count & bio
         const userRes = await fetch('https://api.github.com/users/scriptbazar');
-        let totalRepos = 11; // Fallback default to 11
         if (userRes.ok) {
             const userData = await userRes.json();
-            totalRepos = userData.public_repos || 11;
+            const reposEl = document.getElementById('gh-stat-repos');
             const bioEl = document.getElementById('gh-user-bio');
             const sinceEl = document.getElementById('gh-stat-since');
             
-            if (bioEl) bioEl.innerText = `${userData.name || 'Ganesh Kumar'} • Active GitHub Contributor since ${new Date(userData.created_at || '2022-11-20').getFullYear()}`;
+            if (reposEl) reposEl.innerText = userData.public_repos || '8';
+            if (bioEl && userData.name) bioEl.innerText = `${userData.name} • Active GitHub Contributor since ${new Date(userData.created_at).getFullYear()}`;
             if (sinceEl && userData.created_at) sinceEl.innerText = new Date(userData.created_at).getFullYear();
         }
 
-        // 2. Fetch All Repos for live star counts, languages & top repos list
         const reposRes = await fetch('https://api.github.com/users/scriptbazar/repos?per_page=100&sort=updated');
         if (reposRes.ok) {
             const reposData = await reposRes.json();
-            if (Array.isArray(reposData) && reposData.length > 0) {
-                // Ensure total repos takes max between profile API count and array length
-                totalRepos = Math.max(totalRepos, reposData.length);
-                
-                // Calculate Total Live Stars across all repos
-                const totalStars = reposData.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
-                
-                const reposEl = document.getElementById('gh-stat-repos');
-                const qualityEl = document.getElementById('gh-stat-quality');
-                if (reposEl) reposEl.innerText = totalRepos;
-                if (qualityEl) qualityEl.innerText = `${totalStars} ⭐ Stars`;
-
-                // Populate Top Featured Repos Grid
-                const reposContainer = document.getElementById('gh-repos-container');
-                if (reposContainer) {
-                    const topRepos = reposData.slice(0, 4);
-                    reposContainer.innerHTML = topRepos.map(r => `
-                        <a href="${r.html_url}" target="_blank" class="gh-repo-chip spotlight-card">
-                            <span class="repo-icon">📦</span>
-                            <div class="repo-info">
-                                <strong>${r.name}</strong>
-                                <span>${r.language || 'TypeScript'} • ⭐ ${r.stargazers_count || 0} Stars • Updated ${new Date(r.pushed_at || r.updated_at).toLocaleDateString()}</span>
-                            </div>
-                            <span class="repo-arrow">↗</span>
-                        </a>
-                    `).join('');
-                }
+            const reposContainer = document.getElementById('gh-repos-container');
+            if (reposContainer && Array.isArray(reposData) && reposData.length > 0) {
+                const topRepos = reposData.slice(0, 4);
+                reposContainer.innerHTML = topRepos.map(r => `
+                    <a href="${r.html_url}" target="_blank" class="gh-repo-chip spotlight-card">
+                        <span class="repo-icon">📦</span>
+                        <div class="repo-info">
+                            <strong>${r.name}</strong>
+                            <span>${r.language || 'TypeScript'} • ⭐ ${r.stargazers_count || 0} Stars • Updated ${new Date(r.updated_at).toLocaleDateString()}</span>
+                        </div>
+                        <span class="repo-arrow">↗</span>
+                    </a>
+                `).join('');
             }
-        } else {
-            const reposEl = document.getElementById('gh-stat-repos');
-            if (reposEl) reposEl.innerText = totalRepos;
-        }
-
-        // 3. Live Heatmap Cache-Busting Sync
-        const chartImg = document.getElementById('gh-chart-img');
-        if (chartImg) {
-            chartImg.src = `https://ghchart.rshah.org/f15d31/scriptbazar?t=${Date.now()}`;
         }
     } catch (err) {
-        console.log('GitHub Live Realtime Sync initialized.', err);
+        console.log('GitHub Live API Sync initialized with cached data.', err);
     }
-}
 }
 fetchLiveGitHubStats();
 
