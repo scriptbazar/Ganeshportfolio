@@ -216,12 +216,12 @@ const caseStudiesData = {
         desc: 'Cross-platform Android application bringing 160+ AI tools directly to mobile users with offline utilities, fast search, and Play Store distribution.',
         link: 'https://play.google.com/store/apps/details?id=com.toolifyai.official.app&hl=en_IN'
     },
-    'apex-analytics': {
-        title: 'Apex AI Analytics Platform',
-        role: 'Full-Stack Engineer & UI Architect',
-        tech: ['React', 'Node.js', 'Chart.js', 'PostgreSQL'],
-        desc: 'Real-time telemetry and predictive AI analytics platform processing 50k+ daily events with interactive charts and automated anomaly alerts.',
-        link: '#'
+    'mashala-ghar': {
+        title: 'Mashala Ghar — E-Commerce & Food Web App',
+        role: 'Full-Stack Lead Engineer & Designer',
+        tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Vercel Edge'],
+        desc: 'Mashala Ghar is an ultra-fast E-Commerce & Food ordering web platform featuring responsive glassmorphic UI, real-time cart state management, and seamless mobile checkout.',
+        link: 'https://mashalaghar.vercel.app/'
     },
     'quantum-legal': {
         title: 'Quantum Legal Consultation Portal',
