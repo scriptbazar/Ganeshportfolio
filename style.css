@@ -2767,8 +2767,376 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
 .services-section,
 .github-stats-section,
 .performance-section,
-.faq-section {
+.faq-section,
+.certifications-section,
+.global-map-section {
     content-visibility: auto;
     contain-intrinsic-size: 800px;
+}
+
+/* ===================================================
+   VERIFIED CERTIFICATIONS & ARCHITECTURE BADGES
+====================================================== */
+.certifications-section {
+    padding: 6rem 0;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    margin-top: 3rem;
+}
+
+.cert-card {
+    background: rgba(18, 19, 28, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+}
+
+.cert-card:hover {
+    border-color: rgba(241, 93, 49, 0.5);
+    box-shadow: 0 15px 35px rgba(241, 93, 49, 0.15);
+    transform: translateY(-5px);
+}
+
+.cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+.cert-icon {
+    font-size: 2rem;
+    color: #f15d31;
+    background: rgba(241, 93, 49, 0.15);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(241, 93, 49, 0.3);
+}
+
+.cert-badge-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 0.35rem 0.8rem;
+    border-radius: 2rem;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.cert-card h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.cert-issuer {
+    font-size: 0.82rem;
+    color: #f15d31;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+.cert-desc {
+    font-size: 0.88rem;
+    color: #a1a1aa;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    font-size: 0.78rem;
+}
+
+.cert-id {
+    color: #71717a;
+    font-family: 'Fira Code', monospace;
+}
+
+.cert-verify-link {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* ===================================================
+   INTERACTIVE GLOBAL CLIENT MAP (200+ DELIVERIES)
+====================================================== */
+.global-map-section {
+    padding: 6rem 0;
+}
+
+.map-card-wrapper {
+    background: #0d0e15;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1.8rem;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.map-stats-summary {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.map-stat-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.82rem;
+    color: #e4e4e7;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot-live {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: livePulse 1.8s infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.map-svg-container {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    background: radial-gradient(circle at 50% 50%, rgba(241, 93, 49, 0.06) 0%, rgba(9, 10, 15, 0.98) 75%);
+    border-radius: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.real-world-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(1) opacity(0.22) hue-rotate(180deg) brightness(1.2);
+    pointer-events: none;
+    user-select: none;
+}
+
+.map-grid-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+    background-size: 24px 24px;
+    pointer-events: none;
+}
+
+.map-pin-group {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.map-pin-group:hover, .map-pin-group.active {
+    transform: translate(-50%, -50%) scale(1.25);
+    z-index: 10;
+}
+
+.pin-core {
+    width: 12px;
+    height: 12px;
+    background: #f15d31;
+    border-radius: 50%;
+    box-shadow: 0 0 14px #f15d31;
+    position: relative;
+    z-index: 2;
+}
+
+.pin-pulse {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(241, 93, 49, 0.35);
+    animation: realMapPulse 2s infinite ease-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.pin-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 5px;
+    white-space: nowrap;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    background: rgba(13, 14, 21, 0.88);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes realMapPulse {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+.region-chip.active, .region-chip:hover {
+    background: rgba(241, 93, 49, 0.18) !important;
+    border-color: #f15d31 !important;
+}
+
+.map-region-tooltip {
+    position: relative;
+    background: rgba(18, 19, 28, 0.8);
+    border: 1px solid rgba(241, 93, 49, 0.4);
+    padding: 1.1rem 1.5rem;
+    border-radius: 1.2rem;
+    backdrop-filter: blur(14px);
+    width: 100%;
+    margin-top: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.map-region-tooltip h4 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.tooltip-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: #f15d31;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.map-region-tooltip p {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.map-regions-grid {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.region-chip {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+    color: #fff;
+}
+
+.region-chip strong {
+    font-size: 0.88rem;
+    margin-bottom: 0.2rem;
+}
+
+.region-chip span {
+    font-size: 0.76rem;
+    color: #a1a1aa;
+}
+
+.region-chip:hover, .region-chip.active {
+    background: rgba(241, 93, 49, 0.18);
+    border-color: #f15d31;
+}
+
+@media (max-width: 1024px) {
+    .certifications-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem !important;
+    }
+    
+    .map-card-wrapper {
+        padding: 1.2rem !important;
+    }
+
+    .map-svg-container {
+        height: 280px !important;
+    }
+
+    .map-regions-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+    }
+
+    .region-chip {
+        min-width: 0 !important;
+        padding: 0.6rem 0.8rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .map-svg-container {
+        height: 220px !important;
+    }
+
+    .pin-label {
+        font-size: 0.65rem !important;
+        padding: 2px 4px !important;
+    }
+
+    .map-regions-grid {
+        grid-template-columns: 1fr !important;
+    }
 }
 

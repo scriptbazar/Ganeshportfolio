@@ -1230,3 +1230,48 @@ window.addEventListener('keydown', (e) => {
         if (typeof updateModalActiveState === 'function') updateModalActiveState();
     }
 });
+
+// Interactive Global Client Map Handler
+const mapPinGroups = document.querySelectorAll('.map-pin-group');
+const regionChips = document.querySelectorAll('.region-chip');
+const tooltipTitle = document.getElementById('tooltip-title');
+const tooltipCount = document.getElementById('tooltip-count');
+const tooltipDesc = document.getElementById('tooltip-desc');
+
+function updateMapRegion(regionId) {
+    mapPinGroups.forEach(pin => {
+        if (pin.getAttribute('data-region') === regionId) {
+            pin.classList.add('active');
+            const title = pin.getAttribute('data-title');
+            const count = pin.getAttribute('data-count');
+            const desc = pin.getAttribute('data-desc');
+            if (tooltipTitle) tooltipTitle.innerText = title;
+            if (tooltipCount) tooltipCount.innerText = count;
+            if (tooltipDesc) tooltipDesc.innerText = desc;
+        } else {
+            pin.classList.remove('active');
+        }
+    });
+
+    regionChips.forEach(chip => {
+        if (chip.getAttribute('data-region') === regionId) {
+            chip.classList.add('active');
+        } else {
+            chip.classList.remove('active');
+        }
+    });
+}
+
+mapPinGroups.forEach(pin => {
+    pin.addEventListener('click', () => {
+        const region = pin.getAttribute('data-region');
+        updateMapRegion(region);
+    });
+});
+
+regionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+        const region = chip.getAttribute('data-region');
+        updateMapRegion(region);
+    });
+});
