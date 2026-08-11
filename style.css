@@ -1606,12 +1606,31 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     color: #ccc;
 }
 
-/* 4. Floating Quick Action Dock */
-.floating-dock-wrapper {
+/* 4. Floating Quick Action Dock & Bottom Bar Container (Side-by-Side in ONE Horizontal Line) */
+.bottom-dock-bar-container {
     position: fixed;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.bottom-dock-bar-container.scroll-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(70px) !important;
+}
+
+.floating-dock-wrapper {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
     background: rgba(18, 19, 28, 0.75);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1620,19 +1639,13 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    z-index: 9999;
+    pointer-events: auto !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(241, 93, 49, 0.15);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
-.floating-dock-wrapper.scroll-hidden {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateX(-50%) translateY(70px) !important;
-}
-
 .floating-dock-wrapper:hover {
-    transform: translateX(-50%) translateY(-3px);
+    transform: translateY(-2px) !important;
 }
 
 .dock-item {
@@ -1679,61 +1692,55 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     transform: translateY(0);
 }
 
-/* 5. Cursor Spotlight Light Effect on Cards */
-.spotlight-card {
-    position: relative;
-}
-
-.spotlight-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: radial-gradient(
-        400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(241, 93, 49, 0.35),
-        transparent 40%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+/* Standalone Scroll to Top Button (Outside Dock, Same Horizontal Line) */
+.scroll-to-top-btn {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(18, 19, 28, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(241, 93, 49, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-.spotlight-card:hover::before {
-    opacity: 1;
+.scroll-to-top-btn.visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
-/* 6. Scroll Reveal Stagger Animations */
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(35px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-}
-
-.reveal-on-scroll.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 7. Magnetic Button Smooth Physics */
-.magnetic-btn {
-    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.scroll-to-top-btn:hover {
+    background: #f15d31;
+    border-color: #f15d31;
+    transform: scale(1.1) translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(241, 93, 49, 0.5);
 }
 
 @media (max-width: 768px) {
     .status-indicator-badge { display: none; }
     .cmd-k-trigger-btn { display: none; }
-    .floating-dock-wrapper {
+    .bottom-dock-bar-container {
         bottom: 1.2rem !important;
-        left: calc(50% - 25px) !important;
-        transform: translateX(-50%) !important;
-        padding: 0.4rem 0.65rem !important;
-        gap: 0.45rem !important;
+        gap: 0.5rem !important;
+        width: max-content !important;
+        max-width: 96vw !important;
+    }
+    .floating-dock-wrapper {
+        padding: 0.4rem 0.6rem !important;
+        gap: 0.4rem !important;
         border-radius: 2.5rem !important;
     }
     .dock-item {
@@ -1741,15 +1748,8 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
         height: 38px !important;
     }
     .scroll-to-top-btn {
-        display: flex !important;
-        bottom: 1.2rem !important;
-        right: 0.8rem !important;
-        width: 42px !important;
-        height: 42px !important;
-        font-size: 1.1rem !important;
-        background: rgba(18, 19, 28, 0.85) !important;
-        border: 1px solid rgba(255, 255, 255, 0.18) !important;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(241, 93, 49, 0.25) !important;
+        width: 40px !important;
+        height: 40px !important;
     }
 }
 
