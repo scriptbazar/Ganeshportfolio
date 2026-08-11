@@ -229,6 +229,20 @@ const caseStudiesData = {
         tech: ['Next.js 15', 'React', 'Node.js', 'Tailwind CSS', 'Vercel Edge'],
         desc: 'M.R. Co-Spice is an enterprise organic spices and food e-commerce platform built for high client conversion, responsive catalog browsing, and instant order checkout.',
         link: 'https://m-r-co-spice.vercel.app/'
+    },
+    'ganesh-portfolio': {
+        title: 'Ganesh Portfolio v2.0 Architecture Engine',
+        role: 'Full-Stack Lead Architect & Designer',
+        tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Vercel Edge'],
+        desc: 'Ultra-fast glassmorphic developer portfolio built with offline PWA caching, custom GPU particle animations, and 100/100 Google Lighthouse Core Web Vitals.',
+        link: 'https://github.com/scriptbazar/Ganeshportfolio'
+    },
+    'noteflow': {
+        title: 'Noteflow — AI Productivity & Notes Platform',
+        role: 'Full-Stack AI Lead Engineer',
+        tech: ['Next.js 15', 'Node.js', 'TypeScript', 'Vercel Edge'],
+        desc: 'Smart productivity and AI note-taking web application with automated summary generation, Markdown rendering, and real-time cloud backup.',
+        link: 'https://github.com/scriptbazar/Noteflow'
     }
 };
 

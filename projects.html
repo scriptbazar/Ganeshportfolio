@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f15d31">
+    <title>All Projects & Engineering Archive — Ganesh Kumar | Full-Stack & UI/UX Specialist</title>
+    
+    <!-- Meta Descriptions & SEO -->
+    <meta name="description" content="Explore the full engineering project archive of Ganesh Kumar (@scriptbazar). Featuring Next.js 15 Web Apps, Mobile Android Apps, E-Commerce Systems, and AI Utilities.">
+    <meta name="author" content="Ganesh Kumar">
+    <link rel="canonical" href="https://ganeshkumar-delta.vercel.app/projects.html">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ganeshkumar-delta.vercel.app/projects.html">
+    <meta property="og:title" content="All Projects & Engineering Archive — Ganesh Kumar">
+    <meta property="og:description" content="Browse full-stack web platforms, mobile apps, e-commerce stores, and AI tools built by Ganesh Kumar.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/118677513?v=4">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- DNS Prefetch & Preconnect for High Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Design System Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Canvas Frame Preloader Progress Bar -->
+    <div id="frame-progress-bar"></div>
+
+    <!-- Background Animation Layer -->
+    <div class="animation-container">
+        <canvas id="scroll-canvas"></canvas>
+        <div class="bg-overlay"></div>
+    </div>
+    
+    <!-- Custom Glowing Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring">
+        <span class="cursor-text" id="cursor-text">VIEW</span>
+    </div>
+
+    <!-- Main Scrollable Content -->
+    <main class="content">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">GANESHWEB</a>
+            <div class="nav-pill">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#skills" class="nav-link">Skills</a>
+                <a href="projects.html" class="nav-link active">Projects</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#resume" class="btn btn-outline magnetic-btn" id="resume-btn">Resume 📄</a>
+                <button class="btn btn-primary open-modal-btn magnetic-btn">Start a Project <span class="arrow">↗</span></button>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Mobile Navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Projects Page Hero Section -->
+        <section class="hero" style="margin-bottom: 3rem; text-align: center;">
+            <div class="hero-top-text">Engineering Archive</div>
+            <h1 class="huge-title" style="font-size: clamp(3rem, 7vw, 5.5rem); margin-bottom: 1.5rem;">
+                All Client Projects & <br><span class="gradient-text">Software Systems</span>
+            </h1>
+            <p style="max-width: 750px; margin: 0 auto 2.5rem auto; font-size: 1.15rem; color: #a1a1aa; line-height: 1.7;">
+                Explore the complete production portfolio engineered by <strong>Ganesh Kumar</strong>. Featuring Next.js 15 Web Applications, E-Commerce Systems, Native Mobile Apps, and AI Utilities.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="index.html" class="btn btn-outline magnetic-btn">← Back to Homepage</a>
+                <button class="btn btn-primary open-modal-btn magnetic-btn">Start a Project <span class="arrow">↗</span></button>
+            </div>
+        </section>
+
+        <!-- Main Dedicated Projects Section -->
+        <section id="projects-archive" class="projects-section" style="padding-top: 2rem;">
+            <!-- Category Filter Tabs -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Platforms</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="ai">AI & Utilities</button>
+            </div>
+
+            <!-- Full Projects Archive Grid -->
+            <div class="projects-grid">
+                <!-- Project 1: Toolify AI Web -->
+                <div class="project-card tilt-card" data-category="web ai">
+                    <a href="https://toolifyai.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e1b4b, #312e81); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://toolifyai.vercel.app/</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe src="https://toolifyai.vercel.app/" title="ToolifyAI Platform Preview" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://toolifyai.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Toolify AI — Utilities Platform <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
+                        <p>160+ Next-Gen AI & Web Utilities — Free AI generators, developer utilities, PDF & image tools.</p>
+                        <span class="pill">AI & Web Development</span>
+                        <button class="btn-case-study" data-project="toolify-web">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Toolify AI Android App -->
+                <div class="project-card tilt-card" data-category="mobile ai">
+                    <a href="https://play.google.com/store/apps/details?id=com.toolifyai.official.app&hl=en_IN" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #064e3b, #022c22); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon">🤖</div>
+                                    <div class="phone-app-title">Toolify AI</div>
+                                    <div class="phone-app-developer">Official Android App</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/details?id=com.toolifyai.official.app&hl=en_IN" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Toolify AI — Official Android App <span style="font-size: 1.2rem; color: #10b981;">↗</span></a></h3>
+                        <p>160+ Free AI Generators & Utilities on Android — Instant mobile access to smart developer tools.</p>
+                        <span class="pill">Mobile App Development</span>
+                        <button class="btn-case-study" data-project="toolify-app">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Mashala Ghar -->
+                <div class="project-card tilt-card" data-category="web ecommerce">
+                    <a href="https://mashalaghar.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #431407, #180501); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://mashalaghar.vercel.app/</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe src="https://mashalaghar.vercel.app/" title="Mashala Ghar Web App Preview" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://mashalaghar.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mashala Ghar — E-Commerce & Food Web App <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
+                        <p>Ultra-fast E-Commerce & Food ordering web application built with TypeScript, modern glassmorphism design, and instant checkout.</p>
+                        <span class="pill">E-Commerce & Full-Stack</span>
+                        <button class="btn-case-study" data-project="mashala-ghar">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 4: M.R. Co-Spice -->
+                <div class="project-card tilt-card" data-category="web ecommerce">
+                    <a href="https://m-r-co-spice.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #7c2d12, #1c0500); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://m-r-co-spice.vercel.app/</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe src="https://m-r-co-spice.vercel.app/" title="M.R. Co-Spice Web Platform Preview" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://m-r-co-spice.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">M.R. Co-Spice — Premium Spices E-Commerce <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
+                        <p>Enterprise Spices & Organic Foods E-Commerce web system with interactive product showcase, cart management, and seamless order checkout.</p>
+                        <span class="pill">E-Commerce & Web Platform</span>
+                        <button class="btn-case-study" data-project="mr-co-spice">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 5: Ganesh Portfolio v2.0 -->
+                <div class="project-card tilt-card" data-category="web">
+                    <a href="https://github.com/scriptbazar/Ganeshportfolio" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #18181b, #09090b); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://github.com/scriptbazar/Ganeshportfolio</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="mockup-content-preview">
+                                <div class="mockup-header-bar">🚀 Ganesh Portfolio v2.0 Engine</div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-box">⚡ 100/100 Lighthouse</div>
+                                    <div class="mockup-box">💎 Glassmorphism UX</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://github.com/scriptbazar/Ganeshportfolio" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Ganesh Portfolio v2.0 Engine <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
+                        <p>Ultra-fast glassmorphic developer portfolio built with PWA offline caching, custom GPU animations, and 100/100 Google Web Vitals.</p>
+                        <span class="pill">Web Development & PWA</span>
+                        <button class="btn-case-study" data-project="ganesh-portfolio">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 6: Noteflow AI Notes -->
+                <div class="project-card tilt-card" data-category="web ai">
+                    <a href="https://github.com/scriptbazar/Noteflow" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e3a8a, #0f172a); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://github.com/scriptbazar/Noteflow</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="mockup-content-preview" style="background: radial-gradient(circle, #1e40af 0%, #0f172a 100%);">
+                                <div class="mockup-header-bar" style="color: #60a5fa;">📝 Noteflow AI Notes Platform</div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-box" style="background: rgba(96, 165, 250, 0.15);">⚡ Instant AI Summary</div>
+                                    <div class="mockup-box" style="background: rgba(96, 165, 250, 0.15);">🔒 Cloud Sync</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://github.com/scriptbazar/Noteflow" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Noteflow — AI Productivity & Notes <span style="font-size: 1.2rem; color: #60a5fa;">↗</span></a></h3>
+                        <p>Smart productivity and AI note-taking web application with automated summary generation and real-time cloud backup.</p>
+                        <span class="pill">AI & Productivity</span>
+                        <button class="btn-case-study" data-project="noteflow">View Case Study ↗</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="logo">GANESHWEB</a>
+                    <p>Building sub-second web platforms, mobile applications, and AI integrations for global clients.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <a href="index.html#about">About</a>
+                        <a href="index.html#services">Services</a>
+                        <a href="projects.html">All Projects</a>
+                        <a href="index.html#faq">FAQ</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://t.me/Scriptbazar" target="_blank">Telegram (@Scriptbazar)</a>
+                        <a href="mailto:scriptbazar76@gmail.com">Email Me</a>
+                        <a href="https://github.com/scriptbazar/" target="_blank">GitHub Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ganesh Kumar (<strong>@scriptbazar</strong>). All rights reserved. Architected with 🔥 & Next.js Engine.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Hire Me Modal -->
+    <div class="modal-overlay" id="hire-modal">
+        <div class="modal-card">
+            <button class="close-modal-btn" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <span class="badge"><span class="dot"></span> Let's Work Together</span>
+                <h2>Start Your Project</h2>
+                <p>Fill out the details below and I will respond with a custom proposal within 24 hours.</p>
+            </div>
+            <form id="project-proposal-form" action="https://formspree.io/f/scriptbazar76@gmail.com" method="POST">
+                <div class="form-group">
+                    <label for="modal-name">Your Name</label>
+                    <input type="text" id="modal-name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-email">Email Address</label>
+                    <input type="email" id="modal-email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-service">Service Needed</label>
+                    <select id="modal-service" name="service" required>
+                        <option value="Full-Stack Web App">Full-Stack Web Application</option>
+                        <option value="Mobile App (Android/iOS)">Mobile App (Android/iOS)</option>
+                        <option value="AI Integration & Automation">AI Integration & Automation</option>
+                        <option value="UI/UX & Speed Optimization">UI/UX & Speed Optimization</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Estimated Budget</label>
+                    <div class="chip-options">
+                        <span class="chip active" tabindex="0" role="button" aria-pressed="true" data-value="$1,000 - $3,000">$1k - $3k</span>
+                        <span class="chip" tabindex="0" role="button" aria-pressed="false" data-value="$3,000 - $5,000">$3k - $5k</span>
+                        <span class="chip" tabindex="0" role="button" aria-pressed="false" data-value="$5,000+">$5k+</span>
+                    </div>
+                    <input type="hidden" id="modal-budget" name="budget" value="$1,000 - $3,000">
+                </div>
+                <div class="form-group">
+                    <label for="modal-message">Project Description</label>
+                    <textarea id="modal-message" name="message" rows="3" placeholder="Briefly describe your project requirements and timeline..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block modal-submit-btn">Send Project Proposal 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Case Study Modal -->
+    <div class="modal-overlay" id="case-study-modal">
+        <div class="modal-card case-study-card">
+            <button class="close-modal-btn" aria-label="Close Modal">&times;</button>
+            <div id="case-study-content"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast-message">Message sent successfully! I will reply within 24 hours.</div>
+
+    <!-- Floating Quick Action Dock -->
+    <div class="floating-dock-wrapper" id="floating-dock">
+        <a href="https://t.me/Scriptbazar" target="_blank" class="dock-item" title="Quick Telegram Chat">
+            <span class="dock-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle;">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+            </span>
+            <span class="dock-tooltip">Telegram</span>
+        </a>
+        <a href="mailto:scriptbazar76@gmail.com" class="dock-item" id="dock-email-btn" title="Email Ganesh">
+            <span class="dock-icon">✉️</span>
+            <span class="dock-tooltip">Email</span>
+        </a>
+        <a href="https://github.com/scriptbazar/" target="_blank" class="dock-item" title="GitHub Profile">
+            <span class="dock-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle;">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+            </span>
+            <span class="dock-tooltip">GitHub</span>
+        </a>
+        <a href="#resume" class="dock-item" id="dock-resume-btn" title="Download CV">
+            <span class="dock-icon">📄</span>
+            <span class="dock-tooltip">Resume</span>
+        </a>
+        <button class="dock-item desktop-only-dock" id="dock-game-btn" title="Play Bug Blaster">
+            <span class="dock-icon">🎮</span>
+            <span class="dock-tooltip">Arcade</span>
+        </button>
+        <button class="dock-item open-modal-btn desktop-only-dock" title="Start a Project">
+            <span class="dock-icon">🚀</span>
+            <span class="dock-tooltip">Hire Me</span>
+        </button>
+        <button class="dock-item desktop-only-dock" id="dock-cmd-k" title="Quick Search">
+            <span class="dock-icon">⌘K</span>
+            <span class="dock-tooltip">Search</span>
+        </button>
+    </div>
+
+    <!-- Standalone Scroll to Top Button -->
+    <button class="scroll-to-top-btn" id="standalone-scroll-top" title="Scroll to Top" aria-label="Scroll to Top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Main JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
