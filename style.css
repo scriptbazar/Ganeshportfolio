@@ -1607,29 +1607,28 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
 }
 
 /* 4. Floating Quick Action Dock & Bottom Bar Container (Side-by-Side in ONE Horizontal Line) */
+/* 4. Floating Quick Action Dock Bar (Perfectly Centered on Desktop, Tablet & Mobile) */
 .bottom-dock-bar-container {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    z-index: 9999;
-    pointer-events: none;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    position: fixed !important;
+    bottom: 2rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease !important;
+    width: max-content !important;
+    max-width: 95vw !important;
+    margin: 0 auto !important;
 }
 
 .bottom-dock-bar-container.scroll-hidden {
     opacity: 0 !important;
     pointer-events: none !important;
     transform: translateX(-50%) translateY(70px) !important;
-}
-
-.floating-dock-wrapper.scroll-hidden {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateY(70px) !important;
 }
 
 .floating-dock-wrapper {
@@ -1644,6 +1643,7 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     padding: 0.5rem 0.8rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.6rem;
     pointer-events: auto !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(241, 93, 49, 0.15);
@@ -1783,7 +1783,7 @@ body.modal-active .floating-dock-wrapper,
 body:has(.modal-overlay.active) .floating-dock-wrapper {
     opacity: 0 !important;
     pointer-events: none !important;
-    transform: translateX(-50%) translateY(50px) !important;
+    transform: translateY(50px) !important;
 }
 
 body.modal-active .scroll-to-top-btn,
