@@ -640,6 +640,13 @@ if (standaloneScrollTop) {
     });
 }
 
+const dockScrollTopBtn = document.getElementById('dock-scroll-top-btn');
+if (dockScrollTopBtn) {
+    dockScrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
 document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
