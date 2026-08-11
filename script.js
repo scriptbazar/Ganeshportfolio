@@ -913,7 +913,7 @@ async function fetchLiveGitHubStats() {
             const bioEl = document.getElementById('gh-user-bio');
             const sinceEl = document.getElementById('gh-stat-since');
             
-            if (reposEl) reposEl.innerText = userData.public_repos || '8';
+            if (reposEl) reposEl.innerText = '7';
             if (bioEl && userData.name) bioEl.innerText = `${userData.name} • Active GitHub Contributor since ${new Date(userData.created_at).getFullYear()}`;
             if (sinceEl && userData.created_at) sinceEl.innerText = new Date(userData.created_at).getFullYear();
         }
