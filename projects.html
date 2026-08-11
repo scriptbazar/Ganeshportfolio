@@ -74,19 +74,19 @@
         <section class="hero" style="margin-bottom: 3rem; text-align: center;">
             <div class="hero-top-text">Engineering Archive</div>
             <h1 class="huge-title" style="font-size: clamp(3rem, 7vw, 5.5rem); margin-bottom: 1.5rem;">
-                All Client Projects & <br><span class="gradient-text">Software Systems</span>
+                All Client Projects & <br><span class="gradient-text">Play Store Apps</span>
             </h1>
-            <p style="max-width: 750px; margin: 0 auto 2.5rem auto; font-size: 1.15rem; color: #a1a1aa; line-height: 1.7;">
-                Explore the complete production portfolio engineered by <strong>Ganesh Kumar</strong>. Featuring Next.js 15 Web Applications, E-Commerce Systems, Native Mobile Apps, and AI Utilities.
+            <p style="max-width: 780px; margin: 0 auto 2.5rem auto; font-size: 1.15rem; color: #a1a1aa; line-height: 1.7;">
+                Explore the complete production archive of <strong>14+ Web & Mobile Applications</strong> published by <strong>Ganesh Kumar (@scriptbazar)</strong>. Featuring official Google Play Store Android Apps, E-Commerce Systems, and Next.js AI Platforms.
             </p>
             <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
                 <a href="index.html" class="btn btn-outline magnetic-btn">← Back to Homepage</a>
-                <button class="btn btn-primary open-modal-btn magnetic-btn">Start a Project <span class="arrow">↗</span></button>
+                <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" class="btn btn-primary magnetic-btn" style="text-decoration: none;">▶ Play Store Dev Profile ↗</a>
             </div>
         </section>
 
         <!-- Main Dedicated Projects Section -->
-        <section id="projects-archive" class="projects-section" style="padding-top: 2rem;">
+        <section id="projects-archive" class="projects-section" style="padding-top: 1rem;">
             <!-- Category Filter Tabs -->
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -96,8 +96,8 @@
                 <button class="filter-btn" data-filter="ai">AI & Utilities</button>
             </div>
 
-            <!-- Full Projects Archive Grid -->
-            <div class="projects-grid">
+            <!-- Full Projects Archive Grid (10 Per Page Dynamic Pagination) -->
+            <div class="projects-grid" id="paginated-projects-grid">
                 <!-- Project 1: Toolify AI Web -->
                 <div class="project-card tilt-card" data-category="web ai">
                     <a href="https://toolifyai.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e1b4b, #312e81); text-decoration: none;">
@@ -230,9 +230,177 @@
                     </div>
                 </div>
 
-                <!-- Project 6: Noteflow AI Notes -->
+                <!-- Project 6: HabitFlow App -->
+                <div class="project-card tilt-card" data-category="mobile">
+                    <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e1b4b, #311b92); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">🔥</div>
+                                    <div class="phone-app-title">HabitFlow</div>
+                                    <div class="phone-app-developer">Habit Tracker App</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn" style="background: #4f46e5;">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">HabitFlow — Habit Tracker & Consistency App <span style="font-size: 1.2rem; color: #6366f1;">↗</span></a></h3>
+                        <p>Consistency building & daily habit tracking Android app with streak analytics, smart reminders, and offline cloud sync.</p>
+                        <span class="pill">Mobile App & Productivity</span>
+                        <button class="btn-case-study" data-project="habitflow">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 7: SpendWise App -->
+                <div class="project-card tilt-card" data-category="mobile">
+                    <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #065f46, #022c22); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon" style="background: linear-gradient(135deg, #10b981, #059669);">💳</div>
+                                    <div class="phone-app-title">SpendWise</div>
+                                    <div class="phone-app-developer">Expense Tracker</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn" style="background: #059669;">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">SpendWise — Personal Expense Manager <span style="font-size: 1.2rem; color: #10b981;">↗</span></a></h3>
+                        <p>Personal finance tracking app with category charts, monthly budgeting goals, recurring bills management, and multi-currency support.</p>
+                        <span class="pill">Mobile App & Finance</span>
+                        <button class="btn-case-study" data-project="spendwise">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 8: Geeta Saar App -->
+                <div class="project-card tilt-card" data-category="mobile">
+                    <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #7c2d12, #451a03); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🕉️</div>
+                                    <div class="phone-app-title">Geeta Saar</div>
+                                    <div class="phone-app-developer">Daily Shlok & Meaning</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn" style="background: #d97706;">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Geeta Saar — Daily Shlok & Meaning App <span style="font-size: 1.2rem; color: #f59e0b;">↗</span></a></h3>
+                        <p>Spiritual & educational Android app offering Shrimad Bhagavad Gita verses, audio recitation, Hindi/English translations, and daily bookmarking.</p>
+                        <span class="pill">Mobile App & Lifestyle</span>
+                        <button class="btn-case-study" data-project="geeta-saar">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 9: Animation Hub App -->
+                <div class="project-card tilt-card" data-category="mobile web">
+                    <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #701a75, #4c0519); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon" style="background: linear-gradient(135deg, #c084fc, #a855f7);">✨</div>
+                                    <div class="phone-app-title">Animation Hub</div>
+                                    <div class="phone-app-developer">Developer Motion Library</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn" style="background: #a855f7;">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Animation Hub — Loaders & Motion Library <span style="font-size: 1.2rem; color: #c084fc;">↗</span></a></h3>
+                        <p>Developer motion UI toolkit featuring 100+ CSS, Lottie & WebGL loading animations with instant code snippet exporter.</p>
+                        <span class="pill">UI/UX & Developer Tools</span>
+                        <button class="btn-case-study" data-project="animation-hub">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 10: ContactSync App -->
+                <div class="project-card tilt-card" data-category="mobile">
+                    <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e293b, #0f172a); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon" style="background: linear-gradient(135deg, #38bdf8, #0284c7);">📇</div>
+                                    <div class="phone-app-title">ContactSync</div>
+                                    <div class="phone-app-developer">Import & Export Utility</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn" style="background: #0284c7;">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">ContactSync — Import & Export Utility <span style="font-size: 1.2rem; color: #38bdf8;">↗</span></a></h3>
+                        <p>Fast contacts backup, VCF/CSV converter, and cross-platform contacts transfer utility for Android users.</p>
+                        <span class="pill">Mobile Utility & Tools</span>
+                        <button class="btn-case-study" data-project="contactsync">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 11: NoteFlow App -->
+                <div class="project-card tilt-card" data-category="mobile ai">
+                    <a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e3a8a, #0f172a); text-decoration: none;">
+                        <div class="phone-mockup">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-screen-content">
+                                <div>
+                                    <div class="phone-app-icon" style="background: linear-gradient(135deg, #60a5fa, #2563eb);">📝</div>
+                                    <div class="phone-app-title">NoteFlow</div>
+                                    <div class="phone-app-developer">Private AI Notes App</div>
+                                </div>
+                                <div class="phone-store-badge">
+                                    <span>▶</span> Google Play Store
+                                </div>
+                                <div class="phone-install-btn" style="background: #2563eb;">
+                                    <span>Get on Play Store</span> ↗
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://play.google.com/store/apps/dev?id=5426439440976989701" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">NoteFlow — Private AI Notes App <span style="font-size: 1.2rem; color: #60a5fa;">↗</span></a></h3>
+                        <p>Encrypted Android note-taking app featuring Markdown editing, AI text summaries, tag organization, and biometrics lock.</p>
+                        <span class="pill">Mobile App & Productivity</span>
+                        <button class="btn-case-study" data-project="noteflow">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 12: Blistex AI System -->
                 <div class="project-card tilt-card" data-category="web ai">
-                    <a href="https://github.com/scriptbazar/Noteflow" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e3a8a, #0f172a); text-decoration: none;">
+                    <a href="https://github.com/scriptbazar/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #311b92, #12005e); text-decoration: none;">
                         <div class="browser-mockup">
                             <div class="browser-header">
                                 <div class="dots">
@@ -240,24 +408,94 @@
                                     <span class="dot-yellow"></span>
                                     <span class="dot-green"></span>
                                 </div>
-                                <div class="address-bar">https://github.com/scriptbazar/Noteflow</div>
+                                <div class="address-bar">https://blistex-enterprise.com</div>
                                 <span class="external-link-btn">↗</span>
                             </div>
-                            <div class="mockup-content-preview" style="background: radial-gradient(circle, #1e40af 0%, #0f172a 100%);">
-                                <div class="mockup-header-bar" style="color: #60a5fa;">📝 Noteflow AI Notes Platform</div>
+                            <div class="mockup-content-preview" style="background: radial-gradient(circle, #4527a0 0%, #12005e 100%);">
+                                <div class="mockup-header-bar" style="color: #b388ff;">🏢 Blistex AI Enterprise System</div>
                                 <div class="mockup-grid">
-                                    <div class="mockup-box" style="background: rgba(96, 165, 250, 0.15);">⚡ Instant AI Summary</div>
-                                    <div class="mockup-box" style="background: rgba(96, 165, 250, 0.15);">🔒 Cloud Sync</div>
+                                    <div class="mockup-box" style="background: rgba(179, 136, 255, 0.15);">🤖 Automated LLM Pipeline</div>
+                                    <div class="mockup-box" style="background: rgba(179, 136, 255, 0.15);">📊 Realtime Analytics</div>
                                 </div>
                             </div>
                         </div>
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://github.com/scriptbazar/Noteflow" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Noteflow — AI Productivity & Notes <span style="font-size: 1.2rem; color: #60a5fa;">↗</span></a></h3>
-                        <p>Smart productivity and AI note-taking web application with automated summary generation and real-time cloud backup.</p>
-                        <span class="pill">AI & Productivity</span>
-                        <button class="btn-case-study" data-project="noteflow">View Case Study ↗</button>
+                        <h3><a href="https://github.com/scriptbazar/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Blistex AI — Enterprise Web System <span style="font-size: 1.2rem; color: #b388ff;">↗</span></a></h3>
+                        <p>Bespoke enterprise AI data platform integrating automated LLM workflows, custom API search, and executive dashboards.</p>
+                        <span class="pill">Enterprise & AI Systems</span>
+                        <button class="btn-case-study" data-project="blistex-ai">View Case Study ↗</button>
                     </div>
+                </div>
+
+                <!-- Project 13: Dixie Downs SaaS -->
+                <div class="project-card tilt-card" data-category="web">
+                    <a href="https://github.com/scriptbazar/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #15803d, #052e16); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://dixiedowns-saas.com</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="mockup-content-preview" style="background: radial-gradient(circle, #16a34a 0%, #052e16 100%);">
+                                <div class="mockup-header-bar" style="color: #4ade80;">🐎 Dixie Downs SaaS Portal</div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-box" style="background: rgba(74, 222, 128, 0.15);">💳 Stripe Subscriptions</div>
+                                    <div class="mockup-box" style="background: rgba(74, 222, 128, 0.15);">⚡ Edge Speed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://github.com/scriptbazar/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Dixie Downs — SaaS Web Portal <span style="font-size: 1.2rem; color: #4ade80;">↗</span></a></h3>
+                        <p>Subscription-based SaaS web application built with Next.js 15, Stripe billing gateway, and serverless user authentication.</p>
+                        <span class="pill">SaaS & Full-Stack</span>
+                        <button class="btn-case-study" data-project="dixie-downs">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project 14: Rogue AI Platform -->
+                <div class="project-card tilt-card" data-category="web ai">
+                    <a href="https://github.com/scriptbazar/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #881337, #4c0519); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://rogue-ai-analytics.io</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="mockup-content-preview" style="background: radial-gradient(circle, #9f1239 0%, #4c0519 100%);">
+                                <div class="mockup-header-bar" style="color: #fb7185;">🔥 Rogue AI Analytics Platform</div>
+                                <div class="mockup-grid">
+                                    <div class="mockup-box" style="background: rgba(251, 113, 133, 0.15);">⚡ Predictive Models</div>
+                                    <div class="mockup-box" style="background: rgba(251, 113, 133, 0.15);">📈 0.2s Latency</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://github.com/scriptbazar/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Rogue AI — Data Analytics Engine <span style="font-size: 1.2rem; color: #fb7185;">↗</span></a></h3>
+                        <p>Predictive AI analytics engine processing real-time telemetry events with custom visualization charts and anomaly alerts.</p>
+                        <span class="pill">AI & Data Analytics</span>
+                        <button class="btn-case-study" data-project="rogue-ai">View Case Study ↗</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Pagination Bar (10 Items Per Page Max) -->
+            <div class="pagination-wrapper" id="projects-pagination">
+                <div class="pagination-status" id="pagination-status">Showing 1–10 of 14 Projects</div>
+                <div class="pagination-controls">
+                    <button class="pagination-btn prev-btn" id="pagination-prev" disabled>◄ Prev</button>
+                    <div class="pagination-pages" id="pagination-pages-list"></div>
+                    <button class="pagination-btn next-btn" id="pagination-next">Next ►</button>
                 </div>
             </div>
         </section>

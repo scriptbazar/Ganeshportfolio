@@ -177,24 +177,105 @@ const popupForm = document.getElementById('popup-contact-form');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
+// Dynamic 10-Item Pagination & Category Filter Engine
+let currentPage = 1;
+const itemsPerPage = 10;
+
+function updateProjectsPagination() {
+    const activeFilterBtn = document.querySelector('.filter-btn.active');
+    const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+
+    const matchingCards = [];
+    projectCards.forEach(card => {
+        const categories = card.getAttribute('data-category');
+        if (filter === 'all' || (categories && categories.includes(filter))) {
+            matchingCards.push(card);
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    const totalItems = matchingCards.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+    matchingCards.forEach((card, index) => {
+        if (index >= startIndex && index < endIndex) {
+            card.style.display = 'flex';
+            card.style.opacity = '1';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    const statusEl = document.getElementById('pagination-status');
+    const prevBtn = document.getElementById('pagination-prev');
+    const nextBtn = document.getElementById('pagination-next');
+    const pagesListEl = document.getElementById('pagination-pages-list');
+
+    if (statusEl) {
+        if (totalItems === 0) {
+            statusEl.innerText = 'No projects found in this category';
+        } else {
+            statusEl.innerText = `Showing ${startIndex + 1}–${endIndex} of ${totalItems} Projects`;
+        }
+    }
+
+    if (prevBtn) prevBtn.disabled = currentPage === 1;
+    if (nextBtn) nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+
+    if (pagesListEl) {
+        pagesListEl.innerHTML = '';
+        for (let p = 1; p <= totalPages; p++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `pagination-page-num ${p === currentPage ? 'active' : ''}`;
+            pageBtn.innerText = p;
+            pageBtn.addEventListener('click', () => {
+                currentPage = p;
+                updateProjectsPagination();
+                const archiveSection = document.getElementById('projects-archive');
+                if (archiveSection) archiveSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            pagesListEl.appendChild(pageBtn);
+        }
+    }
+}
+
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        projectCards.forEach(card => {
-            const categories = card.getAttribute('data-category');
-            if (filter === 'all' || (categories && categories.includes(filter))) {
-                card.style.display = 'flex';
-                card.style.opacity = '1';
-            } else {
-                card.style.display = 'none';
-            }
-        });
+        currentPage = 1;
+        updateProjectsPagination();
     });
 });
+
+const prevPageBtn = document.getElementById('pagination-prev');
+const nextPageBtn = document.getElementById('pagination-next');
+
+if (prevPageBtn) {
+    prevPageBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            updateProjectsPagination();
+            const archiveSection = document.getElementById('projects-archive');
+            if (archiveSection) archiveSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
+if (nextPageBtn) {
+    nextPageBtn.addEventListener('click', () => {
+        currentPage++;
+        updateProjectsPagination();
+        const archiveSection = document.getElementById('projects-archive');
+        if (archiveSection) archiveSection.scrollIntoView({ behavior: 'smooth' });
+    });
+}
 
 // Case Study Modal Handler
 const caseStudyModal = document.getElementById('case-study-modal');
@@ -237,12 +318,68 @@ const caseStudiesData = {
         desc: 'Ultra-fast glassmorphic developer portfolio built with offline PWA caching, custom GPU particle animations, and 100/100 Google Lighthouse Core Web Vitals.',
         link: 'https://ganeshkumar-delta.vercel.app/'
     },
+    'habitflow': {
+        title: 'HabitFlow — Habit Tracker & Consistency App',
+        role: 'Mobile Lead Engineer & UI Designer',
+        tech: ['Flutter', 'Android SDK', 'Firebase', 'SQLite'],
+        desc: 'Consistency building & daily habit tracking Android app with streak analytics, smart reminders, and offline cloud sync.',
+        link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
+    'spendwise': {
+        title: 'SpendWise — Personal Expense & Finance Manager',
+        role: 'Mobile Lead Architect',
+        tech: ['Flutter', 'Android SDK', 'Chart.js', 'Firebase'],
+        desc: 'Personal finance tracking app with category charts, monthly budgeting goals, recurring bills management, and multi-currency support.',
+        link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
+    'geeta-saar': {
+        title: 'Geeta Saar — Daily Shlok & Meaning App',
+        role: 'Mobile Developer & Content Creator',
+        tech: ['Android SDK', 'Kotlin', 'Firebase', 'ExoPlayer'],
+        desc: 'Spiritual & educational Android app offering Shrimad Bhagavad Gita verses, audio recitation, Hindi/English translations, and daily bookmarking.',
+        link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
+    'animation-hub': {
+        title: 'Animation Hub — Loaders & Motion UI Library',
+        role: 'UI/UX & Developer Tools Specialist',
+        tech: ['HTML5', 'CSS3', 'WebGL', 'JavaScript'],
+        desc: 'Developer motion UI toolkit featuring 100+ CSS, Lottie & WebGL loading animations with instant code snippet exporter.',
+        link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
+    'contactsync': {
+        title: 'ContactSync — Import & Export Utility',
+        role: 'Android Utility Developer',
+        tech: ['Android SDK', 'Java', 'SQLite', 'VCF Tools'],
+        desc: 'Fast contacts backup, VCF/CSV converter, and cross-platform contacts transfer utility for Android users.',
+        link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
     'noteflow': {
-        title: 'Noteflow — AI Productivity & Notes Platform',
+        title: 'NoteFlow — Private AI Notes App',
         role: 'Full-Stack AI Lead Engineer',
         tech: ['Next.js 15', 'Node.js', 'TypeScript', 'Vercel Edge'],
         desc: 'Smart productivity and AI note-taking web application with automated summary generation, Markdown rendering, and real-time cloud backup.',
-        link: 'https://github.com/scriptbazar/Noteflow'
+        link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
+    'blistex-ai': {
+        title: 'Blistex AI — Enterprise Web System',
+        role: 'Senior Full-Stack Architect',
+        tech: ['Next.js 15', 'Node.js', 'Tailwind CSS', 'Vercel Edge'],
+        desc: 'Bespoke enterprise AI data platform integrating automated LLM workflows, custom API search, and executive dashboards.',
+        link: 'https://github.com/scriptbazar/'
+    },
+    'dixie-downs': {
+        title: 'Dixie Downs — SaaS Web Portal',
+        role: 'Full-Stack Developer',
+        tech: ['Next.js 15', 'React', 'Tailwind CSS', 'Stripe API'],
+        desc: 'Subscription-based SaaS web application built with Next.js 15, Stripe billing gateway, and serverless user authentication.',
+        link: 'https://github.com/scriptbazar/'
+    },
+    'rogue-ai': {
+        title: 'Rogue AI — Data Analytics Engine',
+        role: 'Full-Stack AI Specialist',
+        tech: ['React', 'Node.js', 'PostgreSQL', 'Chart.js'],
+        desc: 'Predictive AI analytics engine processing real-time telemetry events with custom visualization charts and anomaly alerts.',
+        link: 'https://github.com/scriptbazar/'
     }
 };
 

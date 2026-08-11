@@ -3207,3 +3207,73 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
     }
 }
 
+/* Projects Archive Pagination Bar Styling */
+.pagination-wrapper {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination-status {
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: rgba(241, 93, 49, 0.2);
+    border-color: #f15d31;
+    color: #fff;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.pagination-page-num {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 0.7rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination-page-num.active, .pagination-page-num:hover {
+    background: #f15d31;
+    border-color: #f15d31;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(241, 93, 49, 0.4);
+}
+
