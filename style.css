@@ -1730,17 +1730,26 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     .cmd-k-trigger-btn { display: none; }
     .floating-dock-wrapper {
         bottom: 1.2rem !important;
-        padding: 0.4rem 0.6rem !important;
-        gap: 0.4rem !important;
+        left: calc(50% - 25px) !important;
+        transform: translateX(-50%) !important;
+        padding: 0.4rem 0.65rem !important;
+        gap: 0.45rem !important;
         border-radius: 2.5rem !important;
-        max-width: calc(100vw - 2rem) !important;
     }
     .dock-item {
         width: 38px !important;
         height: 38px !important;
     }
     .scroll-to-top-btn {
-        display: none !important;
+        display: flex !important;
+        bottom: 1.2rem !important;
+        right: 0.8rem !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.1rem !important;
+        background: rgba(18, 19, 28, 0.85) !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(241, 93, 49, 0.25) !important;
     }
 }
 
