@@ -1454,6 +1454,14 @@ window.addEventListener('scroll', () => {
     const isScrollingDown = currentScrollY > lastScrollY;
     const delta = Math.abs(currentScrollY - lastScrollY);
 
+    if (mainNavbar) {
+        if (currentScrollY > 50) {
+            mainNavbar.classList.add('scrolled');
+        } else {
+            mainNavbar.classList.remove('scrolled');
+        }
+    }
+
     if (currentScrollY > 100) {
         if (isScrollingDown && delta > 4) {
             // Scrolling DOWN -> Hide Header Navbar, floating dock, and scroll-to-top button!
