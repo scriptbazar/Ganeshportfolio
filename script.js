@@ -570,7 +570,7 @@ function downloadGaneshResume() {
 Email: scriptbazar76@gmail.com | Telegram: @Scriptbazar | GitHub: https://github.com/scriptbazar/
 
 EXECUTIVE OVERVIEW:
-High-impact Full-Stack Engineer with 6+ years of experience architecting ultra-fast web platforms, native mobile applications, and serverless AI workflows. Delivered 299+ completed client projects globally with a 99% satisfaction rate.
+High-impact Full-Stack Engineer with 2+ years of experience architecting ultra-fast web platforms, native mobile applications, and serverless AI workflows. Delivered 14+ completed client projects globally with a 99% satisfaction rate.
 
 TECHNICAL SKILL MATRIX:
 - Frontend Engineering: Next.js 15 (App Router, Server Actions), React 19, TypeScript, Tailwind CSS, WebGL, Glassmorphism UI
@@ -580,8 +580,8 @@ TECHNICAL SKILL MATRIX:
 FLAGSHIP WORK EXPERIENCE:
 - Founder & Lead Architect • Toolify AI Ecosystem (2024 – Present)
   Architected and deployed 160+ AI web tools and official Play Store Android App reaching 50,000+ active monthly users with 0.2s ultra-low latency speed.
-- Senior Full-Stack Freelance Consultant (2020 – Present)
-  Spearheaded 299+ bespoke web & mobile applications for global enterprise clients, startups, and e-commerce platforms with a 99% 5-star rating.
+- Senior Full-Stack Freelance Consultant (2024 – Present)
+  Spearheaded 14+ bespoke web & mobile applications for global enterprise clients, startups, and e-commerce platforms with a 99% 5-star rating.
 
 EDUCATION & CERTIFICATIONS:
 - B.Tech in Computer Science & Engineering — CSE Honors Degree
@@ -786,7 +786,7 @@ const termCommands = {
     'help': 'Available commands: <span class="t-yellow">skills</span>, <span class="t-yellow">projects</span>, <span class="t-yellow">stats</span>, <span class="t-yellow">hire</span>, <span class="t-yellow">clear</span>',
     'skills': 'Core Stack: <span class="t-green">Next.js 15, React, Node.js, Tailwind CSS, Flutter, AI APIs</span>',
     'projects': 'Featured: <span class="t-purple">Toolify AI Web</span> & <span class="t-purple">Toolify AI Android App</span> (160+ AI Utilities)',
-    'stats': 'Deliveries: <span class="t-orange">299</span> | Experience: <span class="t-orange">6 Yrs</span> | Positive Rating: <span class="t-green">99%</span>',
+    'stats': 'Deliveries: <span class="t-orange">14+</span> | Experience: <span class="t-orange">2 Yrs</span> | Positive Rating: <span class="t-green">99%</span>',
     'hire': 'Status: <span class="t-green">Available for Freelance & Contract Work 🚀</span>. Click <span class="t-yellow">Start a Project</span> to propose!',
 };
 
@@ -839,12 +839,12 @@ const tabFiles = {
         <p class="t-indent"><span class="t-blue">name</span>: <span class="t-green">'Ganesh Kumar'</span>,</p>
         <p class="t-indent"><span class="t-blue">role</span>: <span class="t-green">'Full-Stack Engineer & UI/UX Specialist'</span>,</p>
         <p class="t-indent"><span class="t-blue">coreTech</span>: [<span class="t-green">'Next.js 15'</span>, <span class="t-green">'React'</span>, <span class="t-green">'Node.js'</span>, <span class="t-green">'Tailwind'</span>, <span class="t-green">'AI APIs'</span>],</p>
-        <p class="t-indent"><span class="t-blue">deliveries</span>: <span class="t-orange">299</span>,</p>
+        <p class="t-indent"><span class="t-blue">deliveries</span>: <span class="t-orange">14</span>,</p>
         <p class="t-indent"><span class="t-blue">status</span>: <span class="t-green">'Available for contract work 🚀'</span></p>
         <p>};</p>`,
     'experience.json': `<p>{</p>
-        <p class="t-indent"><span class="t-blue">"yearsExperience"</span>: <span class="t-orange">6</span>,</p>
-        <p class="t-indent"><span class="t-blue">"completedDeliveries"</span>: <span class="t-orange">299</span>,</p>
+        <p class="t-indent"><span class="t-blue">"yearsExperience"</span>: <span class="t-orange">2</span>,</p>
+        <p class="t-indent"><span class="t-blue">"completedDeliveries"</span>: <span class="t-orange">14</span>,</p>
         <p class="t-indent"><span class="t-blue">"positiveReviews"</span>: <span class="t-green">"99%"</span>,</p>
         <p class="t-indent"><span class="t-blue">"specialties"</span>: [<span class="t-green">"Ultra-Fast Next.js 15 Web Apps"</span>, <span class="t-green">"Flutter/React Native Apps"</span>, <span class="t-green">"LLM AI Workflows"</span>]</p>
         <p>}</p>`,
