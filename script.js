@@ -184,10 +184,24 @@ function updateProjectsPagination() {
     const activeFilterBtn = document.querySelector('.filter-btn.active');
     const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
 
+    const isHomePage = !document.getElementById('paginated-projects-grid');
+
     const matchingCards = [];
     cards.forEach(card => {
-        const categories = card.getAttribute('data-category');
-        if (filter === 'all' || (categories && categories.includes(filter))) {
+        const categories = card.getAttribute('data-category') || '';
+        let isMatch = false;
+
+        if (isHomePage) {
+            if (filter === 'all') {
+                isMatch = categories.includes('web');
+            } else {
+                isMatch = categories.includes(filter);
+            }
+        } else {
+            isMatch = (filter === 'all' || categories.includes(filter));
+        }
+
+        if (isMatch) {
             matchingCards.push(card);
         } else {
             card.style.display = 'none';
