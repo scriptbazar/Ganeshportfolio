@@ -207,6 +207,8 @@ function updateProjectsPagination() {
         if (index >= startIndex && index < endIndex) {
             card.style.display = 'flex';
             card.style.opacity = '1';
+            card.style.transform = 'none';
+            card.classList.remove('reveal-on-scroll');
             card.classList.add('revealed');
         } else {
             card.style.display = 'none';
@@ -279,6 +281,16 @@ if (nextPageBtn) {
         if (archiveSection) archiveSection.scrollIntoView({ behavior: 'smooth' });
     });
 }
+
+// Automatic Initialization Triggers
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateProjectsPagination);
+} else {
+    updateProjectsPagination();
+}
+window.addEventListener('load', updateProjectsPagination);
+setTimeout(updateProjectsPagination, 100);
+setTimeout(updateProjectsPagination, 500);
 
 // Case Study Modal Handler
 const caseStudyModal = document.getElementById('case-study-modal');
