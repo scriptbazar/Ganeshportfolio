@@ -830,7 +830,7 @@ const termCommands = {
     'help': 'Available commands: <span class="t-yellow">skills</span>, <span class="t-yellow">projects</span>, <span class="t-yellow">stats</span>, <span class="t-yellow">hire</span>, <span class="t-yellow">clear</span>',
     'skills': 'Core Stack: <span class="t-green">Next.js 15, React, Node.js, Tailwind CSS, Flutter, AI APIs</span>',
     'projects': 'Explore: <a href="https://ganeshkumar-delta.vercel.app/projects.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: 600;">Click here to explore all projects ↗</a>',
-    'stats': 'Deliveries: <span class="t-orange">14+</span> | Experience: <span class="t-orange">2 Years</span> | Positive Rating: <span class="t-green">99%</span>',
+    'stats': 'Deliveries: <span class="t-orange">14+</span> | Experience: <span class="t-orange">2+ Years</span> | Positive Rating: <span class="t-green">99%</span>',
     'hire': 'Status: <span class="t-green">Available for Freelance & Contract Work 🚀</span>. Click <span class="t-yellow">Start a Project</span> to propose!',
 };
 
