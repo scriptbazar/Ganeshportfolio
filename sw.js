@@ -1,7 +1,8 @@
-const CACHE_NAME = 'ganeshweb-v1';
+const CACHE_NAME = 'ganeshweb-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
+  '/projects.html',
   '/style.css',
   '/script.js',
   '/manifest.json'
@@ -31,15 +32,38 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// Fetch Event - Network First Strategy with Cache Fallback
+// Fetch Event - Stale-While-Revalidate strategy for sub-second repeat visits
 self.addEventListener('fetch', (e) => {
-  // Only handle GET requests and skip non-HTTP schemes
   if (e.request.method !== 'GET' || !e.request.url.startsWith('http')) return;
 
+  // Stale-While-Revalidate for CSS, JS, Images and Fonts
+  const isStaticAsset = ['style', 'script', 'image', 'font'].includes(e.request.destination) ||
+                        e.request.url.includes('/style.css') ||
+                        e.request.url.includes('/script.js');
+
+  if (isStaticAsset) {
+    e.respondWith(
+      caches.match(e.request).then((cachedResponse) => {
+        const fetchPromise = fetch(e.request).then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(e.request, responseToCache);
+            });
+          }
+          return networkResponse;
+        }).catch(() => cachedResponse);
+
+        return cachedResponse || fetchPromise;
+      })
+    );
+    return;
+  }
+
+  // Network First with Cache Fallback for HTML pages
   e.respondWith(
     fetch(e.request)
       .then((networkResponse) => {
-        // If network response is good, clone and update cache
         if (networkResponse && networkResponse.status === 200) {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
@@ -49,7 +73,6 @@ self.addEventListener('fetch', (e) => {
         return networkResponse;
       })
       .catch(() => {
-        // Fallback to cache if network fails (Offline mode)
         return caches.match(e.request);
       })
   );

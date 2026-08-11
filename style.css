@@ -2701,16 +2701,19 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
    DEVICE-SPECIFIC HARDENING & PERFORMANCE OPTIMIZATIONS
 ====================================================== */
 
-/* 1. Desktop GPU Acceleration */
+/* 1. Desktop GPU Acceleration & Layer Containment */
 .tilt-card,
 .spotlight-card,
 .speed-comparison-card,
 .modal-card,
-.floating-dock-container,
+.floating-dock-wrapper,
+.bottom-dock-bar-container,
+.scroll-to-top-btn,
 .custom-cursor-ring {
-    will-change: transform;
+    will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
     transform-style: preserve-3d;
 }
 
