@@ -223,12 +223,12 @@ const caseStudiesData = {
         desc: 'Mashala Ghar is an ultra-fast E-Commerce & Food ordering web platform featuring responsive glassmorphic UI, real-time cart state management, and seamless mobile checkout.',
         link: 'https://mashalaghar.vercel.app/'
     },
-    'quantum-legal': {
-        title: 'Quantum Legal Consultation Portal',
-        role: 'UI/UX Designer & Frontend Dev',
-        tech: ['HTML5', 'CSS3', 'JavaScript', 'Formspree'],
-        desc: 'Conversion-focused landing page for legal consultations that doubled client booking rates through high-contrast typography and instant lead routing.',
-        link: '#'
+    'mr-co-spice': {
+        title: 'M.R. Co-Spice — Premium Spices E-Commerce Platform',
+        role: 'Full-Stack Lead Engineer & Architect',
+        tech: ['Next.js 15', 'React', 'Node.js', 'Tailwind CSS', 'Vercel Edge'],
+        desc: 'M.R. Co-Spice is an enterprise organic spices and food e-commerce platform built for high client conversion, responsive catalog browsing, and instant order checkout.',
+        link: 'https://m-r-co-spice.vercel.app/'
     }
 };
 
