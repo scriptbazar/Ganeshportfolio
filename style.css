@@ -174,14 +174,14 @@ h1, h2, h3 { font-weight: normal; }
     text-decoration: none;
 }
 .nav-pill {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0.4rem 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2rem;
+    padding: 0.35rem 0.5rem;
     display: flex;
     gap: 0.2rem;
+    align-items: center;
+    box-sizing: border-box;
 }
 .nav-pill a {
     color: rgba(255, 255, 255, 0.85);
