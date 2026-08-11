@@ -174,13 +174,16 @@ h1, h2, h3 { font-weight: normal; }
     text-decoration: none;
 }
 .nav-pill {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 2.5rem;
     padding: 0.35rem 0.5rem;
     display: flex;
     gap: 0.2rem;
     align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
 }
 .nav-pill a {
@@ -189,13 +192,13 @@ h1, h2, h3 { font-weight: normal; }
     font-size: 0.88rem;
     font-weight: 500;
     padding: 0.5rem 1.1rem;
-    border-radius: 1.5rem;
+    border-radius: 1.8rem;
     transition: all 0.3s ease;
     background: transparent;
 }
 .nav-pill a:hover {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.15);
 }
 .nav-pill a.active {
     color: #ffffff;
@@ -205,15 +208,17 @@ h1, h2, h3 { font-weight: normal; }
 }
 
 .navbar .btn-outline {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     color: #ffffff !important;
-    backdrop-filter: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 .navbar .btn-outline:hover {
     border-color: #f15d31 !important;
     color: #f15d31 !important;
-    background: rgba(241, 93, 49, 0.15) !important;
+    background: rgba(241, 93, 49, 0.2) !important;
 }
 
 /* Hero Section */
