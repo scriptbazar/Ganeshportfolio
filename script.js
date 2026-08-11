@@ -374,27 +374,6 @@ const caseStudiesData = {
         tech: ['Next.js 15', 'Node.js', 'TypeScript', 'Vercel Edge'],
         desc: 'Smart productivity and AI note-taking web application with automated summary generation, Markdown rendering, and real-time cloud backup.',
         link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
-    },
-    'blistex-ai': {
-        title: 'Blistex AI — Enterprise Web System',
-        role: 'Senior Full-Stack Architect',
-        tech: ['Next.js 15', 'Node.js', 'Tailwind CSS', 'Vercel Edge'],
-        desc: 'Bespoke enterprise AI data platform integrating automated LLM workflows, custom API search, and executive dashboards.',
-        link: 'https://github.com/scriptbazar/'
-    },
-    'dixie-downs': {
-        title: 'Dixie Downs — SaaS Web Portal',
-        role: 'Full-Stack Developer',
-        tech: ['Next.js 15', 'React', 'Tailwind CSS', 'Stripe API'],
-        desc: 'Subscription-based SaaS web application built with Next.js 15, Stripe billing gateway, and serverless user authentication.',
-        link: 'https://github.com/scriptbazar/'
-    },
-    'rogue-ai': {
-        title: 'Rogue AI — Data Analytics Engine',
-        role: 'Full-Stack AI Specialist',
-        tech: ['React', 'Node.js', 'PostgreSQL', 'Chart.js'],
-        desc: 'Predictive AI analytics engine processing real-time telemetry events with custom visualization charts and anomaly alerts.',
-        link: 'https://github.com/scriptbazar/'
     }
 };
 
