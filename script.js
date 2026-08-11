@@ -235,7 +235,7 @@ const caseStudiesData = {
         role: 'Full-Stack Lead Architect & Designer',
         tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Vercel Edge'],
         desc: 'Ultra-fast glassmorphic developer portfolio built with offline PWA caching, custom GPU particle animations, and 100/100 Google Lighthouse Core Web Vitals.',
-        link: 'https://github.com/scriptbazar/Ganeshportfolio'
+        link: 'https://ganeshkumar-delta.vercel.app/'
     },
     'noteflow': {
         title: 'Noteflow — AI Productivity & Notes Platform',
