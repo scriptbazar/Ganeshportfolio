@@ -181,10 +181,9 @@ function updateProjectsPagination() {
     const cards = document.querySelectorAll('.project-card');
     if (!cards || cards.length === 0) return;
 
-    const activeFilterBtn = document.querySelector('.filter-btn.active');
-    const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
-
     const isHomePage = !document.getElementById('paginated-projects-grid');
+    const activeFilterBtn = document.querySelector('.filter-btn.active');
+    const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : (isHomePage ? 'web' : 'all');
 
     const matchingCards = [];
     cards.forEach(card => {
@@ -192,11 +191,7 @@ function updateProjectsPagination() {
         let isMatch = false;
 
         if (isHomePage) {
-            if (filter === 'all') {
-                isMatch = categories.includes('web');
-            } else {
-                isMatch = categories.includes(filter);
-            }
+            isMatch = categories.includes(filter);
         } else {
             isMatch = (filter === 'all' || categories.includes(filter));
         }
