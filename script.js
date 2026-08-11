@@ -298,6 +298,20 @@ const caseStudyContent = document.getElementById('case-study-content');
 const caseStudyBtns = document.querySelectorAll('.btn-case-study');
 
 const caseStudiesData = {
+    'scriptbazar-store': {
+        title: 'ScriptBazar — Source Code & Digital Products Marketplace',
+        role: 'Founder, Lead Architect & Full-Stack Engineer',
+        tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Vercel Edge'],
+        desc: 'ScriptBazar is a digital store and web marketplace providing developers and clients with high-quality source code, full-stack application scripts, web templates, and digital assets.',
+        link: 'https://script-bazar.vercel.app/'
+    },
+    'simple-invoice': {
+        title: 'Simple Invoice Generator — Online Billing & Invoice App',
+        role: 'Full-Stack Lead Engineer & Designer',
+        tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Vercel Edge'],
+        desc: 'Simple Invoice Generator is a fast, web-based invoice & receipt creation app featuring instant PDF export, itemized billing, client details management, and clean responsive design.',
+        link: 'https://simpleinvoicegenerator-two.vercel.app/'
+    },
     'toolify-web': {
         title: 'Toolify AI — Web Utilities Directory Platform',
         role: 'Full-Stack Lead Engineer & Designer',
@@ -627,14 +641,6 @@ if (dockEmailBtn) {
 
 const standaloneScrollTop = document.getElementById('standalone-scroll-top');
 if (standaloneScrollTop) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            standaloneScrollTop.classList.add('visible');
-        } else {
-            standaloneScrollTop.classList.remove('visible');
-        }
-    });
-
     standaloneScrollTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -1340,27 +1346,46 @@ function endGame() {
 if (startGameBtn) startGameBtn.addEventListener('click', startGame);
 if (restartGameBtn) restartGameBtn.addEventListener('click', startGame);
 
-// Smart Auto-Hide Floating Dock Bar on Scroll Direction
+// Smart Auto-Hide Floating Dock & Scroll-To-Top Button on Scroll Direction
 let lastScrollY = window.scrollY;
+const bottomDockContainer = document.getElementById('bottom-dock-container');
 const floatingDockWrapper = document.getElementById('floating-dock');
+const standaloneScrollTopBtn = document.getElementById('standalone-scroll-top');
 
 window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    
-    // Only trigger auto-hide if scrolled down past 150px
+    const isScrollingDown = currentScrollY > lastScrollY;
+    const delta = Math.abs(currentScrollY - lastScrollY);
+
     if (currentScrollY > 150) {
-        if (currentScrollY > lastScrollY) {
-            // Scrolling DOWN -> Hide floating dock!
+        if (isScrollingDown && delta > 4) {
+            // Scrolling DOWN -> Hide BOTH floating dock and scroll-to-top button!
+            if (bottomDockContainer) bottomDockContainer.classList.add('scroll-hidden');
             if (floatingDockWrapper) floatingDockWrapper.classList.add('scroll-hidden');
-        } else {
-            // Scrolling UP -> Reveal floating dock!
+            if (standaloneScrollTopBtn) {
+                standaloneScrollTopBtn.classList.remove('visible');
+                standaloneScrollTopBtn.classList.add('scroll-hidden');
+            }
+        } else if (!isScrollingDown && delta > 4) {
+            // Scrolling UP -> Reveal BOTH floating dock and right-aligned scroll-to-top button!
+            if (bottomDockContainer) bottomDockContainer.classList.remove('scroll-hidden');
             if (floatingDockWrapper) floatingDockWrapper.classList.remove('scroll-hidden');
+            if (standaloneScrollTopBtn) {
+                standaloneScrollTopBtn.classList.add('visible');
+                standaloneScrollTopBtn.classList.remove('scroll-hidden');
+            }
         }
     } else {
-        // Near top of page -> Always show floating dock!
+        // At or near top of page (scrollY <= 150px)
+        // Always show floating dock at top, hide scroll-to-top button at top
+        if (bottomDockContainer) bottomDockContainer.classList.remove('scroll-hidden');
         if (floatingDockWrapper) floatingDockWrapper.classList.remove('scroll-hidden');
+        if (standaloneScrollTopBtn) {
+            standaloneScrollTopBtn.classList.remove('visible');
+            standaloneScrollTopBtn.classList.remove('scroll-hidden');
+        }
     }
-    
+
     lastScrollY = currentScrollY;
 }, { passive: true });
 

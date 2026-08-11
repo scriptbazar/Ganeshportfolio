@@ -1626,6 +1626,12 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     transform: translateX(-50%) translateY(70px) !important;
 }
 
+.floating-dock-wrapper.scroll-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(70px) !important;
+}
+
 .floating-dock-wrapper {
     position: relative !important;
     bottom: auto !important;
@@ -1692,72 +1698,12 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     transform: translateY(0);
 }
 
-/* Standalone Scroll to Top Button (Outside Dock, Same Horizontal Line) */
+/* Standalone Floating Scroll to Top Button (Right-Aligned to Bottom-Right) */
 .scroll-to-top-btn {
-    position: relative !important;
-    bottom: auto !important;
-    right: auto !important;
-    transform: none !important;
-    pointer-events: auto !important;
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(18, 19, 28, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(241, 93, 49, 0.2);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.scroll-to-top-btn.visible {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
-
-.scroll-to-top-btn:hover {
-    background: #f15d31;
-    border-color: #f15d31;
-    transform: scale(1.1) translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(241, 93, 49, 0.5);
-}
-
-@media (max-width: 768px) {
-    .status-indicator-badge { display: none; }
-    .cmd-k-trigger-btn { display: none; }
-    .bottom-dock-bar-container {
-        bottom: 1.2rem !important;
-        gap: 0.5rem !important;
-        width: max-content !important;
-        max-width: 96vw !important;
-    }
-    .floating-dock-wrapper {
-        padding: 0.4rem 0.6rem !important;
-        gap: 0.4rem !important;
-        border-radius: 2.5rem !important;
-    }
-    .dock-item {
-        width: 38px !important;
-        height: 38px !important;
-    }
-    .scroll-to-top-btn {
-        width: 40px !important;
-        height: 40px !important;
-    }
-}
-
-/* Standalone Floating Scroll to Top Button (Bottom-Right) */
-.scroll-to-top-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    position: fixed !important;
+    bottom: 2rem !important;
+    right: 2rem !important;
+    left: auto !important;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -1783,21 +1729,53 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
 }
 
 .scroll-to-top-btn.visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+}
+
+.scroll-to-top-btn.scroll-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(70px) !important;
 }
 
 .scroll-to-top-btn:hover {
-    background: #f15d31;
-    border-color: #f15d31;
-    transform: translateY(-4px) scale(1.1);
+    background: #f15d31 !important;
+    border-color: #f15d31 !important;
+    transform: translateY(-4px) scale(1.1) !important;
     box-shadow: 0 8px 25px rgba(241, 93, 49, 0.6);
 }
 
 .scroll-to-top-btn:hover svg {
     transform: translateY(-3px);
     stroke: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .status-indicator-badge { display: none; }
+    .cmd-k-trigger-btn { display: none; }
+    .bottom-dock-bar-container {
+        bottom: 1.2rem !important;
+        gap: 0.5rem !important;
+        width: max-content !important;
+        max-width: 96vw !important;
+    }
+    .floating-dock-wrapper {
+        padding: 0.4rem 0.6rem !important;
+        gap: 0.4rem !important;
+        border-radius: 2.5rem !important;
+    }
+    .dock-item {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .scroll-to-top-btn {
+        bottom: 1.2rem !important;
+        right: 1rem !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
 }
 
 /* Automatically hide Floating Dock & Scroll-to-Top when any Modal Popup is active */
