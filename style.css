@@ -1728,7 +1728,25 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
 @media (max-width: 768px) {
     .status-indicator-badge { display: none; }
     .cmd-k-trigger-btn { display: none; }
-    .scroll-to-top-btn { bottom: 1.5rem; right: 1.2rem; width: 42px; height: 42px; font-size: 1.1rem; }
+    .floating-dock-wrapper {
+        bottom: 1.2rem !important;
+        padding: 0.4rem 0.6rem !important;
+        gap: 0.4rem !important;
+        border-radius: 2.5rem !important;
+        max-width: calc(100vw - 4rem) !important;
+    }
+    .dock-item {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .scroll-to-top-btn {
+        bottom: 5.2rem !important;
+        right: 1.2rem !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.1rem !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(241, 93, 49, 0.3) !important;
+    }
 }
 
 /* Standalone Floating Scroll to Top Button (Bottom-Right) */
