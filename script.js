@@ -803,29 +803,64 @@ document.querySelectorAll('.cmd-k-option').forEach(opt => {
     });
 });
 
-// 2. Linear.app Cursor Spotlight Glow on Cards
+// 2. Linear.app Cursor Spotlight Glow on Cards (Optimized: Zero Forced Reflow)
 document.querySelectorAll('.project-card, .service-card, .stat-card, .tilt-card').forEach(card => {
     card.classList.add('spotlight-card');
+    let cachedRect = null;
+    let rafId = null;
+
+    card.addEventListener('mouseenter', () => {
+        cachedRect = card.getBoundingClientRect();
+    });
+
     card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+        if (!cachedRect) cachedRect = card.getBoundingClientRect();
+        const clientX = e.clientX;
+        const clientY = e.clientY;
+
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            if (!cachedRect) return;
+            const x = clientX - cachedRect.left;
+            const y = clientY - cachedRect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    card.addEventListener('mouseleave', () => {
+        cachedRect = null;
+        if (rafId) cancelAnimationFrame(rafId);
     });
 });
 
-// 3. Magnetic Hover Button Physics
+// 3. Magnetic Hover Button Physics (Optimized: Zero Forced Reflow)
 document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    let cachedRect = null;
+    let rafId = null;
+
+    btn.addEventListener('mouseenter', () => {
+        cachedRect = btn.getBoundingClientRect();
+    });
+
     btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+        if (!cachedRect) cachedRect = btn.getBoundingClientRect();
+        const clientX = e.clientX;
+        const clientY = e.clientY;
+
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            if (!cachedRect) return;
+            const x = clientX - cachedRect.left - cachedRect.width / 2;
+            const y = clientY - cachedRect.top - cachedRect.height / 2;
+            btn.style.transform = `translate3d(${x * 0.25}px, ${y * 0.25}px, 0)`;
+        });
     });
 
     btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0px, 0px)';
+        cachedRect = null;
+        if (rafId) cancelAnimationFrame(rafId);
+        btn.style.transform = 'translate3d(0px, 0px, 0)';
     });
 });
 
@@ -1045,20 +1080,26 @@ const sliderHandle = document.getElementById('slider-handle');
 
 if (sliderContainer && fastLayer && sliderHandle) {
     let isDragging = false;
+    let cachedSliderRect = null;
+    let sliderRafId = null;
 
     const setSliderPos = (x) => {
-        const rect = sliderContainer.getBoundingClientRect();
-        let offsetX = x - rect.left;
+        if (!cachedSliderRect) cachedSliderRect = sliderContainer.getBoundingClientRect();
+        let offsetX = x - cachedSliderRect.left;
         if (offsetX < 0) offsetX = 0;
-        if (offsetX > rect.width) offsetX = rect.width;
+        if (offsetX > cachedSliderRect.width) offsetX = cachedSliderRect.width;
         
-        const pct = (offsetX / rect.width) * 100;
-        fastLayer.style.width = `${pct}%`;
-        sliderHandle.style.left = `${pct}%`;
+        const pct = (offsetX / cachedSliderRect.width) * 100;
+        if (sliderRafId) cancelAnimationFrame(sliderRafId);
+        sliderRafId = requestAnimationFrame(() => {
+            fastLayer.style.width = `${pct}%`;
+            sliderHandle.style.left = `${pct}%`;
+        });
     };
 
     sliderContainer.addEventListener('mousedown', (e) => {
         isDragging = true;
+        cachedSliderRect = sliderContainer.getBoundingClientRect();
         setSliderPos(e.clientX);
     });
 
@@ -1069,12 +1110,14 @@ if (sliderContainer && fastLayer && sliderHandle) {
 
     window.addEventListener('mouseup', () => {
         isDragging = false;
+        cachedSliderRect = null;
     });
 
     // Touch events for mobile
     sliderContainer.addEventListener('touchstart', (e) => {
         isDragging = true;
-        setSliderPos(e.touches[0].clientX);
+        cachedSliderRect = sliderContainer.getBoundingClientRect();
+        if (e.touches && e.touches[0]) setSliderPos(e.touches[0].clientX);
     });
 
     window.addEventListener('touchmove', (e) => {
