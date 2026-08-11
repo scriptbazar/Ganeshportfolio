@@ -173,25 +173,25 @@ const popupForm = document.getElementById('popup-contact-form');
     }
 });
 
-// Project Category Filtering
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-// Dynamic 10-Item Pagination & Category Filter Engine
+// Project Category Filtering & Dynamic 10-Item Pagination Engine
 let currentPage = 1;
 const itemsPerPage = 10;
 
 function updateProjectsPagination() {
+    const cards = document.querySelectorAll('.project-card');
+    if (!cards || cards.length === 0) return;
+
     const activeFilterBtn = document.querySelector('.filter-btn.active');
     const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
 
     const matchingCards = [];
-    projectCards.forEach(card => {
+    cards.forEach(card => {
         const categories = card.getAttribute('data-category');
         if (filter === 'all' || (categories && categories.includes(filter))) {
             matchingCards.push(card);
         } else {
             card.style.display = 'none';
+            card.style.opacity = '0';
         }
     });
 
@@ -207,8 +207,10 @@ function updateProjectsPagination() {
         if (index >= startIndex && index < endIndex) {
             card.style.display = 'flex';
             card.style.opacity = '1';
+            card.classList.add('revealed');
         } else {
             card.style.display = 'none';
+            card.style.opacity = '0';
         }
     });
 
@@ -245,6 +247,7 @@ function updateProjectsPagination() {
     }
 }
 
+const filterBtns = document.querySelectorAll('.filter-btn');
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
