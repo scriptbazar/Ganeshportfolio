@@ -597,6 +597,19 @@ h1, h2, h3 { font-weight: normal; }
     box-sizing: border-box;
 }
 
+.project-info .pill {
+    cursor: pointer;
+    user-select: none;
+}
+
+.project-info .pill:hover {
+    background: rgba(56, 189, 248, 0.18);
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(56, 189, 248, 0.3);
+}
+
 .btn-case-study {
     cursor: pointer;
     margin-left: 0.5rem;
