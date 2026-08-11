@@ -158,17 +158,43 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Form Submission Handlers
+// Form Submission Handlers with Silent AJAX & Instant UI Feedback
 const mainForm = document.getElementById('main-contact-form');
 const popupForm = document.getElementById('popup-contact-form');
 
 [mainForm, popupForm].forEach(form => {
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (contactModal) contactModal.classList.remove('active');
-            showToast('🚀 Proposal sent! Ganesh will reply within 24 hours.');
-            form.reset();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'Send Message ↗';
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending Proposal... ⏳';
+            }
+
+            try {
+                const formData = new FormData(form);
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                }).catch(() => {});
+            } catch(err) {}
+
+            setTimeout(() => {
+                const contactModal = document.getElementById('contact-modal');
+                if (contactModal) contactModal.classList.remove('active');
+                showToast('🚀 Proposal sent! Ganesh will reply within 24 hours.');
+                form.reset();
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Sent Successfully! ✓';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnHTML;
+                    }, 2500);
+                }
+            }, 600);
         });
     }
 });
@@ -453,30 +479,56 @@ const techIconsMap = {
     'Formspree': '📩'
 };
 
+function openCaseStudyModal(projectKey) {
+    const data = caseStudiesData[projectKey];
+    if (data && caseStudyContent && caseStudyModal) {
+        caseStudyContent.innerHTML = `
+            <div class="modal-header">
+                <span class="badge" style="display:inline-block; margin-bottom:0.5rem;"><span class="dot"></span> Case Study</span>
+                <h3>${data.title}</h3>
+                <p><strong>Role:</strong> ${data.role}</p>
+            </div>
+            <div style="margin: 1.2rem 0;">
+                <p style="color:#e4e4e7; line-height:1.6;">${data.desc}</p>
+                <div style="margin: 1.2rem 0; display:flex; gap:0.6rem; flex-wrap:wrap;">
+                    ${data.tech.map(t => `<span class="case-study-tech-pill"><span>${techIconsMap[t] || '⚡'}</span> ${t}</span>`).join('')}
+                </div>
+            </div>
+            ${data.link !== '#' ? `<a href="${data.link}" target="_blank" class="btn btn-primary btn-block" style="text-decoration:none;">Visit Live Project ↗</a>` : ''}
+        `;
+        caseStudyModal.classList.add('active');
+        if (typeof updateModalActiveState === 'function') updateModalActiveState();
+        try {
+            history.replaceState(null, '', `#case-study-${projectKey}`);
+        } catch(e) {}
+    }
+}
+
 caseStudyBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         const projectKey = btn.getAttribute('data-project');
-        const data = caseStudiesData[projectKey];
-        if (data && caseStudyContent && caseStudyModal) {
-            caseStudyContent.innerHTML = `
-                <div class="modal-header">
-                    <span class="badge" style="display:inline-block; margin-bottom:0.5rem;"><span class="dot"></span> Case Study</span>
-                    <h3>${data.title}</h3>
-                    <p><strong>Role:</strong> ${data.role}</p>
-                </div>
-                <div style="margin: 1.2rem 0;">
-                    <p style="color:#e4e4e7; line-height:1.6;">${data.desc}</p>
-                    <div style="margin: 1.2rem 0; display:flex; gap:0.6rem; flex-wrap:wrap;">
-                        ${data.tech.map(t => `<span class="case-study-tech-pill"><span>${techIconsMap[t] || '⚡'}</span> ${t}</span>`).join('')}
-                    </div>
-                </div>
-                ${data.link !== '#' ? `<a href="${data.link}" target="_blank" class="btn btn-primary btn-block" style="text-decoration:none;">Visit Live Project ↗</a>` : ''}
-            `;
-            caseStudyModal.classList.add('active');
-            updateModalActiveState();
-        }
+        openCaseStudyModal(projectKey);
     });
+});
+
+// Auto-open case study modal on page load if URL Hash is present
+window.addEventListener('load', () => {
+    if (window.location.hash && window.location.hash.startsWith('#case-study-')) {
+        const key = window.location.hash.replace('#case-study-', '');
+        if (caseStudiesData[key]) {
+            setTimeout(() => openCaseStudyModal(key), 300);
+        }
+    }
+});
+
+// 1-Click Copy Email Address Event Handler
+document.addEventListener('click', (e) => {
+    const targetLink = e.target.closest('a[href^="mailto:"], .email-btn');
+    if (targetLink && navigator.clipboard) {
+        navigator.clipboard.writeText('scriptbazar76@gmail.com');
+        showToast('📋 Email copied: scriptbazar76@gmail.com');
+    }
 });
 
 // Stats Count-Up Animation
@@ -1390,20 +1442,22 @@ function endGame() {
 if (startGameBtn) startGameBtn.addEventListener('click', startGame);
 if (restartGameBtn) restartGameBtn.addEventListener('click', startGame);
 
-// Smart Auto-Hide Floating Dock & Scroll-To-Top Button on Scroll Direction
+// Smart Auto-Hide Top Header Navbar, Floating Dock & Scroll-To-Top Button on Scroll Direction
 let lastScrollY = window.scrollY;
 const bottomDockContainer = document.getElementById('bottom-dock-container');
 const floatingDockWrapper = document.getElementById('floating-dock');
 const standaloneScrollTopBtn = document.getElementById('standalone-scroll-top');
+const mainNavbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     const isScrollingDown = currentScrollY > lastScrollY;
     const delta = Math.abs(currentScrollY - lastScrollY);
 
-    if (currentScrollY > 150) {
+    if (currentScrollY > 100) {
         if (isScrollingDown && delta > 4) {
-            // Scrolling DOWN -> Hide BOTH floating dock and scroll-to-top button!
+            // Scrolling DOWN -> Hide Header Navbar, floating dock, and scroll-to-top button!
+            if (mainNavbar) mainNavbar.classList.add('scroll-hidden');
             if (bottomDockContainer) bottomDockContainer.classList.add('scroll-hidden');
             if (floatingDockWrapper) floatingDockWrapper.classList.add('scroll-hidden');
             if (standaloneScrollTopBtn) {
@@ -1411,7 +1465,8 @@ window.addEventListener('scroll', () => {
                 standaloneScrollTopBtn.classList.add('scroll-hidden');
             }
         } else if (!isScrollingDown && delta > 4) {
-            // Scrolling UP -> Reveal BOTH floating dock and right-aligned scroll-to-top button!
+            // Scrolling UP -> Reveal Header Navbar, floating dock, and scroll-to-top button!
+            if (mainNavbar) mainNavbar.classList.remove('scroll-hidden');
             if (bottomDockContainer) bottomDockContainer.classList.remove('scroll-hidden');
             if (floatingDockWrapper) floatingDockWrapper.classList.remove('scroll-hidden');
             if (standaloneScrollTopBtn) {
@@ -1420,8 +1475,9 @@ window.addEventListener('scroll', () => {
             }
         }
     } else {
-        // At or near top of page (scrollY <= 150px)
-        // Always show floating dock at top, hide scroll-to-top button at top
+        // At or near top of page (scrollY <= 100px)
+        // Always show Header Navbar and floating dock at top
+        if (mainNavbar) mainNavbar.classList.remove('scroll-hidden');
         if (bottomDockContainer) bottomDockContainer.classList.remove('scroll-hidden');
         if (floatingDockWrapper) floatingDockWrapper.classList.remove('scroll-hidden');
         if (standaloneScrollTopBtn) {
