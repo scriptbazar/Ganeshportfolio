@@ -3347,3 +3347,22 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
     box-shadow: 0 4px 12px rgba(241, 93, 49, 0.4);
 }
 
+/* GPU Hardware Acceleration & Performance Polish */
+.project-card, .service-card, .stat-card, .tilt-card {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Accessibility Focus Visible Rings */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--accent-color, #a855f7);
+    outline-offset: 3px;
+}
+
+/* Mobile Drawer & Modal Backdrop Scroll Containment */
+body.drawer-open, body.modal-active {
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+

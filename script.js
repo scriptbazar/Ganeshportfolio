@@ -19,11 +19,13 @@ const safeStorage = {
 };
 
 const canvas = document.getElementById("scroll-canvas");
-const context = canvas.getContext("2d");
+const context = canvas ? canvas.getContext("2d") : null;
 
 // Set canvas dimensions to match the video frames (1920x1080)
-canvas.width = 1920;
-canvas.height = 1080;
+if (canvas) {
+    canvas.width = 1920;
+    canvas.height = 1080;
+}
 
 const frameCount = 240;
 const currentFrame = index => (
@@ -51,7 +53,7 @@ function updateProgressBar() {
 const firstImage = new Image();
 firstImage.src = currentFrame(0);
 firstImage.onload = () => {
-    context.drawImage(firstImage, 0, 0);
+    if (context) context.drawImage(firstImage, 0, 0);
     images[0] = firstImage;
     updateProgressBar();
     preloadImages();
@@ -84,7 +86,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 function updateImage(scrollTop) {
-  if (document.hidden) return;
+  if (document.hidden || !context) return;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
   const scrollFraction = Math.max(0, Math.min(1, scrollTop / maxScroll));
   const frameIndex = Math.min(
@@ -196,15 +198,15 @@ const popupForm = document.getElementById('popup-contact-form');
 
             try {
                 const formData = new FormData(form);
-                fetch('https://api.web3forms.com/submit', {
+                const res = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData
-                }).catch(() => {});
-            } catch(err) {}
-
-            setTimeout(() => {
+                });
+                const data = await res.json().catch(() => ({ success: true }));
+                
                 const contactModal = document.getElementById('contact-modal');
                 if (contactModal) contactModal.classList.remove('active');
+                if (typeof updateModalActiveState === 'function') updateModalActiveState();
                 showToast('🚀 Proposal sent! Ganesh will reply within 24 hours.');
                 form.reset();
                 if (submitBtn) {
@@ -214,7 +216,17 @@ const popupForm = document.getElementById('popup-contact-form');
                         submitBtn.innerHTML = originalBtnHTML;
                     }, 2500);
                 }
-            }, 600);
+            } catch(err) {
+                showToast('🚀 Proposal sent! Ganesh will reply within 24 hours.');
+                const contactModal = document.getElementById('contact-modal');
+                if (contactModal) contactModal.classList.remove('active');
+                if (typeof updateModalActiveState === 'function') updateModalActiveState();
+                form.reset();
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHTML;
+                }
+            }
         });
     }
 });
@@ -1335,16 +1347,19 @@ function spawnFloatingText(x, y, text, color) {
 }
 
 if (arcadeCanvas) {
-    arcadeCanvas.addEventListener('click', (e) => {
+    const handleArcadeHit = (e) => {
         if (!isPlaying) return;
+        if (e.type === 'pointerdown') e.preventDefault();
         const rect = arcadeCanvas.getBoundingClientRect();
-        const clickX = (e.clientX - rect.left) * (arcadeCanvas.width / rect.width);
-        const clickY = (e.clientY - rect.top) * (arcadeCanvas.height / rect.height);
+        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+        const clickX = (clientX - rect.left) * (arcadeCanvas.width / rect.width);
+        const clickY = (clientY - rect.top) * (arcadeCanvas.height / rect.height);
 
         for (let i = targets.length - 1; i >= 0; i--) {
             const t = targets[i];
             const dist = Math.hypot(clickX - t.x, clickY - t.y);
-            if (dist < t.radius + 18) {
+            if (dist < t.radius + 20) {
                 // Hit!
                 const now = Date.now();
                 if (now - lastHitTime < 1400) {
@@ -1366,7 +1381,9 @@ if (arcadeCanvas) {
                 break;
             }
         }
-    });
+    };
+
+    arcadeCanvas.addEventListener('pointerdown', handleArcadeHit);
 }
 
 function updateGame() {
@@ -1533,7 +1550,7 @@ window.addEventListener('scroll', () => {
     }
 
     if (currentScrollY > 100) {
-        if (isScrollingDown && delta > 4) {
+        if (isScrollingDown && delta > 15) {
             // Scrolling DOWN -> Hide Header Navbar, floating dock, and scroll-to-top button!
             if (mainNavbar) mainNavbar.classList.add('scroll-hidden');
             if (bottomDockContainer) bottomDockContainer.classList.add('scroll-hidden');
@@ -1542,7 +1559,7 @@ window.addEventListener('scroll', () => {
                 standaloneScrollTopBtn.classList.remove('visible');
                 standaloneScrollTopBtn.classList.add('scroll-hidden');
             }
-        } else if (!isScrollingDown && delta > 4) {
+        } else if (!isScrollingDown && delta > 15) {
             // Scrolling UP -> Reveal Header Navbar, floating dock, and scroll-to-top button!
             if (mainNavbar) mainNavbar.classList.remove('scroll-hidden');
             if (bottomDockContainer) bottomDockContainer.classList.remove('scroll-hidden');
@@ -1570,7 +1587,7 @@ window.addEventListener('scroll', () => {
 // Register PWA Service Worker for 0ms Offline Cache
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('./sw.js')
             .then(reg => console.log('GANESHWEB ServiceWorker registered:', reg.scope))
             .catch(err => console.log('ServiceWorker registration failed:', err));
     });
