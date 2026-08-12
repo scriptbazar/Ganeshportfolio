@@ -388,6 +388,13 @@ const caseStudyContent = document.getElementById('case-study-content');
 const caseStudyBtns = document.querySelectorAll('.btn-case-study');
 
 const caseStudiesData = {
+    'universalpay': {
+        title: 'UniversalPay — Hybrid Web3 & UPI Payment Gateway',
+        role: 'Founder & Lead Fintech Architect',
+        tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Web3.js', 'Node.js', 'Vercel Edge'],
+        desc: 'UniversalPay is a secure, scalable third-party payment gateway connecting Indian UPI rails (Paytm, PhonePe, GPay) with global crypto assets (USDT, BTC, ETH) with instant zero-slippage settlements.',
+        link: 'https://universalpay-psi.vercel.app/'
+    },
     'scriptbazar-store': {
         title: 'ScriptBazar — Source Code & Digital Products Marketplace',
         role: 'Founder, Lead Architect & Full-Stack Engineer',
