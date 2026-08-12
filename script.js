@@ -1,3 +1,23 @@
+// Safe localStorage helper to prevent SecurityError in sandboxed or origin-restricted environments
+const safeStorage = {
+    _memory: {},
+    getItem(key) {
+        try {
+            return window.localStorage ? window.localStorage.getItem(key) : (this._memory[key] || null);
+        } catch (e) {
+            return this._memory[key] || null;
+        }
+    },
+    setItem(key, value) {
+        try {
+            if (window.localStorage) window.localStorage.setItem(key, value);
+            this._memory[key] = String(value);
+        } catch (e) {
+            this._memory[key] = String(value);
+        }
+    }
+};
+
 const canvas = document.getElementById("scroll-canvas");
 const context = canvas.getContext("2d");
 
@@ -1227,7 +1247,7 @@ let spawnInterval = null;
 let animationReq = null;
 let isPlaying = false;
 
-let highScore = parseInt(localStorage.getItem('arcade_high_score') || '0', 10);
+let highScore = parseInt(safeStorage.getItem('arcade_high_score') || '0', 10);
 if (highScoreEl) highScoreEl.innerText = highScore;
 
 // Open/Close Game Modal
@@ -1467,7 +1487,7 @@ function endGame() {
 
     if (gameScore > highScore) {
         highScore = gameScore;
-        localStorage.setItem('arcade_high_score', highScore.toString());
+        safeStorage.setItem('arcade_high_score', highScore.toString());
         if (highScoreEl) highScoreEl.innerText = highScore;
     }
 
