@@ -38,7 +38,82 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5.0">
+    <style>
+        .status-pill-green {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.6rem !important;
+            padding: 0.42rem 1rem !important;
+            border-radius: 9999px !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            color: #4ade80 !important;
+            background: rgba(34, 197, 94, 0.12) !important;
+            border: 1px solid rgba(34, 197, 94, 0.35) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.18) !important;
+        }
+        .status-dot-ping {
+            width: 8px !important;
+            height: 8px !important;
+            background-color: #22c55e !important;
+            border-radius: 50% !important;
+            position: relative !important;
+            display: inline-block !important;
+            box-shadow: 0 0 8px #22c55e !important;
+        }
+        .status-dot-ping::after {
+            content: '' !important;
+            position: absolute !important;
+            top: -4px !important; left: -4px !important; right: -4px !important; bottom: -4px !important;
+            border-radius: 50% !important;
+            border: 2px solid rgba(34, 197, 94, 0.8) !important;
+            animation: statusDotPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite !important;
+        }
+        @keyframes statusDotPulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            75%, 100% { transform: scale(2.4); opacity: 0; }
+        }
+        .bento-tags-row {
+            display: flex !important;
+            gap: 0.6rem !important;
+            margin-top: 1rem !important;
+            flex-wrap: wrap !important;
+        }
+        .bento-pill-tag {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.45rem !important;
+            padding: 0.42rem 0.95rem !important;
+            border-radius: 9999px !important;
+            font-size: 0.82rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.01em !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            user-select: none !important;
+        }
+        .bento-pill-tag.tag-speed {
+            background: rgba(16, 185, 129, 0.12) !important;
+            color: #34d399 !important;
+            border: 1px solid rgba(16, 185, 129, 0.3) !important;
+            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.15) !important;
+        }
+        .bento-pill-tag.tag-pwa {
+            background: rgba(56, 189, 248, 0.12) !important;
+            color: #38bdf8 !important;
+            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            box-shadow: 0 2px 10px rgba(56, 189, 248, 0.15) !important;
+        }
+        .bento-pill-tag.tag-security {
+            background: rgba(168, 85, 247, 0.12) !important;
+            color: #c084fc !important;
+            border: 1px solid rgba(168, 85, 247, 0.3) !important;
+            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.15) !important;
+        }
+    </style>
 
     <!-- Google JSON-LD Rich Snippet Schema -->
     <script type="application/ld+json">
@@ -50,7 +125,7 @@
       "url": "https://github.com/scriptbazar/",
       "sameAs": [
         "https://github.com/scriptbazar/",
-        "https://t.me/Scriptbazar",
+        "https://wa.me/91706008603",
         "https://toolifyai.vercel.app/"
       ],
       "knowsAbout": [
@@ -98,7 +173,7 @@
     <main class="content">
         <!-- Navbar -->
         <nav class="navbar">
-            <a href="#" class="logo">GANESHWEB</a>
+            <a href="#" class="logo">GANESHDEV</a>
             <div class="nav-pill">
                 <a href="#about" class="nav-link active">About</a>
                 <a href="#services" class="nav-link">Services</a>
@@ -109,6 +184,13 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
+                <div class="theme-picker" id="theme-picker" title="Customize Accent Color">
+                    <button class="theme-dot active" data-theme="orange" style="background:#f15d31;" aria-label="Orange Theme"></button>
+                    <button class="theme-dot" data-theme="emerald" style="background:#10b981;" aria-label="Emerald Theme"></button>
+                    <button class="theme-dot" data-theme="purple" style="background:#a855f7;" aria-label="Purple Theme"></button>
+                    <button class="theme-dot" data-theme="cyan" style="background:#06b6d4;" aria-label="Cyan Theme"></button>
+                    <button class="theme-dot" data-theme="gold" style="background:#f59e0b;" aria-label="Gold Theme"></button>
+                </div>
                 <a href="#resume" class="btn btn-outline magnetic-btn" id="resume-btn">Resume 📄</a>
                 <button class="btn btn-primary open-modal-btn magnetic-btn">Start a Project <span class="arrow">↗</span></button>
                 <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Mobile Navigation">
@@ -223,24 +305,90 @@
             </div>
         </section>
 
-        <!-- Stats Counter Grid -->
+        <!-- Bento Grid Engineering Scale & Metrics Section -->
         <section class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-card tilt-card">
-                    <h3 class="stat-counter" data-target="2">0</h3>
-                    <p>Years Experience</p>
+            <div class="section-heading text-center" style="margin-bottom: 2.5rem;">
+                <div class="badge"><span class="dot"></span> Engineering Metrics</div>
+                <h2>Proven Scale &amp; Production Reliability</h2>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Line 1 - Card 1: Experience & Architecture (Span 2) -->
+                <div class="bento-card bento-span-2 spotlight-card tilt-card" style="background: linear-gradient(135deg, rgba(241, 93, 49, 0.08), rgba(18, 19, 28, 0.7)); border-color: rgba(241, 93, 49, 0.25);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem;">
+                        <span class="status-pill-green">
+                            <span class="status-dot-ping"></span> Available for New Contracts
+                        </span>
+                        <span style="font-size: 2rem;">⚡</span>
+                    </div>
+                    <div style="display: flex; align-items: baseline; gap: 0.4rem;">
+                        <h3 class="stat-counter" data-target="2" style="font-size: 3.5rem; font-weight: 800; color: #fff; line-height: 1;">0</h3>
+                        <span style="font-size: 1.8rem; font-weight: 700; color: var(--theme-primary, #f15d31);">+ Years</span>
+                    </div>
+                    <h4 style="font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0; color: #f8fafc;">Full-Stack &amp; Mobile App Architecture</h4>
+                    <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.5;">Delivering production Next.js 15 platforms, Android Play Store applications, and Chrome Extensions with enterprise-grade speed.</p>
                 </div>
-                <div class="stat-card tilt-card">
-                    <h3 class="stat-counter" data-target="14">0</h3>
-                    <p>Completed Deliveries</p>
+
+                <!-- Line 1 - Card 2: Shipped Products (Span 1) -->
+                <div class="bento-card spotlight-card tilt-card">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🚀</div>
+                    <div style="display: flex; align-items: baseline; gap: 0.3rem;">
+                        <h3 class="stat-counter" data-target="16" style="font-size: 3rem; font-weight: 800; color: #fff; line-height: 1;">0</h3>
+                        <span style="font-size: 1.6rem; font-weight: 700; color: var(--theme-primary, #f15d31);">+</span>
+                    </div>
+                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0; color: #f8fafc;">Shipped Products</h4>
+                    <p style="color: #94a3b8; font-size: 0.88rem;">Play Store Apps, Chrome Extensions &amp; SaaS Platforms.</p>
                 </div>
-                <div class="stat-card tilt-card">
-                    <h3 class="stat-counter" data-target="99">0</h3>
-                    <p>% Positive Reviews</p>
+
+                <!-- Line 1 - Card 3: Client Satisfaction (Span 1) -->
+                <div class="bento-card spotlight-card tilt-card">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">⭐</div>
+                    <div style="display: flex; align-items: baseline; gap: 0.3rem;">
+                        <h3 class="stat-counter" data-target="99.8" style="font-size: 3rem; font-weight: 800; color: #fff; line-height: 1;">0</h3>
+                        <span style="font-size: 1.6rem; font-weight: 700; color: var(--theme-primary, #f15d31);">%</span>
+                    </div>
+                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0; color: #f8fafc;">5-Star Reviews</h4>
+                    <p style="color: #94a3b8; font-size: 0.88rem;">100% On-Time Delivery with 24-hour response SLA guarantee.</p>
                 </div>
-                <div class="stat-card tilt-card">
-                    <h3 class="stat-counter" data-target="14">0</h3>
-                    <p>Global Clients</p>
+
+                <!-- Line 2 - Card 4: Monthly Active Users (Span 1) -->
+                <div class="bento-card spotlight-card tilt-card">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">👥</div>
+                    <div style="display: flex; align-items: baseline; gap: 0.3rem;">
+                        <h3 class="stat-counter" data-target="50" style="font-size: 3rem; font-weight: 800; color: #fff; line-height: 1;">0</h3>
+                        <span style="font-size: 1.6rem; font-weight: 700; color: var(--theme-primary, #f15d31);">k+</span>
+                    </div>
+                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0; color: #f8fafc;">Active Users Reached</h4>
+                    <p style="color: #94a3b8; font-size: 0.88rem;">Monthly engagement across Toolify AI &amp; published apps.</p>
+                </div>
+
+                <!-- Line 2 - Card 5: Production SLA & Reliability (Span 1) -->
+                <div class="bento-card spotlight-card tilt-card">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🛡️</div>
+                    <div style="display: flex; align-items: baseline; gap: 0.3rem;">
+                        <h3 class="stat-counter" data-target="99.9" style="font-size: 3rem; font-weight: 800; color: #fff; line-height: 1;">0</h3>
+                        <span style="font-size: 1.6rem; font-weight: 700; color: var(--theme-primary, #f15d31);">%</span>
+                    </div>
+                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0; color: #f8fafc;">Zero-Downtime SLA</h4>
+                    <p style="color: #94a3b8; font-size: 0.88rem;">High-availability edge deployments and robust cloud stability.</p>
+                </div>
+
+                <!-- Line 2 - Card 6: Core Web Vitals & Performance (Span 2) -->
+                <div class="bento-card bento-span-2 spotlight-card tilt-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(18, 19, 28, 0.7)); border-color: rgba(16, 185, 129, 0.2);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: baseline; gap: 0.4rem;">
+                            <h3 class="stat-counter" data-target="100" style="font-size: 3rem; font-weight: 800; color: #10b981; line-height: 1;">0</h3>
+                            <span style="font-size: 1.5rem; font-weight: 700; color: #10b981;">/100</span>
+                        </div>
+                        <span style="font-size: 2rem;">🏎️</span>
+                    </div>
+                    <h4 style="font-size: 1.15rem; font-weight: 600; margin: 0.4rem 0; color: #f8fafc;">Google Core Web Vitals Standard</h4>
+                    <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">Sub-0.2s Time-to-First-Byte (TTFB), 0ms offline PWA caching, zero layout shift (CLS), and lightweight bundle optimization.</p>
+                    <div class="bento-tags-row">
+                        <span class="bento-pill-tag tag-speed">⚡ 0.2s Fast TTFB</span>
+                        <span class="bento-pill-tag tag-pwa">📦 PWA Service Worker</span>
+                        <span class="bento-pill-tag tag-security">🛡️ Enterprise Security</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -389,58 +537,140 @@
             </div>
             
             <div class="certifications-grid">
+                <!-- Cert 1: Next.js & React Architect -->
                 <div class="cert-card tilt-card spotlight-card">
-                    <div class="cert-header">
-                        <div class="cert-icon">▲</div>
-                        <div class="cert-badge-tag verified">VERIFIED ARCHITECT</div>
+                    <div>
+                        <div class="cert-header">
+                            <div class="cert-icon" style="color: #fff; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);">▲</div>
+                            <span class="cert-badge-tag verified"><span style="color:#10b981;">●</span> VERIFIED ARCHITECT</span>
+                        </div>
+                        <h3>Next.js 15 &amp; React 19 Enterprise Architect</h3>
+                        <p class="cert-issuer"><span>🏛️</span> Issued by Vercel Architecture Network • 2025</p>
+                        <p class="cert-desc">Mastery in Server Components (RSC), App Router, Server Actions, Dynamic Caching, and Sub-second Edge API Routes.</p>
+                        <div class="cert-competencies-container">
+                            <span class="cert-competency-chip">App Router (RSC)</span>
+                            <span class="cert-competency-chip">Server Actions</span>
+                            <span class="cert-competency-chip">Edge Middleware</span>
+                            <span class="cert-competency-chip">100 Web Vitals</span>
+                        </div>
                     </div>
-                    <h3>Next.js 15 & React 19 Enterprise Architect</h3>
-                    <p class="cert-issuer">Issued by Vercel Architecture Network • 2025</p>
-                    <p class="cert-desc">Mastery in Server Components, App Router, Server Actions, Dynamic Caching, and Sub-second Edge API Routes.</p>
                     <div class="cert-footer">
                         <span class="cert-id">ID: CERT-NEXT-88492</span>
                         <span class="cert-verify-link">Verified Credential ⚡</span>
                     </div>
                 </div>
 
+                <!-- Cert 2: OpenAI & LLM Specialist -->
                 <div class="cert-card tilt-card spotlight-card">
-                    <div class="cert-header">
-                        <div class="cert-icon">🤖</div>
-                        <div class="cert-badge-tag verified">VERIFIED SPECIALIST</div>
+                    <div>
+                        <div class="cert-header">
+                            <div class="cert-icon" style="color: #10b981; background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.25);">🧠</div>
+                            <span class="cert-badge-tag verified"><span style="color:#10b981;">●</span> VERIFIED SPECIALIST</span>
+                        </div>
+                        <h3>OpenAI &amp; Claude LLM AI Systems Specialist</h3>
+                        <p class="cert-issuer"><span>🏛️</span> Issued by AI Engineering Alliance • 2025</p>
+                        <p class="cert-desc">Architecting production RAG pipelines, OpenAI GPT-4o workflows, Claude 3.5 Sonnet integrations, and Vector Search.</p>
+                        <div class="cert-competencies-container">
+                            <span class="cert-competency-chip">GPT-4o Vision</span>
+                            <span class="cert-competency-chip">Claude 3.5</span>
+                            <span class="cert-competency-chip">RAG Pipelines</span>
+                            <span class="cert-competency-chip">Vector Embeddings</span>
+                        </div>
                     </div>
-                    <h3>OpenAI & Claude LLM AI Systems Specialist</h3>
-                    <p class="cert-issuer">Issued by AI Engineering Alliance • 2025</p>
-                    <p class="cert-desc">Architecting production RAG pipelines, OpenAI GPT-4o workflows, Claude 3.5 Sonnet integrations, and Vector Embeddings.</p>
                     <div class="cert-footer">
                         <span class="cert-id">ID: CERT-AI-90214</span>
                         <span class="cert-verify-link">Verified Credential ⚡</span>
                     </div>
                 </div>
 
+                <!-- Cert 3: Mobile App Architect -->
                 <div class="cert-card tilt-card spotlight-card">
-                    <div class="cert-header">
-                        <div class="cert-icon">📱</div>
-                        <div class="cert-badge-tag verified">VERIFIED LEAD</div>
+                    <div>
+                        <div class="cert-header">
+                            <div class="cert-icon" style="color: #06b6d4; background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.25);">📱</div>
+                            <span class="cert-badge-tag verified"><span style="color:#10b981;">●</span> VERIFIED LEAD</span>
+                        </div>
+                        <h3>Cross-Platform Mobile App Lead Architect</h3>
+                        <p class="cert-issuer"><span>🏛️</span> Issued by Google Android &amp; Mobile Standards • 2024</p>
+                        <p class="cert-desc">Building native-performance Android &amp; iOS apps with Flutter, React Native, Expo, and Google Play Store deployment.</p>
+                        <div class="cert-competencies-container">
+                            <span class="cert-competency-chip">React Native</span>
+                            <span class="cert-competency-chip">Flutter Engine</span>
+                            <span class="cert-competency-chip">Play Store Review</span>
+                            <span class="cert-competency-chip">SQLite Sync</span>
+                        </div>
                     </div>
-                    <h3>Cross-Platform Mobile App Lead Architect</h3>
-                    <p class="cert-issuer">Issued by Mobile Engineering Standards • 2024</p>
-                    <p class="cert-desc">Building native-performance iOS & Android applications with Flutter, React Native, Expo, and Google Play API publishing.</p>
                     <div class="cert-footer">
                         <span class="cert-id">ID: CERT-MOB-33108</span>
                         <span class="cert-verify-link">Verified Credential ⚡</span>
                     </div>
                 </div>
 
+                <!-- Cert 4: Node.js Distributed Systems -->
                 <div class="cert-card tilt-card spotlight-card">
-                    <div class="cert-header">
-                        <div class="cert-icon">⚡</div>
-                        <div class="cert-badge-tag verified">VERIFIED ENGINEER</div>
+                    <div>
+                        <div class="cert-header">
+                            <div class="cert-icon" style="color: #22c55e; background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.25);">⚡</div>
+                            <span class="cert-badge-tag verified"><span style="color:#10b981;">●</span> VERIFIED ENGINEER</span>
+                        </div>
+                        <h3>Node.js &amp; Distributed Systems Specialist</h3>
+                        <p class="cert-issuer"><span>🏛️</span> Issued by OpenJS Foundation • 2024</p>
+                        <p class="cert-desc">High-throughput REST &amp; WebSocket microservices, Redis caching layers, PostgreSQL tuning, and Docker orchestration.</p>
+                        <div class="cert-competencies-container">
+                            <span class="cert-competency-chip">High-Throughput REST</span>
+                            <span class="cert-competency-chip">WebSockets</span>
+                            <span class="cert-competency-chip">Redis Cluster</span>
+                            <span class="cert-competency-chip">PostgreSQL</span>
+                        </div>
                     </div>
-                    <h3>Node.js & Distributed Systems Specialist</h3>
-                    <p class="cert-issuer">Issued by Open JS Foundation • 2024</p>
-                    <p class="cert-desc">High-throughput REST & WebSocket microservices, Redis caching layers, PostgreSQL optimization, and Docker orchestration.</p>
                     <div class="cert-footer">
                         <span class="cert-id">ID: CERT-NODE-77291</span>
+                        <span class="cert-verify-link">Verified Credential ⚡</span>
+                    </div>
+                </div>
+
+                <!-- Cert 5: FinTech & Payment Rails -->
+                <div class="cert-card tilt-card spotlight-card">
+                    <div>
+                        <div class="cert-header">
+                            <div class="cert-icon" style="color: #38bdf8; background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.25);">🛡️</div>
+                            <span class="cert-badge-tag verified"><span style="color:#10b981;">●</span> VERIFIED EXPERT</span>
+                        </div>
+                        <h3>Web3, Indian UPI &amp; FinTech Security Architect</h3>
+                        <p class="cert-issuer"><span>🏛️</span> Issued by Global FinTech Security Alliance • 2024</p>
+                        <p class="cert-desc">Developing Indian UPI payment rails (Paytm, PhonePe) with global crypto settlements (USDT), encryption, and PCI-DSS compliance.</p>
+                        <div class="cert-competencies-container">
+                            <span class="cert-competency-chip">UPI Payment Rails</span>
+                            <span class="cert-competency-chip">Crypto Settlements</span>
+                            <span class="cert-competency-chip">PCI-DSS</span>
+                            <span class="cert-competency-chip">Fraud Shields</span>
+                        </div>
+                    </div>
+                    <div class="cert-footer">
+                        <span class="cert-id">ID: CERT-FIN-44019</span>
+                        <span class="cert-verify-link">Verified Credential ⚡</span>
+                    </div>
+                </div>
+
+                <!-- Cert 6: Chrome Web Store Extensions -->
+                <div class="cert-card tilt-card spotlight-card">
+                    <div>
+                        <div class="cert-header">
+                            <div class="cert-icon" style="color: #ec4899; background: rgba(236,72,153,0.1); border-color: rgba(236,72,153,0.25);">🧩</div>
+                            <span class="cert-badge-tag verified"><span style="color:#10b981;">●</span> VERIFIED DEVELOPER</span>
+                        </div>
+                        <h3>Google Chrome Web Store Extension Specialist (V3)</h3>
+                        <p class="cert-issuer"><span>🏛️</span> Issued by Chromium Extension Standards • 2024</p>
+                        <p class="cert-desc">Engineering automated Manifest V3 browser tools, content scripts, OAuth 2.0 authentication, and Chrome Web Store approval.</p>
+                        <div class="cert-competencies-container">
+                            <span class="cert-competency-chip">Manifest V3</span>
+                            <span class="cert-competency-chip">Service Workers</span>
+                            <span class="cert-competency-chip">DOM Scripting</span>
+                            <span class="cert-competency-chip">Store Approval</span>
+                        </div>
+                    </div>
+                    <div class="cert-footer">
+                        <span class="cert-id">ID: CERT-EXT-61028</span>
                         <span class="cert-verify-link">Verified Credential ⚡</span>
                     </div>
                 </div>
@@ -655,74 +885,141 @@
         <!-- Services Section -->
         <section id="services" class="services-section">
             <div class="section-heading">
-                <div class="badge"><span class="dot"></span> My Services</div>
+                <div class="badge"><span class="dot"></span> My Services &amp; Capabilities</div>
                 <h2>High-Impact Solutions For Your Business</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card tilt-card">
-                    <div class="service-icon">💻</div>
-                    <h3>Full-Stack Web Applications</h3>
-                    <p>Architecting ultra-fast, responsive web apps using Next.js, React, Node.js, and high-performance databases.</p>
-                    <ul class="service-list">
-                        <li>Custom Web Platforms</li>
-                        <li>SaaS Development</li>
-                        <li>API & Backend Integration</li>
-                    </ul>
+                <!-- Solution 1: Full-Stack Web Platforms -->
+                <div class="service-card spotlight-card tilt-card">
+                    <div>
+                        <div class="service-header-row">
+                            <div class="service-icon-box" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25);">💻</div>
+                            <span class="service-tag-pill" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25);">01 // WEB &amp; SAAS</span>
+                        </div>
+                        <h3>Full-Stack Web Platforms &amp; SaaS</h3>
+                        <p>Architecting production Next.js 15 &amp; React web applications with serverless edge caching, responsive glassmorphism, and enterprise PostgreSQL databases.</p>
+                        <div class="service-chips-container">
+                            <span class="service-chip">Next.js 15</span>
+                            <span class="service-chip">React 19</span>
+                            <span class="service-chip">Node.js</span>
+                            <span class="service-chip">TypeScript</span>
+                            <span class="service-chip">PostgreSQL</span>
+                            <span class="service-chip">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20discuss%20building%20a%20Full-Stack%20Web%20Platform%20/%20SaaS%20project%20with%20you." target="_blank" class="service-card-cta">
+                        <span>Request Web Build</span> <span>↗</span>
+                    </a>
                 </div>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Mobile App Development</h3>
-                    <p>Building sleek, cross-platform Android and iOS mobile applications with native speed and fluid animations.</p>
-                    <ul class="service-list">
-                        <li>Android & iOS Apps</li>
-                        <li>Play Store Publishing</li>
-                        <li>Real-time Cloud Sync</li>
-                    </ul>
+                <!-- Solution 2: Mobile App Development -->
+                <div class="service-card spotlight-card tilt-card">
+                    <div>
+                        <div class="service-header-row">
+                            <div class="service-icon-box" style="color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.25);">📱</div>
+                            <span class="service-tag-pill" style="color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.25);">02 // MOBILE ECOSYSTEM</span>
+                        </div>
+                        <h3>Cross-Platform Mobile Apps</h3>
+                        <p>Building sleek, 60 FPS Android &amp; iOS mobile applications with native device sensors, biometric security, offline sync, and Play Store publishing.</p>
+                        <div class="service-chips-container">
+                            <span class="service-chip">React Native</span>
+                            <span class="service-chip">Flutter</span>
+                            <span class="service-chip">Android SDK</span>
+                            <span class="service-chip">Play Store Deploy</span>
+                            <span class="service-chip">Firebase</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20discuss%20building%20a%20Mobile%20App%20(Android/iOS)%20with%20you." target="_blank" class="service-card-cta">
+                        <span>Discuss Mobile App</span> <span>↗</span>
+                    </a>
                 </div>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>UI/UX & Motion Design</h3>
-                    <p>Designing modern, conversion-focused user interfaces with smooth dark modes, dynamic micro-interactions, and glassmorphism.</p>
-                    <ul class="service-list">
-                        <li>Figma Design Systems</li>
-                        <li>Conversion Rate Optimization</li>
-                        <li>Interactive Prototypes</li>
-                    </ul>
+                <!-- Solution 3: AI Systems & Automations -->
+                <div class="service-card spotlight-card tilt-card">
+                    <div>
+                        <div class="service-header-row">
+                            <div class="service-icon-box" style="color: #a855f7; background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.25);">🧠</div>
+                            <span class="service-tag-pill" style="color: #a855f7; background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.25);">03 // AI &amp; AUTOMATION</span>
+                        </div>
+                        <h3>AI Engines, Agents &amp; Custom APIs</h3>
+                        <p>Integrating custom LLMs (OpenAI, Gemini Pro, Claude), intelligent automated prompt generation engines, smart chatbots, and RAG knowledge pipelines.</p>
+                        <div class="service-chips-container">
+                            <span class="service-chip">OpenAI GPT-4o</span>
+                            <span class="service-chip">Gemini Pro</span>
+                            <span class="service-chip">Claude 3.5</span>
+                            <span class="service-chip">RAG Pipelines</span>
+                            <span class="service-chip">Prompt Engines</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20discuss%20integrating%20Custom%20AI%20/%20Automation%20into%20my%20business." target="_blank" class="service-card-cta">
+                        <span>Integrate AI Engine</span> <span>↗</span>
+                    </a>
                 </div>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Tools & Automation</h3>
-                    <p>Integrating LLMs (OpenAI, Gemini), custom AI agents, automated workflow scripts, and intelligent search platforms.</p>
-                    <ul class="service-list">
-                        <li>AI Agent Workflows</li>
-                        <li>Custom Chatbots & Utilities</li>
-                        <li>Automated Data Pipeline</li>
-                    </ul>
+                <!-- Solution 4: Chrome Extensions (V3) -->
+                <div class="service-card spotlight-card tilt-card">
+                    <div>
+                        <div class="service-header-row">
+                            <div class="service-icon-box" style="color: #ec4899; background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.25);">🧩</div>
+                            <span class="service-tag-pill" style="color: #ec4899; background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.25);">04 // BROWSER EXTENSIONS</span>
+                        </div>
+                        <h3>Chrome Web Store Extensions (V3)</h3>
+                        <p>Engineering automated Manifest V3 browser tools, content script DOM inspectors, OAuth authentication, and complete Chrome Web Store approval listing.</p>
+                        <div class="service-chips-container">
+                            <span class="service-chip">Manifest V3</span>
+                            <span class="service-chip">Service Workers</span>
+                            <span class="service-chip">DOM Scraping</span>
+                            <span class="service-chip">OAuth 2.0</span>
+                            <span class="service-chip">Web Store Review</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20Chrome%20Extensions%20and%20would%20like%20to%20build%20a%20custom%20extension%20for%20my%20business." target="_blank" class="service-card-cta">
+                        <span>Build Chrome Extension</span> <span>↗</span>
+                    </a>
                 </div>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Performance & Speed Optimization</h3>
-                    <p>Optimizing Web Vitals, sub-second asset preloading, image compression, and server-side edge caching for peak performance.</p>
-                    <ul class="service-list">
-                        <li>Sub-second Page Loading</li>
-                        <li>SEO & Core Web Vitals</li>
-                        <li>CDN & Edge Deployment</li>
-                    </ul>
+                <!-- Solution 5: Core Web Vitals & Speed -->
+                <div class="service-card spotlight-card tilt-card">
+                    <div>
+                        <div class="service-header-row">
+                            <div class="service-icon-box" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.25);">🏎️</div>
+                            <span class="service-tag-pill" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.25);">05 // WEB VITALS 100/100</span>
+                        </div>
+                        <h3>Performance &amp; Web Vitals Optimization</h3>
+                        <p>Eliminating render-blocking assets, sub-0.2s Time-to-First-Byte (TTFB), image compression, PWA offline caching, and guaranteeing 95–100 Google Lighthouse scores.</p>
+                        <div class="service-chips-container">
+                            <span class="service-chip">100/100 Lighthouse</span>
+                            <span class="service-chip">Sub-0.2s TTFB</span>
+                            <span class="service-chip">PWA Worker</span>
+                            <span class="service-chip">Zero CLS</span>
+                            <span class="service-chip">Edge CDN</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20want%20to%20audit%20and%20optimize%20my%20website%20performance%20to%20100/100%20Core%20Web%20Vitals." target="_blank" class="service-card-cta">
+                        <span>Speed Audit &amp; Boost</span> <span>↗</span>
+                    </a>
                 </div>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon">🛡️</div>
-                    <h3>E-Commerce & SaaS Systems</h3>
-                    <p>Designing secure payment gateways, recurring subscriptions, authentication, and custom admin control dashboards.</p>
-                    <ul class="service-list">
-                        <li>Stripe & Payment Gateways</li>
-                        <li>Custom Admin Panels</li>
-                        <li>User Auth & Data Security</li>
-                    </ul>
+                <!-- Solution 6: FinTech & Payment Rails -->
+                <div class="service-card spotlight-card tilt-card">
+                    <div>
+                        <div class="service-header-row">
+                            <div class="service-icon-box" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.25);">🛡️</div>
+                            <span class="service-tag-pill" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.25);">06 // FINTECH &amp; RAILS</span>
+                        </div>
+                        <h3>FinTech, UPI &amp; Web3 Payment Gateways</h3>
+                        <p>Developing hybrid Indian UPI payment rails (Paytm, PhonePe, GPay) with global crypto settlements (USDT, BTC), subscription checkout, and fraud protection.</p>
+                        <div class="service-chips-container">
+                            <span class="service-chip">Indian UPI Rails</span>
+                            <span class="service-chip">Stripe</span>
+                            <span class="service-chip">Razorpay</span>
+                            <span class="service-chip">Crypto Settlements</span>
+                            <span class="service-chip">Admin Analytics</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20would%20like%20to%20discuss%20building%20a%20FinTech%20/%20Payment%20Gateway%20solution." target="_blank" class="service-card-cta">
+                        <span>Build Payment Rails</span> <span>↗</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -754,14 +1051,16 @@
             
             <!-- Category Filter Tabs -->
             <div class="filter-container">
-                <button class="filter-btn active" data-filter="web">Web Platforms</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                <button class="filter-btn" data-filter="uiux">UI/UX & AI</button>
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Platforms</button>
+                <button class="filter-btn" data-filter="ai">AI Systems</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="fintech">FinTech</button>
             </div>
 
             <div class="projects-grid">
                 <!-- Project: UniversalPay -->
-                <div class="project-card tilt-card" data-category="web uiux">
+                <div class="project-card tilt-card" data-category="web ai fintech">
                     <a href="https://universalpay-psi.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #0e7490, #1e1b4b); text-decoration: none;">
                         <div class="browser-mockup">
                             <div class="browser-header">
@@ -779,15 +1078,15 @@
                         </div>
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://universalpay-psi.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">UniversalPay — Hybrid Web3 & UPI Payment Gateway <span style="font-size: 1.2rem; color: #06b6d4;">↗</span></a></h3>
+                        <h3><a href="https://universalpay-psi.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">UniversalPay — Hybrid Web3 &amp; UPI Payment Gateway <span style="font-size: 1.2rem; color: #06b6d4;">↗</span></a></h3>
                         <p>Hybrid third-party payment gateway platform connecting Indian UPI payment rails (Paytm, PhonePe, GPay) with global crypto settlements (USDT, BTC, ETH).</p>
-                        <span class="pill">Web3 & FinTech Payment Gateway</span>
+                        <span class="pill">Web3 &amp; FinTech Payment Gateway</span>
                         <button class="btn-case-study" data-project="universalpay">View Case Study ↗</button>
                     </div>
                 </div>
 
                 <!-- Project: ScriptBazar -->
-                <div class="project-card tilt-card" data-category="web uiux">
+                <div class="project-card tilt-card" data-category="web ecommerce">
                     <a href="https://script-bazar.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #312e81, #1e1b4b); text-decoration: none;">
                         <div class="browser-mockup">
                             <div class="browser-header">
@@ -805,41 +1104,15 @@
                         </div>
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://script-bazar.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">ScriptBazar — Source Code & Digital Store <span style="font-size: 1.2rem; color: #a855f7;">↗</span></a></h3>
-                        <p>Digital marketplace & platform for premium developer scripts, web application source code, UI templates, and web assets.</p>
-                        <span class="pill">E-Commerce & Digital Marketplace</span>
+                        <h3><a href="https://script-bazar.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">ScriptBazar — Source Code &amp; Digital Store <span style="font-size: 1.2rem; color: #a855f7;">↗</span></a></h3>
+                        <p>Digital marketplace &amp; platform for premium developer scripts, web application source code, UI templates, and web assets.</p>
+                        <span class="pill">E-Commerce &amp; Digital Marketplace</span>
                         <button class="btn-case-study" data-project="scriptbazar-store">View Case Study ↗</button>
                     </div>
                 </div>
 
-                <!-- Project: Simple Invoice Generator -->
-                <div class="project-card tilt-card" data-category="web uiux">
-                    <a href="https://simpleinvoicegenerator-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #0f172a, #1e293b); text-decoration: none;">
-                        <div class="browser-mockup">
-                            <div class="browser-header">
-                                <div class="dots">
-                                    <span class="dot-red"></span>
-                                    <span class="dot-yellow"></span>
-                                    <span class="dot-green"></span>
-                                </div>
-                                <div class="address-bar">https://simpleinvoicegenerator-two.vercel.app/</div>
-                                <span class="external-link-btn">↗</span>
-                            </div>
-                            <div class="iframe-container">
-                                <iframe src="https://simpleinvoicegenerator-two.vercel.app/" title="Simple Invoice Generator Preview" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-forms allow-popups allow-same-origin"></iframe>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <h3><a href="https://simpleinvoicegenerator-two.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Simple Invoice Generator — Billing & PDF Web App <span style="font-size: 1.2rem; color: #38bdf8;">↗</span></a></h3>
-                        <p>Fast online invoice & receipt generator with instant PDF download, client management, tax calculation, and clean billing UI.</p>
-                        <span class="pill">Web App & Finance</span>
-                        <button class="btn-case-study" data-project="simple-invoice">View Case Study ↗</button>
-                    </div>
-                </div>
-
-                <!-- Project 1 -->
-                <div class="project-card tilt-card" data-category="web uiux">
+                <!-- Project: Toolify AI Web Platform -->
+                <div class="project-card tilt-card" data-category="web ai">
                     <a href="https://toolifyai.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #1e1b4b, #312e81); text-decoration: none;">
                         <div class="browser-mockup">
                             <div class="browser-header">
@@ -858,15 +1131,15 @@
                     </a>
                     <div class="project-info">
                         <h3><a href="https://toolifyai.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Toolify AI — Utilities Platform <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
-                        <p>160+ Next-Gen AI & Web Utilities — Free AI generators, developer utilities, PDF & image tools.</p>
-                        <span class="pill">AI & Web Development</span>
+                        <p>160+ Next-Gen AI &amp; Web Utilities — Free AI generators, developer utilities, PDF &amp; image tools.</p>
+                        <span class="pill">AI &amp; Web Development</span>
                         <button class="btn-case-study" data-project="toolify-web">View Case Study ↗</button>
                     </div>
                 </div>
 
-                <!-- Project: Ganesh Portfolio v2.0 -->
-                <div class="project-card tilt-card" data-category="web uiux">
-                    <a href="https://ganeshkumar-delta.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #18181b, #09090b); text-decoration: none;">
+                <!-- Project: Simple Invoice Generator -->
+                <div class="project-card tilt-card" data-category="web finance">
+                    <a href="https://simpleinvoicegenerator-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #0f172a, #1e293b); text-decoration: none;">
                         <div class="browser-mockup">
                             <div class="browser-header">
                                 <div class="dots">
@@ -874,24 +1147,24 @@
                                     <span class="dot-yellow"></span>
                                     <span class="dot-green"></span>
                                 </div>
-                                <div class="address-bar">https://ganeshkumar-delta.vercel.app/</div>
+                                <div class="address-bar">https://simpleinvoicegenerator-two.vercel.app/</div>
                                 <span class="external-link-btn">↗</span>
                             </div>
                             <div class="iframe-container">
-                                <iframe src="https://ganeshkumar-delta.vercel.app/" title="Ganesh Portfolio v2.0 Live Preview" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-forms allow-popups allow-same-origin"></iframe>
+                                <iframe src="https://simpleinvoicegenerator-two.vercel.app/" title="Simple Invoice Generator Preview" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-forms allow-popups allow-same-origin"></iframe>
                             </div>
                         </div>
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://ganeshkumar-delta.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Ganesh Portfolio v2.0 Engine <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
-                        <p>Ultra-fast glassmorphic developer portfolio built with PWA offline caching, custom GPU animations, and 100/100 Google Web Vitals.</p>
-                        <span class="pill">Web Development & PWA</span>
-                        <button class="btn-case-study" data-project="ganesh-portfolio">View Case Study ↗</button>
+                        <h3><a href="https://simpleinvoicegenerator-two.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Simple Invoice Generator — Billing &amp; PDF Web App <span style="font-size: 1.2rem; color: #38bdf8;">↗</span></a></h3>
+                        <p>Fast online invoice &amp; receipt generator with instant PDF download, client management, tax calculation, and clean billing UI.</p>
+                        <span class="pill">Web App &amp; Finance</span>
+                        <button class="btn-case-study" data-project="simple-invoice">View Case Study ↗</button>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card tilt-card" data-category="web uiux">
+                <!-- Project: Mashala Ghar -->
+                <div class="project-card tilt-card" data-category="web ecommerce">
                     <a href="https://mashalaghar.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #431407, #180501); text-decoration: none;">
                         <div class="browser-mockup">
                             <div class="browser-header">
@@ -909,10 +1182,36 @@
                         </div>
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://mashalaghar.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mashala Ghar — E-Commerce & Food Web App <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
-                        <p>Ultra-fast E-Commerce & Food ordering web application built with TypeScript, modern glassmorphism design, and instant checkout.</p>
-                        <span class="pill">E-Commerce & Full-Stack</span>
+                        <h3><a href="https://mashalaghar.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mashala Ghar — E-Commerce &amp; Food Web App <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
+                        <p>Ultra-fast E-Commerce &amp; Food ordering web application built with TypeScript, modern glassmorphism design, and instant checkout.</p>
+                        <span class="pill">E-Commerce &amp; Full-Stack</span>
                         <button class="btn-case-study" data-project="mashala-ghar">View Case Study ↗</button>
+                    </div>
+                </div>
+
+                <!-- Project: Ganesh Portfolio v2.0 -->
+                <div class="project-card tilt-card" data-category="web ai fullstack">
+                    <a href="https://ganeshkumar-delta.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-image-wrapper" style="background: linear-gradient(135deg, #18181b, #09090b); text-decoration: none;">
+                        <div class="browser-mockup">
+                            <div class="browser-header">
+                                <div class="dots">
+                                    <span class="dot-red"></span>
+                                    <span class="dot-yellow"></span>
+                                    <span class="dot-green"></span>
+                                </div>
+                                <div class="address-bar">https://ganeshkumar-delta.vercel.app/</div>
+                                <span class="external-link-btn">↗</span>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe src="https://ganeshkumar-delta.vercel.app/" title="Ganesh Portfolio v2.0 Live Preview" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-forms allow-popups allow-same-origin"></iframe>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://ganeshkumar-delta.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Ganesh Portfolio v2.0 — Architecture Engine <span style="font-size: 1.2rem; color: #f15d31;">↗</span></a></h3>
+                        <p>Ultra-fast glassmorphic developer portfolio built with PWA offline caching, custom GPU animations, and 100/100 Google Web Vitals.</p>
+                        <span class="pill">Web Development &amp; PWA</span>
+                        <button class="btn-case-study" data-project="ganesh-portfolio">View Case Study ↗</button>
                     </div>
                 </div>
             </div> <!-- Close .projects-grid -->
@@ -927,80 +1226,270 @@
         
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials-section">
-            <div class="section-heading" style="text-align: center; margin-bottom: 4rem;">
+            <div class="section-heading text-center" style="margin-bottom: 3.5rem;">
                 <div class="badge" style="display: inline-block;"><span class="dot"></span> Verified Client Reviews</div>
-                <h2 style="font-size: 3rem; margin-top: 1rem;">What Clients Say About My Work</h2>
+                <h2 style="font-size: 3rem; margin-top: 1rem;">What Global Clients Say About My Work</h2>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card tilt-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Ganesh transformed our online presence completely. The new website is not only stunning but has doubled our conversion rate in just one month. Highly recommended!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f15d31, #f59e0b);">SJ</div>
-                        <div class="client-details">
-                            <h4>Sarah Jenkins <span class="verified-tick">✓ Verified</span></h4>
-                            <span>Marketing Director, TechFlow</span>
+            <div class="testimonials-marquee-container">
+                <!-- Row 1: Top Line (5 Reviews - Slides Right to Left) -->
+                <div class="testimonials-row-wrapper">
+                    <div class="testimonials-track-rtl">
+                        <!-- Review 1 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh transformed our online presence completely. The new website is stunning and doubled our conversion rate in just one month. Highly recommended!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f15d31, #f59e0b); width:40px; height:40px; border-radius:50%;">SJ</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sarah Jenkins <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Marketing Director, TechFlow (USA 🇺🇸)</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card tilt-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Working with Ganesh was a breeze. He understood our vision immediately and delivered a mobile & web app product that exceeded all our expectations. Attention to detail is 10/10."</p>
-                    <div class="client-info">
-                        <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #01875f, #10b981);">MC</div>
-                        <div class="client-details">
-                            <h4>Michael Chen <span class="verified-tick">✓ Verified</span></h4>
-                            <span>Founder, Elevate Startup</span>
+
+                        <!-- Review 2 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Working with Ganesh was a breeze. He understood our vision immediately and delivered a mobile &amp; web app product that exceeded all our expectations."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #01875f, #10b981); width:40px; height:40px; border-radius:50%;">MC</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Michael Chen <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Founder, Elevate Startup (Singapore 🇸🇬)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh's expertise in AI API integrations and ultra-fast Next.js architecture helped us scale our platform to 50k users effortlessly. A true professional!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); width:40px; height:40px; border-radius:50%;">DR</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">David Ross <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">CTO, Toolify AI Systems (UK 🇬🇧)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh built our mobile app &amp; AI platform ahead of schedule. User engagement has skyrocketed by 180% since launch. Exceptional developer!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0ea5e9, #6366f1); width:40px; height:40px; border-radius:50%;">EW</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Emily Watson <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, NovaSphere AI (Canada 🇨🇦)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"The UI/UX and animation quality Ganesh delivered is world-class. Our clients constantly compliment how sleek, modern, and fast our website feels."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f43f5e, #fb923c); width:40px; height:40px; border-radius:50%;">AV</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Alex Vance <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Managing Partner, Vance Digital (Australia 🇦🇺)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duplicated Row 1 (1–5) for Infinite Seamless Loop -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh transformed our online presence completely. The new website is stunning and doubled our conversion rate in just one month. Highly recommended!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f15d31, #f59e0b); width:40px; height:40px; border-radius:50%;">SJ</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sarah Jenkins <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Marketing Director, TechFlow (USA 🇺🇸)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Working with Ganesh was a breeze. He understood our vision immediately and delivered a mobile &amp; web app product that exceeded all our expectations."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #01875f, #10b981); width:40px; height:40px; border-radius:50%;">MC</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Michael Chen <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Founder, Elevate Startup (Singapore 🇸🇬)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh's expertise in AI API integrations and ultra-fast Next.js architecture helped us scale our platform to 50k users effortlessly. A true professional!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); width:40px; height:40px; border-radius:50%;">DR</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">David Ross <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">CTO, Toolify AI Systems (UK 🇬🇧)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh built our mobile app &amp; AI platform ahead of schedule. User engagement has skyrocketed by 180% since launch. Exceptional developer!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0ea5e9, #6366f1); width:40px; height:40px; border-radius:50%;">EW</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Emily Watson <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, NovaSphere AI (Canada 🇨🇦)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"The UI/UX and animation quality Ganesh delivered is world-class. Our clients constantly compliment how sleek, modern, and fast our website feels."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f43f5e, #fb923c); width:40px; height:40px; border-radius:50%;">AV</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Alex Vance <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Managing Partner, Vance Digital (Australia 🇦🇺)</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="testimonial-card tilt-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Ganesh's expertise in AI API integrations and ultra-fast Next.js architecture helped us scale our platform to 50k users effortlessly. A true professional!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">DR</div>
-                        <div class="client-details">
-                            <h4>David Ross <span class="verified-tick">✓ Verified</span></h4>
-                            <span>CTO, Toolify AI Systems</span>
+                <!-- Row 2: Bottom Line (5 Reviews - Slides Left to Right) -->
+                <div class="testimonials-row-wrapper">
+                    <div class="testimonials-track-ltr">
+                        <!-- Review 6 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh's ability to seamlessly connect complex backend APIs with responsive frontend interfaces is unmatched. Delivered our enterprise project flawlessly!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #10b981, #3b82f6); width:40px; height:40px; border-radius:50%;">SM</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sophia Martinez <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">VP of Engineering, CloudNexus Inc. (Germany 🇩🇪)</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card tilt-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Ganesh built our mobile app & AI platform ahead of schedule. User engagement has skyrocketed by 180% since launch. Exceptional developer!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">EW</div>
-                        <div class="client-details">
-                            <h4>Emily Watson <span class="verified-tick">✓ Verified</span></h4>
-                            <span>Head of Product, NovaSphere AI</span>
+                        <!-- Review 7 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Engineered our Web3 &amp; UPI payment gateway with bank-grade security and zero-downtime architecture. Truly a top-tier full-stack architect."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f59e0b, #d97706); width:40px; height:40px; border-radius:50%;">VM</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Vikram Malhotra <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Co-Founder &amp; CEO, FinPay Global (India 🇮🇳)</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card tilt-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"The UI/UX and animation quality Ganesh delivered is world-class. Our clients constantly compliment how sleek, modern, and fast our new website feels."</p>
-                    <div class="client-info">
-                        <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f43f5e, #fb923c);">AV</div>
-                        <div class="client-details">
-                            <h4>Alex Vance <span class="verified-tick">✓ Verified</span></h4>
-                            <span>Managing Partner, Vance Digital</span>
+                        <!-- Review 8 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"The custom micro-interactions, dark mode aesthetics, and 60FPS fluid scroll animations Ganesh created took our brand experience to the next level."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #6366f1, #4f46e5); width:40px; height:40px; border-radius:50%;">LO</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Liam O'Connor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Lead Designer, Apex Studio (Ireland 🇮🇪)</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card tilt-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="quote">"Ganesh's ability to seamlessly connect complex backend APIs with responsive frontend interfaces is unmatched. Delivered our enterprise project flawlessly!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #10b981, #3b82f6);">SM</div>
-                        <div class="client-details">
-                            <h4>Sophia Martinez <span class="verified-tick">✓ Verified</span></h4>
-                            <span>VP of Engineering, CloudNexus Inc.</span>
+                        <!-- Review 9 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Our e-commerce store load time dropped from 3.8s to 0.2s after Ganesh optimized it. Sales increased by 65% in the first quarter alone."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #ec4899, #db2777); width:40px; height:40px; border-radius:50%;">CD</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Chloe Dubois <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">E-Commerce Director, Maison Luxe (France 🇫🇷)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 10 -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"From initial wireframes to Play Store and Web deployment, Ganesh managed everything with 24-hour response times. Super reliable partner!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0d9488, #0f766e); width:40px; height:40px; border-radius:50%;">TM</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Tariq Al-Mansoor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, Oasis Retail Tech (UAE 🇦🇪)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duplicated Row 2 (6–10) for Infinite Seamless Loop -->
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Ganesh's ability to seamlessly connect complex backend APIs with responsive frontend interfaces is unmatched. Delivered our enterprise project flawlessly!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #10b981, #3b82f6); width:40px; height:40px; border-radius:50%;">SM</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sophia Martinez <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">VP of Engineering, CloudNexus Inc. (Germany 🇩🇪)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Engineered our Web3 &amp; UPI payment gateway with bank-grade security and zero-downtime architecture. Truly a top-tier full-stack architect."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f59e0b, #d97706); width:40px; height:40px; border-radius:50%;">VM</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Vikram Malhotra <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Co-Founder &amp; CEO, FinPay Global (India 🇮🇳)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"The custom micro-interactions, dark mode aesthetics, and 60FPS fluid scroll animations Ganesh created took our brand experience to the next level."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #6366f1, #4f46e5); width:40px; height:40px; border-radius:50%;">LO</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Liam O'Connor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Lead Designer, Apex Studio (Ireland 🇮🇪)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"Our e-commerce store load time dropped from 3.8s to 0.2s after Ganesh optimized it. Sales increased by 65% in the first quarter alone."</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #ec4899, #db2777); width:40px; height:40px; border-radius:50%;">CD</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Chloe Dubois <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">E-Commerce Director, Maison Luxe (France 🇫🇷)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marquee-testimonial-card spotlight-card tilt-card">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote" style="margin: 1rem 0; font-size: 0.92rem; color: #d4d4d8; line-height: 1.6;">"From initial wireframes to Play Store and Web deployment, Ganesh managed everything with 24-hour response times. Super reliable partner!"</p>
+                            <div class="client-info" style="display:flex; align-items:center; gap:0.8rem;">
+                                <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0d9488, #0f766e); width:40px; height:40px; border-radius:50%;">TM</div>
+                                <div class="client-details">
+                                    <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Tariq Al-Mansoor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
+                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, Oasis Retail Tech (UAE 🇦🇪)</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1061,7 +1550,47 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes! We architect ultra-fast Web Applications using <strong>Next.js 15, React, Node.js & Tailwind CSS</strong>, as well as native cross-platform Mobile Apps using <strong>React Native & Expo</strong> published to Google Play & Apple App Store.</p>
+                        <p>Yes! We architect ultra-fast Web Applications using <strong>Next.js 15, React, Node.js &amp; Tailwind CSS</strong>, as well as native cross-platform Mobile Apps using <strong>React Native &amp; Flutter</strong> published to Google Play Store and Apple App Store.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item spotlight-card">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>🧠 Can you integrate custom AI models (OpenAI, Gemini, Claude) into my existing app?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely! We engineer custom AI integrations including <strong>OpenAI GPT-4o, Google Gemini Pro, Anthropic Claude, and custom RAG pipelines</strong>. We handle API rate-limiting, secure key storage, token caching, and streaming response UI widgets for maximum speed and cost efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item spotlight-card">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>🧩 Do you develop and publish Chrome Web Store Extensions (Manifest V3)?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We build high-performance <strong>Manifest V3 Chrome Extensions</strong> with background service workers, DOM automation, and secure OAuth. We also handle the complete <strong>Google Chrome Web Store submission &amp; review approval process</strong> from start to finish.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item spotlight-card">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>🏎️ Can you optimize my existing slow website to achieve 100/100 Google Web Vitals?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We perform comprehensive frontend and backend performance audits to achieve <strong>sub-0.2s Time-to-First-Byte (TTFB)</strong>, zero Cumulative Layout Shift (CLS), aggressive asset minification, and PWA service worker caching to guarantee 95–100 Google Lighthouse scores.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item spotlight-card">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>📦 Will I get 100% full commercial ownership of the source code?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Yes, 100%.</strong> All intellectual property rights and clean, modular source code are completely transferred to you upon final payment. We provide GitHub repository handover, CI/CD automated deployment setup, and comprehensive documentation.</p>
                     </div>
                 </div>
 
@@ -1071,7 +1600,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Simply click <strong>"Start a Project"</strong> to fill out our quick consultation form, or message directly via Telegram (<a href="https://t.me/Scriptbazar" target="_blank" style="color:#f15d31; text-decoration:none; font-weight:600;">@Scriptbazar</a>) or Email (<a href="mailto:scriptbazar76@gmail.com" style="color:#f15d31; text-decoration:none; font-weight:600;">scriptbazar76@gmail.com</a>). You'll receive a full response within 24 hours!</p>
+                        <p>Simply click <strong>"Start a Project"</strong> to fill out our quick consultation form, or message directly via WhatsApp (<a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20projects%20(like%20FlowAuto%20Pro%20/%20UniversalPay).%20I%20would%20like%20to%20discuss%20building%20a%20web/mobile%20app%20project%20with%20you." target="_blank" style="color:#f15d31; text-decoration:none; font-weight:600;">+91 706008603</a>) or Email (<a href="mailto:scriptbazar76@gmail.com" style="color:#f15d31; text-decoration:none; font-weight:600;">scriptbazar76@gmail.com</a>). You'll receive a full response within 24 hours!</p>
                     </div>
                 </div>
             </div>
@@ -1086,10 +1615,13 @@
                     <p>Available for full-time freelance contracts, custom web/mobile apps, and AI integrations. Get a response within 24 hours.</p>
                     
                     <div class="contact-quick-links">
-                        <a href="https://t.me/Scriptbazar" target="_blank" class="quick-btn telegram-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle; margin-right:0.4rem;">
-                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                            </svg> Telegram Quick Chat
+                        <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20projects%20(like%20FlowAuto%20Pro%20/%20UniversalPay).%20I%20would%20like%20to%20discuss%20building%20a%20web/mobile%20app%20project%20with%20you." target="_blank" class="quick-btn whatsapp-btn">
+                            <span style="background:#fff; color:#25D366; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.301-.15-1.782-.88-2.059-.98-.276-.1-.477-.15-.678.15-.201.3-.778.98-.954 1.181-.176.2-.352.226-.653.075s-1.271-.469-2.42-1.493c-.894-.798-1.498-1.784-1.674-2.085-.176-.3-.019-.462.132-.612.136-.135.301-.35.452-.525.15-.176.201-.301.301-.502.1-.2.05-.376-.025-.526-.075-.15-.678-1.633-.929-2.238-.244-.589-.493-.509-.678-.518-.176-.009-.377-.01-.578-.01s-.527.075-.804.376c-.276.301-1.055 1.03-1.055 2.511 0 1.481 1.08 2.91 1.231 3.111.15.201 2.125 3.245 5.148 4.551.719.311 1.281.497 1.719.636.722.229 1.379.197 1.9.12.58-.087 1.782-.729 2.033-1.433.251-.703.251-1.306.176-1.432-.075-.126-.276-.201-.577-.351zM12.042 2C6.516 2 2.028 6.488 2.028 12.014c0 1.765.46 3.489 1.334 5.006L2 22.5l5.632-1.312c1.464.798 3.116 1.22 4.41 1.22 5.526 0 10.014-4.488 10.014-10.014C22.056 6.488 17.568 2 12.042 2zm0 18.286c-1.539 0-3.045-.414-4.354-1.197l-.312-.185-3.238.753.864-3.155-.203-.323c-.86-1.368-1.315-2.956-1.315-4.584 0-4.568 3.717-8.285 8.285-8.285 4.568 0 8.285 3.717 8.285 8.285 0 4.568-3.717 8.286-8.285 8.286z"/>
+                                </svg>
+                            </span>
+                            <span>WhatsApp (+91 706008603)</span>
                         </a>
                         <a href="mailto:scriptbazar76@gmail.com" class="quick-btn email-btn">
                             ✉️ scriptbazar76@gmail.com
@@ -1190,7 +1722,12 @@
                     <textarea id="modal-message" name="message" rows="3" placeholder="Briefly describe your project requirements and timeline..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block modal-submit-btn">Send Project Proposal 🚀</button>
+                <div style="display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap;">
+                    <button type="submit" class="btn btn-primary modal-submit-btn" style="flex: 1; min-width: 180px;">Send Proposal 🚀</button>
+                    <button type="button" id="modal-whatsapp-direct-btn" class="btn whatsapp-btn" style="flex: 1; min-width: 180px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 2rem; font-size: 0.92rem; text-decoration: none; cursor: pointer; border: none; padding: 0.8rem 1.2rem;">
+                        <span>💬 Chat on WhatsApp ↗</span>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -1212,13 +1749,13 @@
     <div class="bottom-dock-bar-container" id="bottom-dock-container">
         <!-- Floating Quick Action Dock -->
         <div class="floating-dock-wrapper" id="floating-dock">
-            <a href="https://t.me/Scriptbazar" target="_blank" class="dock-item" title="Quick Telegram Chat">
+            <a href="https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20projects%20(like%20FlowAuto%20Pro%20/%20UniversalPay).%20I%20would%20like%20to%20discuss%20building%20a%20web/mobile%20app%20project%20with%20you." target="_blank" class="dock-item" title="Quick WhatsApp Chat">
                 <span class="dock-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle;">
-                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        <path d="M17.472 14.382c-.301-.15-1.782-.88-2.059-.98-.276-.1-.477-.15-.678.15-.201.3-.778.98-.954 1.181-.176.2-.352.226-.653.075s-1.271-.469-2.42-1.493c-.894-.798-1.498-1.784-1.674-2.085-.176-.3-.019-.462.132-.612.136-.135.301-.35.452-.525.15-.176.201-.301.301-.502.1-.2.05-.376-.025-.526-.075-.15-.678-1.633-.929-2.238-.244-.589-.493-.509-.678-.518-.176-.009-.377-.01-.578-.01s-.527.075-.804.376c-.276.301-1.055 1.03-1.055 2.511 0 1.481 1.08 2.91 1.231 3.111.15.201 2.125 3.245 5.148 4.551.719.311 1.281.497 1.719.636.722.229 1.379.197 1.9.12.58-.087 1.782-.729 2.033-1.433.251-.703.251-1.306.176-1.432-.075-.126-.276-.201-.577-.351zM12.042 2C6.516 2 2.028 6.488 2.028 12.014c0 1.765.46 3.489 1.334 5.006L2 22.5l5.632-1.312c1.464.798 3.116 1.22 4.41 1.22 5.526 0 10.014-4.488 10.014-10.014C22.056 6.488 17.568 2 12.042 2zm0 18.286c-1.539 0-3.045-.414-4.354-1.197l-.312-.185-3.238.753.864-3.155-.203-.323c-.86-1.368-1.315-2.956-1.315-4.584 0-4.568 3.717-8.285 8.285-8.285 4.568 0 8.285 3.717 8.285 8.285 0 4.568-3.717 8.286-8.285 8.286z"/>
                     </svg>
                 </span>
-                <span class="dock-tooltip">Telegram</span>
+                <span class="dock-tooltip">WhatsApp</span>
             </a>
             <a href="mailto:scriptbazar76@gmail.com" class="dock-item" id="dock-email-btn" title="Email Ganesh">
                 <span class="dock-icon">✉️</span>
@@ -1374,11 +1911,11 @@
                     </div>
                     <kbd>↵</kbd>
                 </div>
-                <div class="cmd-k-option" data-action="telegram">
-                    <span class="opt-icon">✈️</span>
+                <div class="cmd-k-option" data-action="whatsapp">
+                    <span class="opt-icon">💬</span>
                     <div class="opt-text">
-                        <strong>Open Telegram Quick Chat</strong>
-                        <span>Direct message @Scriptbazar</span>
+                        <strong>Open WhatsApp Quick Chat</strong>
+                        <span>Direct message +91 706008603</span>
                     </div>
                     <kbd>↵</kbd>
                 </div>

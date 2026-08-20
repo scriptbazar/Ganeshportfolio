@@ -118,7 +118,7 @@ Ganeshportfolio/
 ## 🌐 PWA & Offline Caching Architecture
 
 The application includes a Progressive Web App (PWA) configuration:
-- **`manifest.json`**: Configures app name (`GANESHWEB`), theme color (`#f15d31`), standalone mode, and responsive launcher icons.
+- **`manifest.json`**: Configures app name (`GANESHDEV`), theme color (`#f15d31`), standalone mode, and responsive launcher icons.
 - **`sw.js` (Service Worker)**: Employs a **`Network-First`** fetch strategy:
   1. Requests fresh resources from the network.
   2. Updates local `CacheStorage` dynamically upon successful fetch.
@@ -139,7 +139,7 @@ The `<head>` section includes structured JSON-LD data for Google Search indexing
   "url": "https://github.com/scriptbazar/",
   "sameAs": [
     "https://github.com/scriptbazar/",
-    "https://t.me/Scriptbazar",
+    "https://wa.me/91706008603",
     "https://toolifyai.vercel.app/"
   ],
   "knowsAbout": [
@@ -212,8 +212,8 @@ Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for full detai
 ## 📬 Developer Contact
 
 - **Developer**: Ganesh Kumar
-- **Brand / Logo**: `GANESHWEB`
-- **Telegram**: [@Scriptbazar](https://t.me/Scriptbazar)
+- **Brand / Logo**: `GANESHDEV`
+- **WhatsApp**: [+91 706008603](https://wa.me/91706008603)
 - **Email**: [scriptbazar76@gmail.com](mailto:scriptbazar76@gmail.com)
 - **GitHub**: [https://github.com/scriptbazar](https://github.com/scriptbazar/)
 - **Flagship Web Ecosystem**: [Toolify AI Directory](https://toolifyai.vercel.app/)

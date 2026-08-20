@@ -4,6 +4,8 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3005;
 
+const url = require('url');
+
 const MIME_TYPES = {
   '.html': 'text/html',
   '.css': 'text/css',
@@ -19,9 +21,10 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  // Decode URL in case of encoded characters like spaces or special characters
-  const decodedUrl = decodeURIComponent(req.url);
-  let filePath = path.join(__dirname, decodedUrl === '/' ? 'index.html' : decodedUrl);
+  // Parse pathname safely using modern WHATWG URL API
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost:3005'}`);
+  const pathname = decodeURIComponent(parsedUrl.pathname || '/');
+  let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 

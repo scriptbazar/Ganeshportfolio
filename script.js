@@ -18,6 +18,45 @@ const safeStorage = {
     }
 };
 
+// Theme Customizer & Color Preset Manager
+function initThemeCustomizer() {
+    const savedTheme = safeStorage.getItem('ganeshdev_theme') || 'orange';
+    applyTheme(savedTheme);
+
+    document.querySelectorAll('.theme-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+            const theme = dot.getAttribute('data-theme');
+            applyTheme(theme);
+            safeStorage.setItem('ganeshdev_theme', theme);
+            if (typeof showToast === 'function') {
+                showToast(`🎨 Accent theme switched to ${theme.toUpperCase()}!`);
+            }
+        });
+    });
+}
+
+function applyTheme(theme) {
+    if (theme === 'orange') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    document.querySelectorAll('.theme-dot').forEach(dot => {
+        if (dot.getAttribute('data-theme') === theme) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeCustomizer);
+} else {
+    initThemeCustomizer();
+}
+
 const canvas = document.getElementById("scroll-canvas");
 const context = canvas ? canvas.getContext("2d") : null;
 
@@ -152,6 +191,12 @@ function updateModalActiveState() {
         document.body.classList.add('modal-active');
     } else {
         document.body.classList.remove('modal-active');
+        // Clear any lingering URL hash from address bar when all modals close
+        if (window.location.hash && window.location.hash.startsWith('#case-study-')) {
+            try {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            } catch (e) {}
+        }
     }
 }
 
@@ -239,20 +284,13 @@ function updateProjectsPagination() {
     const cards = document.querySelectorAll('.project-card');
     if (!cards || cards.length === 0) return;
 
-    const isHomePage = !document.getElementById('paginated-projects-grid');
     const activeFilterBtn = document.querySelector('.filter-btn.active');
-    const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : (isHomePage ? 'web' : 'all');
+    const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
 
     const matchingCards = [];
     cards.forEach(card => {
-        const categories = card.getAttribute('data-category') || '';
-        let isMatch = false;
-
-        if (isHomePage) {
-            isMatch = categories.includes(filter);
-        } else {
-            isMatch = (filter === 'all' || categories.includes(filter));
-        }
+        const categories = (card.getAttribute('data-category') || '').toLowerCase();
+        const isMatch = (filter === 'all' || categories.includes(filter.toLowerCase()));
 
         if (isMatch) {
             matchingCards.push(card);
@@ -497,6 +535,20 @@ const caseStudiesData = {
         tech: ['Next.js 15', 'Node.js', 'TypeScript', 'Vercel Edge'],
         desc: 'Smart productivity and AI note-taking web application with automated summary generation, Markdown rendering, and real-time cloud backup.',
         link: 'https://play.google.com/store/apps/dev?id=5426439440976989701'
+    },
+    'colorpro-extension': {
+        title: 'ColorPro — Advanced Color Picker & Page Analyzer',
+        role: 'Extension Architect & UI/UX Specialist',
+        tech: ['Chrome Extension API', 'JavaScript', 'CSS3', 'WCAG 2.1', 'HTML5'],
+        desc: 'Production Chrome Extension for developers and designers with real-time DOM element color inspection, page palette extraction, WCAG 2.1 accessibility contrast validation, and visual CSS gradient generator.',
+        link: 'https://chromewebstore.google.com/detail/npfhebodccjmikigpgndgibenaijpgpo'
+    },
+    'flowauto-extension': {
+        title: 'FlowAuto Pro — Bulk Generator for Flow AI',
+        role: 'Extension Architect & Automation Engineer',
+        tech: ['Chrome Extension API', 'JavaScript', 'AI Automation', 'Multi-Tab Engine'],
+        desc: 'High-speed bulk prompt queue automation engine for Google Flow AI with multi-tab parallel generation (1–5 tabs), multi-account quota failover, smart anti-detection delays, and auto media downloads.',
+        link: 'https://chromewebstore.google.com/detail/fdmmdfebhcpljalclnalknkngllchcii'
     }
 };
 
@@ -515,12 +567,20 @@ const techIconsMap = {
     'HTML5': '🌐',
     'CSS3': '🎨',
     'JavaScript': '⚡',
-    'Formspree': '📩'
+    'Formspree': '📩',
+    'Chrome Extension API': '🧩',
+    'WCAG 2.1': '♿',
+    'AI Automation': '🤖',
+    'Multi-Tab Engine': '⚡'
 };
 
 function openCaseStudyModal(projectKey) {
     const data = caseStudiesData[projectKey];
     if (data && caseStudyContent && caseStudyModal) {
+        const waMsg = `Hi Ganesh, I saw your "${data.title}" project on your portfolio. I would like to discuss building a similar web/mobile app project with you.`;
+        const waLink = `https://wa.me/91706008603?text=${encodeURIComponent(waMsg)}`;
+        const shareUrl = `${window.location.origin}${window.location.pathname}#case-study-${projectKey}`;
+
         caseStudyContent.innerHTML = `
             <div class="modal-header">
                 <span class="badge" style="display:inline-block; margin-bottom:0.5rem;"><span class="dot"></span> Case Study</span>
@@ -533,13 +593,37 @@ function openCaseStudyModal(projectKey) {
                     ${data.tech.map(t => `<span class="case-study-tech-pill"><span>${techIconsMap[t] || '⚡'}</span> ${t}</span>`).join('')}
                 </div>
             </div>
-            ${data.link !== '#' ? `<a href="${data.link}" target="_blank" class="btn btn-primary btn-block" style="text-decoration:none;">Visit Live Project ↗</a>` : ''}
+            <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:1.5rem;">
+                <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                    ${data.link !== '#' ? `<a href="${data.link}" target="_blank" class="btn btn-primary" style="flex:1; min-width:180px; text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center; padding:0.8rem 1.2rem; border-radius:2rem;">Visit Live Project ↗</a>` : ''}
+                    <a href="${waLink}" target="_blank" class="btn whatsapp-btn" style="flex:1; min-width:180px; text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center; gap:0.4rem; border-radius:2rem; padding:0.8rem 1.2rem;">
+                        <span>💬 Chat on WhatsApp ↗</span>
+                    </a>
+                </div>
+                <button type="button" class="btn btn-outline share-case-study-btn" style="width:100%; border-radius:2rem; padding:0.7rem; font-size:0.88rem; cursor:pointer;">
+                    🔗 Share / Copy Link to Project
+                </button>
+            </div>
         `;
+
+        const shareBtn = caseStudyContent.querySelector('.share-case-study-btn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: data.title,
+                        text: `Check out ${data.title} by Ganesh Kumar (@scriptbazar)`,
+                        url: shareUrl
+                    }).catch(() => {});
+                } else if (navigator.clipboard) {
+                    navigator.clipboard.writeText(shareUrl);
+                    showToast('📋 Project link copied to clipboard!');
+                }
+            });
+        }
+
         caseStudyModal.classList.add('active');
         if (typeof updateModalActiveState === 'function') updateModalActiveState();
-        try {
-            history.replaceState(null, '', `#case-study-${projectKey}`);
-        } catch(e) {}
     }
 }
 
@@ -551,13 +635,12 @@ caseStudyBtns.forEach(btn => {
     });
 });
 
-// Auto-open case study modal on page load if URL Hash is present
+// Clear any remaining case study hash on startup so it never auto-pops up on refresh
 window.addEventListener('load', () => {
     if (window.location.hash && window.location.hash.startsWith('#case-study-')) {
-        const key = window.location.hash.replace('#case-study-', '');
-        if (caseStudiesData[key]) {
-            setTimeout(() => openCaseStudyModal(key), 300);
-        }
+        try {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (e) {}
     }
 });
 
@@ -590,8 +673,10 @@ function animateStats() {
             }
             if (counter.classList.contains('stat-number')) {
                 counter.textContent = current.toFixed(1) + '%';
+            } else if (Number.isInteger(target)) {
+                counter.textContent = Math.floor(current);
             } else {
-                counter.textContent = Math.floor(current) + (target === 99 ? '%' : '+');
+                counter.textContent = current.toFixed(1);
             }
         }, stepTime);
     });
@@ -700,38 +785,151 @@ const closeResumeBtn = document.querySelector('.close-resume-btn');
 const dockEmailBtn = document.getElementById('dock-email-btn');
 
 function downloadGaneshResume() {
-    showToast('📄 Downloading Ganesh_Kumar_Resume.txt...');
-    const resumeText = `GANESH KUMAR - SENIOR FULL-STACK ENGINEER & MOBILE APP ARCHITECT
-Email: scriptbazar76@gmail.com | Telegram: @Scriptbazar | GitHub: https://github.com/scriptbazar/
+    showToast('📄 Opening Print-Ready Professional Resume...');
 
-EXECUTIVE OVERVIEW:
-High-impact Full-Stack Engineer with 2+ years of experience architecting ultra-fast web platforms, native mobile applications, and serverless AI workflows. Delivered 14+ completed client projects globally with a 99% satisfaction rate.
+    const resumeWindow = window.open('', '_blank');
+    if (resumeWindow) {
+        resumeWindow.document.write(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh_Kumar_Resume</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background:#0f172a; color:#f8fafc; padding:2.5rem; line-height:1.6; max-width:850px; margin:0 auto; }
+        .header { border-bottom:2px solid #334155; padding-bottom:1.2rem; margin-bottom:1.5rem; }
+        h1 { font-size:2rem; color:#f15d31; margin-bottom:0.2rem; }
+        .subtitle { font-size:1.05rem; color:#94a3b8; font-weight:600; margin-bottom:0.6rem; }
+        .contacts { font-size:0.88rem; color:#cbd5e1; display:flex; gap:1.2rem; flex-wrap:wrap; }
+        .contacts a { color:#f15d31; text-decoration:none; font-weight:500; }
+        .section { margin-bottom:1.5rem; }
+        .section-title { font-size:1.1rem; color:#38bdf8; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; margin-bottom:0.6rem; border-bottom:1px solid #1e293b; padding-bottom:0.3rem; }
+        .job { margin-bottom:1rem; }
+        .job-header { display:flex; justify-content:space-between; font-weight:600; font-size:0.98rem; }
+        .job-company { color:#f15d31; }
+        .job-date { color:#64748b; font-size:0.88rem; }
+        ul { padding-left:1.2rem; margin-top:0.4rem; }
+        li { margin-bottom:0.3rem; font-size:0.92rem; color:#cbd5e1; }
+        .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; font-size:0.9rem; }
+        .skill-category { background:#1e293b; padding:0.8rem 1rem; border-radius:0.5rem; }
+        .skill-category strong { color:#f8fafc; display:block; margin-bottom:0.2rem; font-size:0.85rem; text-transform:uppercase; }
+        .print-btn-bar { position:fixed; top:1rem; right:1rem; display:flex; gap:0.6rem; z-index:999; }
+        .p-btn { background:#f15d31; color:#fff; border:none; padding:0.6rem 1.2rem; border-radius:2rem; font-weight:600; cursor:pointer; box-shadow:0 4px 15px rgba(241,93,49,0.4); font-size:0.9rem; }
+        @media print {
+            .print-btn-bar { display:none; }
+            body { background:#fff; color:#111; padding:0; }
+            h1, .job-company { color:#c2410c; }
+            .section-title { color:#0369a1; border-color:#e2e8f0; }
+            .skill-category { background:#f1f5f9; }
+            .skill-category strong { color:#0f172a; }
+            li, .contacts { color:#334155; }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-btn-bar">
+        <button class="p-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+    <div class="header">
+        <h1>GANESH KUMAR</h1>
+        <div class="subtitle">Senior Full-Stack Engineer &amp; Mobile App Architect</div>
+        <div class="contacts">
+            <span>✉️ <a href="mailto:scriptbazar76@gmail.com">scriptbazar76@gmail.com</a></span>
+            <span>💬 <a href="https://wa.me/91706008603">+91 706008603</a></span>
+            <span>🌐 <a href="https://github.com/scriptbazar">github.com/scriptbazar</a></span>
+        </div>
+    </div>
 
-TECHNICAL SKILL MATRIX:
-- Frontend Engineering: Next.js 15 (App Router, Server Actions), React 19, TypeScript, Tailwind CSS, WebGL, Glassmorphism UI
-- Backend & Cloud Systems: Node.js, Express, Fastify, PostgreSQL, MongoDB, Redis Caching, Serverless Edge APIs, Docker
-- Mobile & AI Integrations: React Native, Expo, Flutter, OpenAI GPT-4o, Claude 3.5 Sonnet Workflows, Vector Search
+    <div class="section">
+        <div class="section-title">Executive Summary</div>
+        <p style="font-size:0.92rem; color:#cbd5e1;">High-impact Full-Stack Engineer with 2+ years of experience architecting ultra-fast web platforms, native mobile applications, and serverless AI workflows. Successfully deployed 16+ production applications and Chrome extensions globally with a 99% 5-star client rating.</p>
+    </div>
 
-FLAGSHIP WORK EXPERIENCE:
-- Founder & Lead Architect • Toolify AI Ecosystem (2024 – Present)
-  Architected and deployed 160+ AI web tools and official Play Store Android App reaching 50,000+ active monthly users with 0.2s ultra-low latency speed.
-- Senior Full-Stack Freelance Consultant (2024 – Present)
-  Spearheaded 14+ bespoke web & mobile applications for global enterprise clients, startups, and e-commerce platforms with a 99% 5-star rating.
+    <div class="section">
+        <div class="section-title">Technical Skill Matrix</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <strong>Frontend Engineering</strong>
+                Next.js 15, React 19, TypeScript, Tailwind CSS, WebGL, Progressive Web Apps (PWA)
+            </div>
+            <div class="skill-category">
+                <strong>Backend &amp; Cloud</strong>
+                Node.js, Express, Fastify, PostgreSQL, MongoDB, Redis Caching, Serverless Edge APIs
+            </div>
+            <div class="skill-category">
+                <strong>Mobile &amp; Extension Platforms</strong>
+                Flutter, React Native, Android SDK, Chrome Extensions API, Multi-Tab Automation
+            </div>
+            <div class="skill-category">
+                <strong>AI &amp; Automation</strong>
+                OpenAI GPT-4o, Claude 3.5 Sonnet Workflows, Flow AI Automation, Vector Embeddings
+            </div>
+        </div>
+    </div>
 
-EDUCATION & CERTIFICATIONS:
-- B.Tech in Computer Science & Engineering — CSE Honors Degree
-- Next.js 15 Full-Stack Enterprise Certification — Advanced Architecture`;
+    <div class="section">
+        <div class="section-title">Key Work Experience</div>
+        <div class="job">
+            <div class="job-header">
+                <span><span class="job-company">Founder &amp; Lead Architect</span> • Toolify AI Ecosystem</span>
+                <span class="job-date">2024 – Present</span>
+            </div>
+            <ul>
+                <li>Architected 160+ AI web utility platforms and official Play Store Android App with 50,000+ monthly active users.</li>
+                <li>Achieved 0.2s ultra-low latency response times utilizing Vercel Serverless Edge and client caching.</li>
+            </ul>
+        </div>
+        <div class="job">
+            <div class="job-header">
+                <span><span class="job-company">Senior Full-Stack Freelance Consultant</span> • Global Enterprise &amp; Startups</span>
+                <span class="job-date">2024 – Present</span>
+            </div>
+            <ul>
+                <li>Engineered 16+ custom web &amp; mobile platforms including UniversalPay Web3 payment gateway and FlowAuto Pro automation engine.</li>
+                <li>Maintained a 99% satisfaction rate with 100/100 Google Lighthouse Core Web Vitals optimization.</li>
+            </ul>
+        </div>
+    </div>
 
-    const blob = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Ganesh_Kumar_Resume.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="job">
+            <div class="job-header">
+                <span><strong>B.Tech in Computer Science &amp; Engineering</strong> — CSE Honors</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+        `);
+        resumeWindow.document.close();
+    }
 }
+
+// Smart WhatsApp Lead Generator for Start a Project Modal
+document.addEventListener('click', (e) => {
+    const waModalBtn = e.target.closest('#modal-whatsapp-direct-btn');
+    if (waModalBtn) {
+        const form = waModalBtn.closest('form') || document.querySelector('#popup-contact-form, #project-proposal-form');
+        const nameVal = form ? (form.querySelector('input[name="name"]')?.value || '') : '';
+        const serviceVal = form ? (form.querySelector('input[name="service"], select[name="service"]')?.value || 'Web/Mobile App') : 'Web/Mobile App';
+        const budgetVal = form ? (form.querySelector('input[name="budget"]')?.value || '$1,000 - $3,000') : '$1,000 - $3,000';
+        const msgVal = form ? (form.querySelector('textarea[name="message"]')?.value || '') : '';
+
+        let waText = '';
+        if (nameVal || msgVal) {
+            waText = `Hi Ganesh, My name is ${nameVal || 'a client'}. I would like to discuss building a ${serviceVal} project (Estimated Budget: ${budgetVal}).${msgVal ? ` Requirements: ${msgVal}` : ''}`;
+        } else {
+            waText = `Hi Ganesh, I saw your portfolio and projects (like FlowAuto Pro / UniversalPay). I would like to discuss building a web/mobile app project with you.`;
+        }
+
+        const waUrl = `https://wa.me/91706008603?text=${encodeURIComponent(waText)}`;
+        window.open(waUrl, '_blank');
+        showToast('💬 Opening WhatsApp with your project details...');
+    }
+});
 
 // 1. Header, Hero ("Download CV") & Mobile Resume buttons -> Direct Resume Download ONLY (NO Popup!)
 document.querySelectorAll('#hero-resume-btn, #resume-btn, #mobile-resume-btn, .header-resume-download, a[href="#resume"]:not(#dock-resume-btn)').forEach(btn => {
@@ -831,8 +1029,8 @@ document.querySelectorAll('.cmd-k-option').forEach(opt => {
         } else if (action === 'goto-services') {
             const sec = document.getElementById('services');
             if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-        } else if (action === 'telegram') {
-            window.open('https://t.me/Scriptbazar', '_blank');
+        } else if (action === 'whatsapp' || action === 'telegram') {
+            window.open('https://wa.me/91706008603', '_blank');
         } else if (action === 'github') {
             window.open('https://github.com/scriptbazar/', '_blank');
         } else if (action === 'copy-email') {
@@ -1019,7 +1217,7 @@ const tabFiles = {
         <p class="t-indent"><span class="t-blue">"specialties"</span>: [<span class="t-green">"Ultra-Fast Next.js 15 Web Apps"</span>, <span class="t-green">"Flutter/React Native Apps"</span>, <span class="t-green">"LLM AI Workflows"</span>]</p>
         <p>}</p>`,
     'contact.config': `<p><span class="t-purple">export const</span> <span class="t-yellow">contactConfig</span> = {</p>
-        <p class="t-indent"><span class="t-blue">telegram</span>: <span class="t-green">'https://t.me/Scriptbazar'</span>,</p>
+        <p class="t-indent"><span class="t-blue">whatsapp</span>: <span class="t-green">'+91 706008603'</span>,</p>
         <p class="t-indent"><span class="t-blue">email</span>: <span class="t-green">'scriptbazar76@gmail.com'</span>,</p>
         <p class="t-indent"><span class="t-blue">github</span>: <span class="t-green">'https://github.com/scriptbazar/'</span>,</p>
         <p class="t-indent"><span class="t-blue">responseGuarantee</span>: <span class="t-green">'Within 24 Hours'</span></p>
@@ -1588,7 +1786,7 @@ window.addEventListener('scroll', () => {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('GANESHWEB ServiceWorker registered:', reg.scope))
+            .then(reg => console.log('GANESHDEV ServiceWorker registered:', reg.scope))
             .catch(err => console.log('ServiceWorker registration failed:', err));
     });
 }
