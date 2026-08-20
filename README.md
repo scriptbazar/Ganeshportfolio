@@ -58,21 +58,41 @@ This portfolio is built using modern **Vanilla JavaScript (ES6+)**, **Custom CSS
 - Interactive draggable handle comparing **Ganesh Web Engine (0.2s ⚡)** vs **Standard Slow Web App (3.8s ❌)**.
 - Features a **100% solid opaque background** (`#2b110a` to `#0d0e15`) preventing underlying text bleed-through, with clean left-aligned list formatting (`text-align: left; align-items: flex-start`).
 
-### 5. 📊 Live GitHub REST API & Heatmap Sync
+### 5. 🔁 Dual-Track Opposite-Direction Testimonial Marquee (10 Reviews)
+- 10 verified global client testimonials structured into two continuous 60FPS tracks:
+  - **Top Track (RTL)**: 5 reviews moving Right-to-Left.
+  - **Bottom Track (LTR)**: 5 reviews moving Left-to-Right.
+- Zero-gap seamless loop with GPU hardware acceleration and automatic pause on user hover.
+
+### 6. 📊 Symmetrical 2-Line Bento Grid ("Proven Scale & Reliability")
+- Strict 6-card symmetrical grid (4 columns per row) highlighting production metrics:
+  - `2+ Years Exp` & Enterprise Architecture
+  - `16+ Shipped` Production Deployments
+  - `99.8% 5-Star` Client Ratings
+  - `50k+ Active` Global End Users
+  - `99.9% Zero-Downtime SLA` (High Availability)
+  - `100/100 Core Web Vitals` with glowing multi-color glass tags.
+
+### 7. 🛠️ High-Impact Solutions Architecture (Linear/Apple Style)
+- 6 interactive solution cards featuring glowing headers, capability tech chips (`Next.js 15`, `React 19`, `OpenAI GPT-4o`, `Manifest V3`), and direct 1-click consultation CTAs pre-filled to WhatsApp.
+
+### 8. 🏛️ Verified Industry Certifications & Credentials
+- 6 verifiable credential cards with institutional issuers (Vercel, AI Engineering Alliance, Google Android, OpenJS, FinTech Alliance, Chromium Standards), unique cryptographic IDs (`CERT-NEXT-88492`), and glowing verified status indicators.
+
+### 9. 📁 Dedicated Projects Archive (`projects.html`)
+- Comprehensive portfolio archive showcasing **16+ Production Web Platforms, Android Mobile Apps (Play Store), and Chrome Web Store Extensions (Manifest V3)** with real-time multi-tag category filtering.
+
+### 10. 📊 Live GitHub REST API & Heatmap Sync
 - Asynchronously fetches user metrics, active repository counts, primary languages, and profile duration from `https://api.github.com/users/scriptbazar`.
 - Renders live repository cards equipped with ⭐ **Stars Count** and 🍴 **Forks Count** badges, paired with a custom GitHub contribution activity heatmap.
 
-### 6. 📄 Universal Resume Downloader & Modal Preview
+### 11. 📄 Universal Resume Downloader & Modal Preview
 - Instant 1-click resume download handler (`downloadGaneshResume()`) linked to header/hero buttons without unwanted popups.
 - Interactive `#resume-modal` overview displaying technical skill matrix, flagship project experience, and certifications.
 
-### 7. ⌨️ Cmd+K Command Palette & Smart Floating Dock
+### 12. ⌨️ Cmd+K Command Palette & Smart Floating Dock
 - macOS-style command palette triggered via `Cmd + K` or `Ctrl + K` for instant site navigation and quick actions.
 - Smart auto-hiding floating action dock that slides down (`translateY(70px)`, `opacity: 0`) on scroll down and reveals on scroll up.
-
-### 8. 🎨 Custom Hairline Glowing Scrollbar
-- Ultra-thin `2px` neon orange scrollbar (`::-webkit-scrollbar { width: 2px !important; }`).
-- Hides thick browser scrollbar arrow buttons (`::-webkit-scrollbar-button { display: none !important; }`) across Chrome, Edge, and Safari.
 
 ---
 
