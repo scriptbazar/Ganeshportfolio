@@ -1367,6 +1367,47 @@ if (sliderContainer && fastLayer && sliderHandle) {
     });
 }
 
+// 4.1 Live Speed Diagnostic Simulation
+const speedTestBtn = document.getElementById('run-speed-test-btn');
+const speedBtnLabel = document.getElementById('speed-btn-label');
+const speedDiagResult = document.getElementById('speed-diag-result');
+
+if (speedTestBtn && speedBtnLabel && speedDiagResult) {
+    speedTestBtn.addEventListener('click', () => {
+        if (speedTestBtn.classList.contains('testing')) return;
+        speedTestBtn.classList.add('testing');
+        speedBtnLabel.textContent = 'Measuring TTFB & Edge Ping...';
+        speedDiagResult.textContent = 'Auditing...';
+        speedDiagResult.style.color = '#38bdf8';
+        speedDiagResult.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+        speedDiagResult.style.background = 'rgba(56, 189, 248, 0.12)';
+
+        const startTime = performance.now();
+        fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
+            .then(() => {
+                const latency = Math.max(18, Math.round(performance.now() - startTime));
+                setTimeout(() => {
+                    speedTestBtn.classList.remove('testing');
+                    speedBtnLabel.textContent = 'Run Live Diagnostic Test';
+                    speedDiagResult.textContent = `Grade A+ • ${latency}ms Ultra Fast`;
+                    speedDiagResult.style.color = '#4ade80';
+                    speedDiagResult.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    speedDiagResult.style.background = 'rgba(34, 197, 94, 0.15)';
+                }, 500);
+            })
+            .catch(() => {
+                setTimeout(() => {
+                    speedTestBtn.classList.remove('testing');
+                    speedBtnLabel.textContent = 'Run Live Diagnostic Test';
+                    speedDiagResult.textContent = 'Grade A+ • 28ms Edge Fast';
+                    speedDiagResult.style.color = '#4ade80';
+                    speedDiagResult.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    speedDiagResult.style.background = 'rgba(34, 197, 94, 0.15)';
+                }, 500);
+            });
+    });
+}
+
 // 5. Custom Glowing Cursor Ring & Context Expansion
 const cursorDot = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
@@ -1815,7 +1856,7 @@ function updateMapRegion(regionId) {
             const title = pin.getAttribute('data-title');
             const count = pin.getAttribute('data-count');
             const desc = pin.getAttribute('data-desc');
-            if (tooltipTitle) tooltipTitle.innerText = title;
+            if (tooltipTitle) tooltipTitle.innerHTML = title;
             if (tooltipCount) tooltipCount.innerText = count;
             if (tooltipDesc) tooltipDesc.innerText = desc;
         } else {

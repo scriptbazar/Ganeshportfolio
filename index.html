@@ -156,12 +156,13 @@
     <div class="mobile-nav-drawer" id="mobile-nav-drawer">
         <button class="close-drawer-btn" id="close-drawer-btn">&times;</button>
         <div class="mobile-drawer-links">
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#services" class="mobile-link">Services</a>
-            <a href="#skills" class="mobile-link">Skills</a>
-            <a href="#projects" class="mobile-link">Projects</a>
-            <a href="#testimonials" class="mobile-link">Testimonials</a>
-            <a href="#contact" class="mobile-link">Contact</a>
+            <a href="#about" class="mobile-link"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> About</a>
+            <a href="#services" class="mobile-link"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Services</a>
+            <a href="#skills" class="mobile-link"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Skills</a>
+            <a href="#projects" class="mobile-link"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Projects</a>
+            <a href="#testimonials" class="mobile-link"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Testimonials</a>
+            <a href="#faq" class="mobile-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> FAQ</a>
+            <a href="#contact" class="mobile-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact</a>
         </div>
         <div style="margin-top: 2rem; padding-bottom: 2.5rem; display:flex; flex-direction:column; gap:1rem;">
             <a href="#resume" class="btn btn-outline" id="mobile-resume-btn">Resume 📄</a>
@@ -175,13 +176,13 @@
         <nav class="navbar">
             <a href="#" class="logo">GANESHDEV</a>
             <div class="nav-pill">
-                <a href="#about" class="nav-link active">About</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#testimonials" class="nav-link">Testimonials</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#about" class="nav-link active"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> About</a>
+                <a href="#services" class="nav-link"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Services</a>
+                <a href="#skills" class="nav-link"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Skills</a>
+                <a href="#projects" class="nav-link"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Projects</a>
+                <a href="#testimonials" class="nav-link"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Testimonials</a>
+                <a href="#faq" class="nav-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> FAQ</a>
+                <a href="#contact" class="nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact</a>
             </div>
             <div class="nav-actions">
                 <a href="#resume" class="btn btn-outline magnetic-btn" id="resume-btn">Resume 📄</a>
@@ -239,61 +240,155 @@
         </div>
 
         <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="about-label">
-                <span class="dot"></span> About Me
+        <section id="about" class="about-section-new">
+            <!-- Section Badge -->
+            <div class="about-badge-row">
+                <div class="badge"><span class="dot"></span> About Me</div>
             </div>
-            <div class="about-content">
-                <h3>Hey there, I'm <strong>Ganesh Kumar</strong> — Full-Stack Engineer & UI/UX Architect. I build high-performance web systems and AI applications designed to scale your business.</h3>
-                
-                <!-- Terminal Component Showcase -->
-                <div class="terminal-card tilt-card" id="interactive-terminal">
-                    <div class="terminal-header">
-                        <div class="dots">
-                            <span class="dot-red"></span>
-                            <span class="dot-yellow"></span>
-                            <span class="dot-green"></span>
+
+            <div class="about-grid">
+                <!-- LEFT: Profile Card -->
+                <div class="about-profile-card">
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar-ring"></div>
+                        <div class="profile-avatar-inner">
+                            <span class="profile-avatar-emoji">👨‍💻</span>
                         </div>
-                        <div class="terminal-tabs">
-                            <span class="term-tab active" data-tab="developer.js">developer.js</span>
-                            <span class="term-tab" data-tab="experience.json">experience.json</span>
-                            <span class="term-tab" data-tab="contact.config">contact.config</span>
-                        </div>
-                        <div class="terminal-actions">
-                            <button class="term-action-btn" id="copy-term-code" title="Copy Code">📋 Copy</button>
-                            <button class="term-action-btn run-btn" id="run-term-code" title="Run Script">▶ RUN CODE</button>
+                        <div class="profile-status-badge">
+                            <span class="status-dot-ping"></span> Available
                         </div>
                     </div>
-                    <div class="terminal-body" id="terminal-output-body">
-                        <div id="term-tab-content">
-                            <p><span class="t-purple">const</span> <span class="t-yellow">developer</span> = {</p>
-                            <p class="t-indent"><span class="t-blue">name</span>: <span class="t-green">'Ganesh Kumar'</span>,</p>
-                            <p class="t-indent"><span class="t-blue">role</span>: <span class="t-green">'Full-Stack Engineer & UI/UX Specialist'</span>,</p>
-                            <p class="t-indent"><span class="t-blue">coreTech</span>: [<span class="t-green">'Next.js 15'</span>, <span class="t-green">'React'</span>, <span class="t-green">'Node.js'</span>, <span class="t-green">'Tailwind'</span>, <span class="t-green">'AI APIs'</span>],</p>
-                            <p class="t-indent"><span class="t-blue">deliveries</span>: <span class="t-orange">'14+'</span>,</p>
-                            <p class="t-indent"><span class="t-blue">status</span>: <span class="t-green">'Available for contract work 🚀'</span></p>
-                            <p>};</p>
+
+                    <h2 class="profile-name">Ganesh Kumar</h2>
+                    <p class="profile-title">Full-Stack Engineer &amp; UI/UX Architect</p>
+
+                    <div class="profile-info-list">
+                        <div class="profile-info-item">
+                            <span class="pinfo-icon">📍</span>
+                            <span>India · Remote Worldwide</span>
                         </div>
-                        <div id="terminal-execution-log" class="terminal-log-output"></div>
-                        <div id="terminal-history"></div>
-                        <div class="terminal-input-line">
-                            <span class="t-prompt">$</span>
-                            <input type="text" id="terminal-input" placeholder="Type 'help' or click command chips below..." autocomplete="off">
+                        <div class="profile-info-item">
+                            <span class="pinfo-icon">💼</span>
+                            <span>2+ Years Experience</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="pinfo-icon">🚀</span>
+                            <span>16+ Projects Shipped</span>
                         </div>
                     </div>
-                    <div class="terminal-command-chips">
-                        <span class="term-chip" data-cmd="help">⚡ help</span>
-                        <span class="term-chip" data-cmd="skills">🛠️ skills</span>
-                        <span class="term-chip" data-cmd="projects">📁 projects</span>
-                        <span class="term-chip" data-cmd="stats">📊 stats</span>
-                        <span class="term-chip" data-cmd="hire">🚀 hire</span>
-                        <span class="term-chip" data-cmd="clear">🧹 clear</span>
+
+                    <div class="profile-social-row">
+                        <a href="https://wa.me/91706008603" target="_blank" class="psocial-btn psocial-whatsapp" title="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42 1.55 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32C4.24 15 3.8 13.47 3.8 11.91c.01-4.54 3.7-8.24 8.25-8.24zm-1.52 4.66c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1.02 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.07-.1-.23-.16-.48-.29-.25-.12-1.47-.72-1.69-.8-.23-.08-.37-.12-.56.13-.11.12-.41.51-.63.76-.12.12-.27.13-.46.04-.25-.11-1.11-.41-2.13-1.32-.79-.7-1.31-1.56-1.44-1.79-.12-.25-.01-.39.1-.5.1-.1.25-.27.36-.39.11-.11.15-.2.23-.37.08-.17.04-.31-.02-.43-.06-.12-.57-1.34-.78-1.85-.2-.49-.4-.43-.56-.43-.12 0-.28-.01-.47-.01z"/></svg>
+                        </a>
+                        <a href="mailto:scriptbazar76@gmail.com" class="psocial-btn psocial-email" title="Email">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </a>
+                        <a href="https://github.com/scriptbazar/" target="_blank" class="psocial-btn psocial-github" title="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        </a>
+                    </div>
+
+                    <div class="profile-cta-row">
+                        <button class="btn btn-primary open-modal-btn" style="width:100%; justify-content:center;">Start a Project ↗</button>
                     </div>
                 </div>
 
-                <div class="actions" style="margin-top: 2rem;">
-                    <button class="btn btn-primary open-modal-btn">Start a Project <span class="arrow">↗</span></button>
-                    <a href="#contact" class="btn btn-outline">Contact Me <span class="arrow-icon">💬</span></a>
+                <!-- RIGHT: Bio + Terminal + Skills -->
+                <div class="about-bio-side">
+                    <!-- Bio Text -->
+                    <div class="about-bio-text">
+                        <h3 class="about-headline">
+                            Building <span class="highlight-text">high-performance</span> web &amp; AI systems that <span class="highlight-text">scale your business</span>.
+                        </h3>
+                        <p class="about-para">I'm a Full-Stack Engineer specializing in Next.js 15, React, Node.js, and AI-integrated platforms. I've shipped 16+ production products — from Play Store apps to Chrome Extensions and SaaS platforms — with a focus on clean code, fast UX, and measurable results.</p>
+                    </div>
+
+                    <!-- Quick Stats Row -->
+                    <div class="about-quick-stats">
+                        <div class="aqs-item">
+                            <span class="aqs-num">16+</span>
+                            <span class="aqs-label">Products Shipped</span>
+                        </div>
+                        <div class="aqs-divider"></div>
+                        <div class="aqs-item">
+                            <span class="aqs-num">2+</span>
+                            <span class="aqs-label">Years Exp.</span>
+                        </div>
+                        <div class="aqs-divider"></div>
+                        <div class="aqs-item">
+                            <span class="aqs-num">50k+</span>
+                            <span class="aqs-label">Active Users</span>
+                        </div>
+                        <div class="aqs-divider"></div>
+                        <div class="aqs-item">
+                            <span class="aqs-num">100%</span>
+                            <span class="aqs-label">On-Time</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Pills -->
+                    <div class="about-skill-pills">
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2.2" fill="#61DAFB"/></svg> React / Next.js</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#539E43" d="M12 1.5L2 7.3v11.4l10 5.8 10-5.8V7.3L12 1.5zm0 2.5l7.8 4.5v9L12 22l-7.8-4.5v-9L12 4z"/><path fill="#68A063" d="M12 6.5l5.2 3v6L12 18.5l-5.2-3v-6l5.2-3z"/></svg> Node.js</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#02569B" d="M14.3 0L2.3 12l3.7 3.7L21.7 0h-7.4z"/><path fill="#0175C2" d="M14.3 11.1L7.9 17.5l6.4 6.5h7.4l-6.4-6.5 6.4-6.5h-7.4z"/><path fill="#29B6F6" d="M14.3 11.1l-3.7 3.7 3.7 3.7 3.7-3.7-3.7-3.7z"/></svg> Flutter</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#10A37F" d="M22.3 9.8a6 6 0 0 0-.5-4.9 6 6 0 0 0-6.5-2.9 6.1 6.1 0 0 0-10.3 2.2 6 6 0 0 0-4 2.9 6 6 0 0 0 .7 7.1 6 6 0 0 0 .5 4.9 6.1 6.1 0 0 0 6.5 2.9 6 6 0 0 0 4.1 1.9 6.1 6.1 0 0 0 5.8-4.2 6 6 0 0 0 4-2.9 6.1 6.1 0 0 0-.7-7zM13.3 22.4a4.5 4.5 0 0 1-2.9-1l4.8-2.8a.8.8 0 0 0 .4-.7v-6.7l2 1.2v5.5a4.5 4.5 0 0 1-4.3 4.5zM3.6 18.3a4.5 4.5 0 0 1-.5-3l4.8 2.8a.8.8 0 0 0 .8 0l5.8-3.4v2.3L9.7 20a4.5 4.5 0 0 1-6.1-1.7zm-1.3-10.4a4.5 4.5 0 0 1 2.4-2v6.7a.8.8 0 0 0 .4.7l5.8 3.3-2 1.2-4.8-2.8a4.5 4.5 0 0 1-1.8-7.1z"/></svg> AI APIs</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#38BDF8" d="M12 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C16.4 6.2 15 4.8 12 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C10.4 13.4 9 12 6 12z"/></svg> Tailwind CSS</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M11.9 0C5.4 0 5.8 2.8 5.8 2.8l.01 2.9h6.2v.9H3.7S0 6.1 0 12.6c0 6.4 3.3 6.2 3.3 6.2h2V16s-.1-3.3 3.3-3.3h5.7s3.2.1 3.2-3.1V3.3S17.9 0 11.9 0zm-3.2 1.9c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1z"/><path fill="#FFD43B" d="M12.1 24c6.5 0 6.1-2.8 6.1-2.8l-.01-2.9h-6.2v-.9h8.3s3.7.5 3.7-6c0-6.4-3.3-6.2-3.3-6.2h-2v2.8s.1 3.3-3.3 3.3H9.7s-3.2-.1-3.2 3.1v6.3s-.4 3.3 5.6 3.3zm3.2-1.9c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1z"/></svg> Python</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#336791"/><path fill="#fff" d="M12 4.5c-3.5 0-6 2.2-6 5.5 0 2.4 1.3 4.4 3.2 5.2v2.8h1.8v-2.3c.3 0 .7.1 1 .1 3.5 0 6-2.2 6-5.5s-2.5-5.8-6-5.8zm-.5 9.3c-2.3 0-4-1.6-4-3.8s1.7-3.8 4-3.8 4 1.6 4 3.8-1.7 3.8-4 3.8z"/><circle cx="10" cy="9" r="1" fill="#336791"/></svg> PostgreSQL</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#FFA000" d="M3.9 15.7L6.3.5a.5.5 0 0 1 1-.2l2.5 4.8zm16.8 3.7l-2.3-14a.5.5 0 0 0-.9-.3L3.3 19.4l7.9 4.4a1.6 1.6 0 0 0 1.5 0z"/><path fill="#F57C00" d="M14.3 7.1l-1.8-3.5a.5.5 0 0 0-1 0L3.5 18z"/><path fill="#FFCA28" d="M20.7 19.4L18.4 5.4a.5.5 0 0 0-.9-.3L3.3 19.4l7.9 4.4a1.6 1.6 0 0 0 1.5 0z"/></svg> Firebase</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#2496ED" d="M13.9 11.1h2.2v-2.1h-2.2v2.1zm-3-5.5h2.1V3.5h-2.1v2.1zm0 2.7h2.1V6.3h-2.1v2zm-2.9 0h2.1V6.3H8v2zm-3 0h2.1V6.3H5.1v2zm5.9 2.8h2.1V9h-2.1v2.1zm-3 0h2.1V9H8v2.1zm-3 0h2.1V9H5.1v2.1zm-2.9 0h2.1V9H2.2v2.1zM23.8 9.9c-.1-.1-.7-.5-2-.5-.3 0-.7 0-1 .1-.2-1.7-1.7-2.5-1.7-2.6l-.3-.2-.2.3c-.3.4-.5.9-.6 1.4-.2 1-.1 1.9.4 2.7-.6.3-1.6.4-1.7.4H.8a.8.8 0 0 0-.8.7c-.1 1.4.1 2.8.7 4.1.5 1.4 1.4 2.5 2.4 3.1 1.2.7 3.1 1.1 5.3 1.1 1 0 2-.1 2.9-.3 1.3-.2 2.6-.7 3.8-1.4 1-.6 1.9-1.3 2.6-2.1 1.3-1.4 2-3 2.6-4.4h.2c1.4 0 2.2-.5 2.7-1 .3-.3.6-.7.7-1l.1-.3z"/></svg> DevOps</span>
+                        <span class="askill-pill"><svg viewBox="0 0 24 24"><path fill="#F24E1E" d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 0 0 0 8z"/><path fill="#FF7262" d="M4 12a4 4 0 0 0 4 4h4V8H8a4 4 0 0 0-4 4z"/><path fill="#A259FF" d="M4 4a4 4 0 0 0 4 4h4V0H8a4 4 0 0 0-4 4z"/><path fill="#1ABCFE" d="M12 0h4a4 4 0 0 1 0 8h-4V0z"/><path fill="#0ACF83" d="M20 12a4 4 0 0 1-4 4h-4V8h4a4 4 0 0 1 4 4z"/></svg> UI/UX</span>
+                    </div>
+
+                    <!-- Terminal Component Showcase -->
+                    <div class="terminal-card tilt-card" id="interactive-terminal">
+                        <div class="terminal-header">
+                            <div class="dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="terminal-tabs">
+                                <span class="term-tab active" data-tab="developer.js">developer.js</span>
+                                <span class="term-tab" data-tab="experience.json">experience.json</span>
+                                <span class="term-tab" data-tab="contact.config">contact.config</span>
+                            </div>
+                            <div class="terminal-actions">
+                                <button class="term-action-btn" id="copy-term-code" title="Copy Code">📋 Copy</button>
+                                <button class="term-action-btn run-btn" id="run-term-code" title="Run Script">▶ RUN CODE</button>
+                            </div>
+                        </div>
+                        <div class="terminal-body" id="terminal-output-body">
+                            <div id="term-tab-content">
+                                <p><span class="t-purple">const</span> <span class="t-yellow">developer</span> = {</p>
+                                <p class="t-indent"><span class="t-blue">name</span>: <span class="t-green">'Ganesh Kumar'</span>,</p>
+                                <p class="t-indent"><span class="t-blue">role</span>: <span class="t-green">'Full-Stack Engineer &amp; UI/UX Specialist'</span>,</p>
+                                <p class="t-indent"><span class="t-blue">coreTech</span>: [<span class="t-green">'Next.js 15'</span>, <span class="t-green">'React'</span>, <span class="t-green">'Node.js'</span>, <span class="t-green">'Tailwind'</span>, <span class="t-green">'AI APIs'</span>],</p>
+                                <p class="t-indent"><span class="t-blue">deliveries</span>: <span class="t-orange">'16+'</span>,</p>
+                                <p class="t-indent"><span class="t-blue">status</span>: <span class="t-green">'Available for contract work 🚀'</span></p>
+                                <p>};</p>
+                            </div>
+                            <div id="terminal-execution-log" class="terminal-log-output"></div>
+                            <div id="terminal-history"></div>
+                            <div class="terminal-input-line">
+                                <span class="t-prompt">$</span>
+                                <input type="text" id="terminal-input" placeholder="Type 'help' or click command chips below..." autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="terminal-command-chips">
+                            <span class="term-chip" data-cmd="help">⚡ help</span>
+                            <span class="term-chip" data-cmd="skills">🛠️ skills</span>
+                            <span class="term-chip" data-cmd="projects">📁 projects</span>
+                            <span class="term-chip" data-cmd="stats">📊 stats</span>
+                            <span class="term-chip" data-cmd="hire">🚀 hire</span>
+                            <span class="term-chip" data-cmd="clear">🧹 clear</span>
+                        </div>
+                    </div>
+
+                    <div class="actions" style="margin-top: 1.5rem; display:flex; gap:1rem;">
+                        <a href="#contact" class="btn btn-outline" style="flex:1; justify-content:center; text-align:center;">Contact Me 💬</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -389,134 +484,113 @@
         <!-- Tech Stack & Skills Section -->
         <section id="skills" class="skills-section">
             <div class="section-heading text-center">
-                <div class="badge"><span class="dot"></span> Tech Stack & Expertise</div>
+                <div class="badge"><span class="dot"></span> Tech Stack &amp; Expertise</div>
                 <h2>Powered By Modern Technologies</h2>
             </div>
             <div class="tech-marquee-container">
-                <!-- Row 1: Left to Right -->
+                <!-- Row 1: Frontend & UI (Left to Right) -->
                 <div class="tech-marquee-row marquee-ltr">
                     <div class="tech-marquee-track">
-                        <div class="skill-badge"><span class="skill-icon">⚛️</span> React.js</div>
-                        <div class="skill-badge"><span class="skill-icon">▲</span> Next.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🟢</span> Node.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🎨</span> Tailwind CSS</div>
-                        <div class="skill-badge"><span class="skill-icon">📱</span> Flutter / Mobile</div>
-                        <div class="skill-badge"><span class="skill-icon">🐍</span> Python</div>
-                        <div class="skill-badge"><span class="skill-icon">🤖</span> OpenAI & Gemini API</div>
-                        
-                        <!-- Duplicate 1 -->
-                        <div class="skill-badge"><span class="skill-icon">⚛️</span> React.js</div>
-                        <div class="skill-badge"><span class="skill-icon">▲</span> Next.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🟢</span> Node.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🎨</span> Tailwind CSS</div>
-                        <div class="skill-badge"><span class="skill-icon">📱</span> Flutter / Mobile</div>
-                        <div class="skill-badge"><span class="skill-icon">🐍</span> Python</div>
-                        <div class="skill-badge"><span class="skill-icon">🤖</span> OpenAI & Gemini API</div>
+                        <!-- Set 1 -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2.2" fill="#61DAFB"/></svg></span> React.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 180 180"><circle cx="90" cy="90" fill="#000" stroke="#444" stroke-width="6" r="86"/><path d="M149.5 157.5L69.1 54H54v72h12.1V69.4l73.9 95.4c3.3-2.2 6.5-4.6 9.5-7.3z" fill="url(#nextG1)"/><rect fill="url(#nextG2)" height="72" width="12" x="115" y="54"/><defs><linearGradient id="nextG1" x1="109" x2="144.5" y1="116.5" y2="160.5" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="nextG2" x1="121" x2="120.8" y1="54" y2="106.9" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs></svg></span> Next.js 15</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#3178C6"/><path fill="#fff" d="M11.3 12.3H8.8V20H6.6v-7.7H4.1v-1.8h7.2v1.8zm8.6 4.7c0 1-.4 1.8-1.2 2.3-.8.6-1.9.9-3.2.9-1.2 0-2.3-.2-3.2-.7l.7-1.8c.8.4 1.7.6 2.6.6.7 0 1.2-.1 1.6-.4.4-.3.6-.6.6-1 0-.4-.2-.7-.5-.9-.3-.2-.9-.5-1.7-.8-1.2-.4-2-.9-2.5-1.4-.5-.6-.8-1.3-.8-2.2 0-1 .4-1.8 1.1-2.4.7-.6 1.8-.9 3-.9 1.1 0 2 .2 2.8.6l-.6 1.8c-.8-.4-1.5-.6-2.3-.6-.6 0-1.1.1-1.4.4-.3.2-.5.5-.5.9 0 .3.2.6.5.8.3.2.9.5 1.7.8 1.2.4 2 .9 2.5 1.4.6.6.9 1.3.9 2.3z"/></svg></span> TypeScript</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#38BDF8" d="M12 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C16.4 6.2 15 4.8 12 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C10.4 13.4 9 12 6 12z"/></svg></span> Tailwind CSS</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#41B883" d="M12 21.35L0 2.5h4.95L12 14.65 19.05 2.5H24L12 21.35z"/><path fill="#34495E" d="M12 14.65L4.95 2.5h4.1L12 7.7 14.95 2.5h4.1L12 14.65z"/></svg></span> Vue &amp; Nuxt</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="url(#viteG1)" d="M23.6 3.6L12.5 23.3c-.2.4-.8.4-1 0L.4 3.6c-.3-.5.2-1.1.7-1l10.9 2.2 10.9-2.2c.5-.1 1 .5.7 1z"/><path fill="url(#viteG2)" d="M16.5 1.5l-6.8 3.8-.8 5.7 3.6-.6-1.5 7.1 8-9.8-4.2.7 1.7-6.9z"/><defs><linearGradient id="viteG1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#41D1FF"/><stop offset="1" stop-color="#BD34FE"/></linearGradient><linearGradient id="viteG2" x1="8" y1="1" x2="18" y2="18" gradientUnits="userSpaceOnUse"><stop stop-color="#FFEA83"/><stop offset="0.5" stop-color="#FFDD35"/><stop offset="1" stop-color="#FFA800"/></linearGradient></defs></svg></span> Vite &amp; Webpack</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#0055FF" d="M4 0h16v8h-8z"/><path fill="#FF0055" d="M4 8h8l8 8H4z"/><path fill="#8000FF" d="M4 16h8v8z"/></svg></span> Framer Motion</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#fff" d="M21.5 5.5l-9-5a1 1 0 0 0-1 0l-9 5A1 1 0 0 0 2 6.37v11.26a1 1 0 0 0 .5.87l9 5a1 1 0 0 0 1 0l9-5a1 1 0 0 0 .5-.87V6.37a1 1 0 0 0-.5-.87zM12 2.31l7.53 4.19L12 10.68 4.47 6.5 12 2.31zM3.8 7.82l7.6 4.22v8.38l-7.6-4.22V7.82zm9.4 12.6V12.04l7.6-4.22v8.38l-7.6 4.22z"/></svg></span> WebGL &amp; Three.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#764ABC" d="M12.6 1.8a4.2 4.2 0 0 0-4.1 3.2 4.4 4.4 0 0 0-3.3 2.1 4.5 4.5 0 0 0-1.8 4.7 4.5 4.5 0 0 0 2.2 4.4 4.5 4.5 0 0 0 4.1 3.2 4.4 4.4 0 0 0 3.3-2.1 4.5 4.5 0 0 0 1.8-4.7 4.5 4.5 0 0 0-2.2-4.4zm-1.8 14a2.2 2.2 0 1 1 2.2-2.2 2.2 2.2 0 0 1-2.2 2.2z"/><circle cx="8" cy="8.5" r="1.8" fill="#764ABC"/><circle cx="16" cy="8.5" r="1.8" fill="#764ABC"/><circle cx="12" cy="15.5" r="1.8" fill="#764ABC"/></svg></span> Redux &amp; Zustand</div>
 
-                        <!-- Duplicate 2 -->
-                        <div class="skill-badge"><span class="skill-icon">⚛️</span> React.js</div>
-                        <div class="skill-badge"><span class="skill-icon">▲</span> Next.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🟢</span> Node.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🎨</span> Tailwind CSS</div>
-                        <div class="skill-badge"><span class="skill-icon">📱</span> Flutter / Mobile</div>
-                        <div class="skill-badge"><span class="skill-icon">🐍</span> Python</div>
-                        <div class="skill-badge"><span class="skill-icon">🤖</span> OpenAI & Gemini API</div>
+                        <!-- Set 2 (Seamless loop) -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2.2" fill="#61DAFB"/></svg></span> React.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 180 180"><circle cx="90" cy="90" fill="#000" stroke="#444" stroke-width="6" r="86"/><path d="M149.5 157.5L69.1 54H54v72h12.1V69.4l73.9 95.4c3.3-2.2 6.5-4.6 9.5-7.3z" fill="url(#nextG1)"/><rect fill="url(#nextG2)" height="72" width="12" x="115" y="54"/></svg></span> Next.js 15</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#3178C6"/><path fill="#fff" d="M11.3 12.3H8.8V20H6.6v-7.7H4.1v-1.8h7.2v1.8zm8.6 4.7c0 1-.4 1.8-1.2 2.3-.8.6-1.9.9-3.2.9-1.2 0-2.3-.2-3.2-.7l.7-1.8c.8.4 1.7.6 2.6.6.7 0 1.2-.1 1.6-.4.4-.3.6-.6.6-1 0-.4-.2-.7-.5-.9-.3-.2-.9-.5-1.7-.8-1.2-.4-2-.9-2.5-1.4-.5-.6-.8-1.3-.8-2.2 0-1 .4-1.8 1.1-2.4.7-.6 1.8-.9 3-.9 1.1 0 2 .2 2.8.6l-.6 1.8c-.8-.4-1.5-.6-2.3-.6-.6 0-1.1.1-1.4.4-.3.2-.5.5-.5.9 0 .3.2.6.5.8.3.2.9.5 1.7.8 1.2.4 2 .9 2.5 1.4.6.6.9 1.3.9 2.3z"/></svg></span> TypeScript</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#38BDF8" d="M12 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C16.4 6.2 15 4.8 12 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C10.4 13.4 9 12 6 12z"/></svg></span> Tailwind CSS</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#41B883" d="M12 21.35L0 2.5h4.95L12 14.65 19.05 2.5H24L12 21.35z"/><path fill="#34495E" d="M12 14.65L4.95 2.5h4.1L12 7.7 14.95 2.5h4.1L12 14.65z"/></svg></span> Vue &amp; Nuxt</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="url(#viteG1)" d="M23.6 3.6L12.5 23.3c-.2.4-.8.4-1 0L.4 3.6c-.3-.5.2-1.1.7-1l10.9 2.2 10.9-2.2c.5-.1 1 .5.7 1z"/><path fill="url(#viteG2)" d="M16.5 1.5l-6.8 3.8-.8 5.7 3.6-.6-1.5 7.1 8-9.8-4.2.7 1.7-6.9z"/></svg></span> Vite &amp; Webpack</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#0055FF" d="M4 0h16v8h-8z"/><path fill="#FF0055" d="M4 8h8l8 8H4z"/><path fill="#8000FF" d="M4 16h8v8z"/></svg></span> Framer Motion</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#fff" d="M21.5 5.5l-9-5a1 1 0 0 0-1 0l-9 5A1 1 0 0 0 2 6.37v11.26a1 1 0 0 0 .5.87l9 5a1 1 0 0 0 1 0l9-5a1 1 0 0 0 .5-.87V6.37a1 1 0 0 0-.5-.87zM12 2.31l7.53 4.19L12 10.68 4.47 6.5 12 2.31zM3.8 7.82l7.6 4.22v8.38l-7.6-4.22V7.82zm9.4 12.6V12.04l7.6-4.22v8.38l-7.6 4.22z"/></svg></span> WebGL &amp; Three.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#764ABC" d="M12.6 1.8a4.2 4.2 0 0 0-4.1 3.2 4.4 4.4 0 0 0-3.3 2.1 4.5 4.5 0 0 0-1.8 4.7 4.5 4.5 0 0 0 2.2 4.4 4.5 4.5 0 0 0 4.1 3.2 4.4 4.4 0 0 0 3.3-2.1 4.5 4.5 0 0 0 1.8-4.7 4.5 4.5 0 0 0-2.2-4.4zm-1.8 14a2.2 2.2 0 1 1 2.2-2.2 2.2 2.2 0 0 1-2.2 2.2z"/><circle cx="8" cy="8.5" r="1.8" fill="#764ABC"/><circle cx="16" cy="8.5" r="1.8" fill="#764ABC"/><circle cx="12" cy="15.5" r="1.8" fill="#764ABC"/></svg></span> Redux &amp; Zustand</div>
                     </div>
                 </div>
 
-                <!-- Row 2: Right to Left -->
+                <!-- Row 2: Backend & Database (Right to Left) -->
                 <div class="tech-marquee-row marquee-rtl">
                     <div class="tech-marquee-track">
-                        <div class="skill-badge"><span class="skill-icon">🗄️</span> PostgreSQL & MongoDB</div>
-                        <div class="skill-badge"><span class="skill-icon">🎯</span> TypeScript</div>
-                        <div class="skill-badge"><span class="skill-icon">✨</span> Figma & UI/UX</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> REST & GraphQL</div>
-                        <div class="skill-badge"><span class="skill-icon">🐙</span> Git & DevOps</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> Vite & Webpack</div>
-                        <div class="skill-badge"><span class="skill-icon">🔥</span> Firebase & Supabase</div>
-                        
-                        <!-- Duplicate 1 -->
-                        <div class="skill-badge"><span class="skill-icon">🗄️</span> PostgreSQL & MongoDB</div>
-                        <div class="skill-badge"><span class="skill-icon">🎯</span> TypeScript</div>
-                        <div class="skill-badge"><span class="skill-icon">✨</span> Figma & UI/UX</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> REST & GraphQL</div>
-                        <div class="skill-badge"><span class="skill-icon">🐙</span> Git & DevOps</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> Vite & Webpack</div>
-                        <div class="skill-badge"><span class="skill-icon">🔥</span> Firebase & Supabase</div>
+                        <!-- Set 1 -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#539E43" d="M12 1.5L2 7.3v11.4l10 5.8 10-5.8V7.3L12 1.5zm0 2.5l7.8 4.5v9L12 22l-7.8-4.5v-9L12 4z"/><path fill="#68A063" d="M12 6.5l5.2 3v6L12 18.5l-5.2-3v-6l5.2-3z"/></svg></span> Node.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#1e293b" stroke="#475569" stroke-width="1"/><text x="12" y="16.5" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle" font-family="system-ui, sans-serif">ex</text></svg></span> Express.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M11.9 0C5.4 0 5.8 2.8 5.8 2.8l.01 2.9h6.2v.9H3.7S0 6.1 0 12.6c0 6.4 3.3 6.2 3.3 6.2h2V16s-.1-3.3 3.3-3.3h5.7s3.2.1 3.2-3.1V3.3S17.9 0 11.9 0zm-3.2 1.9c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1z"/><path fill="#FFD43B" d="M12.1 24c6.5 0 6.1-2.8 6.1-2.8l-.01-2.9h-6.2v-.9h8.3s3.7.5 3.7-6c0-6.4-3.3-6.2-3.3-6.2h-2v2.8s.1 3.3-3.3 3.3H9.7s-3.2-.1-3.2 3.1v6.3s-.4 3.3 5.6 3.3zm3.2-1.9c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1z"/></svg></span> Python</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#336791"/><path fill="#fff" d="M12 4.5c-3.5 0-6 2.2-6 5.5 0 2.4 1.3 4.4 3.2 5.2v2.8h1.8v-2.3c.3 0 .7.1 1 .1 3.5 0 6-2.2 6-5.5s-2.5-5.8-6-5.8zm-.5 9.3c-2.3 0-4-1.6-4-3.8s1.7-3.8 4-3.8 4 1.6 4 3.8-1.7 3.8-4 3.8z"/><circle cx="10" cy="9" r="1" fill="#336791"/></svg></span> PostgreSQL</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#47A248" d="M12 0C11.5 0 8 4.5 8 12.2c0 5.8 2.6 9.4 3.7 11.6.4.8.9.8 1.3 0 1.1-2.2 3.7-5.8 3.7-11.6C16.7 4.5 12.5 0 12 0z"/><path fill="#499D4A" d="M12 0v23.8c.4-.8.9-.8 1.3 0 1.1-2.2 3.7-5.8 3.7-11.6C16.7 4.5 12.5 0 12 0z"/></svg></span> MongoDB</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#DC382D" d="M1.5 6.8L12 1.5l10.5 5.3L12 12.1 1.5 6.8z"/><path fill="#A51F17" d="M1.5 6.8v10.4L12 22.5V12.1L1.5 6.8z"/><path fill="#D82C20" d="M12 12.1v10.4l10.5-5.3V6.8L12 12.1z"/><circle cx="12" cy="6.8" r="1.5" fill="#fff" opacity="0.8"/></svg></span> Redis</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#3ECF8E" d="M13.4 1.1c.5-.6 1.5-.2 1.5.6V11h7.5c.9 0 1.4 1.1.8 1.7L10.6 22.9c-.5.6-1.5.2-1.5-.6V13H1.6c-.9 0-1.4-1.1-.8-1.7L13.4 1.1z"/></svg></span> Supabase</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#E535AB" d="M12 2L2.5 7.5v11L12 24l9.5-5.5v-11L12 2zm0 2.3l7.5 4.3-3.2 5.5H7.7L4.5 8.6 12 4.3zm-6.5 6l2.3 4H3.8l1.7-4zm2.8 5h7.4l-3.7 6.4-3.7-6.4zm8.9-1l1.7 4h-4l2.3-4z"/><circle cx="12" cy="2" r="2" fill="#E535AB"/><circle cx="2.5" cy="7.5" r="2" fill="#E535AB"/><circle cx="21.5" cy="7.5" r="2" fill="#E535AB"/><circle cx="2.5" cy="18.5" r="2" fill="#E535AB"/><circle cx="21.5" cy="18.5" r="2" fill="#E535AB"/><circle cx="12" cy="24" r="2" fill="#E535AB"/></svg></span> REST &amp; GraphQL</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#16A394" d="M13.2 1.3a1.5 1.5 0 0 0-2.4 0L1.4 14.8a1.5 1.5 0 0 0 .5 2.2l14.4 6.7a1.5 1.5 0 0 0 2-1.4V2.7a1.5 1.5 0 0 0-.7-1.4zm-1.2 3.1l4.8 15.2-12.7-5.9 7.9-9.3z"/><path fill="#0C344B" d="M12 4.4L16.8 19.6V2.7L12 4.4z"/></svg></span> Prisma ORM</div>
 
-                        <!-- Duplicate 2 -->
-                        <div class="skill-badge"><span class="skill-icon">🗄️</span> PostgreSQL & MongoDB</div>
-                        <div class="skill-badge"><span class="skill-icon">🎯</span> TypeScript</div>
-                        <div class="skill-badge"><span class="skill-icon">✨</span> Figma & UI/UX</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> REST & GraphQL</div>
-                        <div class="skill-badge"><span class="skill-icon">🐙</span> Git & DevOps</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> Vite & Webpack</div>
-                        <div class="skill-badge"><span class="skill-icon">🔥</span> Firebase & Supabase</div>
+                        <!-- Set 2 (Seamless loop) -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#539E43" d="M12 1.5L2 7.3v11.4l10 5.8 10-5.8V7.3L12 1.5zm0 2.5l7.8 4.5v9L12 22l-7.8-4.5v-9L12 4z"/><path fill="#68A063" d="M12 6.5l5.2 3v6L12 18.5l-5.2-3v-6l5.2-3z"/></svg></span> Node.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#1e293b" stroke="#475569" stroke-width="1"/><text x="12" y="16.5" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle" font-family="system-ui, sans-serif">ex</text></svg></span> Express.js</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M11.9 0C5.4 0 5.8 2.8 5.8 2.8l.01 2.9h6.2v.9H3.7S0 6.1 0 12.6c0 6.4 3.3 6.2 3.3 6.2h2V16s-.1-3.3 3.3-3.3h5.7s3.2.1 3.2-3.1V3.3S17.9 0 11.9 0zm-3.2 1.9c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1z"/><path fill="#FFD43B" d="M12.1 24c6.5 0 6.1-2.8 6.1-2.8l-.01-2.9h-6.2v-.9h8.3s3.7.5 3.7-6c0-6.4-3.3-6.2-3.3-6.2h-2v2.8s.1 3.3-3.3 3.3H9.7s-3.2-.1-3.2 3.1v6.3s-.4 3.3 5.6 3.3zm3.2-1.9c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1z"/></svg></span> Python</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#336791"/><path fill="#fff" d="M12 4.5c-3.5 0-6 2.2-6 5.5 0 2.4 1.3 4.4 3.2 5.2v2.8h1.8v-2.3c.3 0 .7.1 1 .1 3.5 0 6-2.2 6-5.5s-2.5-5.8-6-5.8zm-.5 9.3c-2.3 0-4-1.6-4-3.8s1.7-3.8 4-3.8 4 1.6 4 3.8-1.7 3.8-4 3.8z"/><circle cx="10" cy="9" r="1" fill="#336791"/></svg></span> PostgreSQL</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#47A248" d="M12 0C11.5 0 8 4.5 8 12.2c0 5.8 2.6 9.4 3.7 11.6.4.8.9.8 1.3 0 1.1-2.2 3.7-5.8 3.7-11.6C16.7 4.5 12.5 0 12 0z"/><path fill="#499D4A" d="M12 0v23.8c.4-.8.9-.8 1.3 0 1.1-2.2 3.7-5.8 3.7-11.6C16.7 4.5 12.5 0 12 0z"/></svg></span> MongoDB</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#DC382D" d="M1.5 6.8L12 1.5l10.5 5.3L12 12.1 1.5 6.8z"/><path fill="#A51F17" d="M1.5 6.8v10.4L12 22.5V12.1L1.5 6.8z"/><path fill="#D82C20" d="M12 12.1v10.4l10.5-5.3V6.8L12 12.1z"/><circle cx="12" cy="6.8" r="1.5" fill="#fff" opacity="0.8"/></svg></span> Redis</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#3ECF8E" d="M13.4 1.1c.5-.6 1.5-.2 1.5.6V11h7.5c.9 0 1.4 1.1.8 1.7L10.6 22.9c-.5.6-1.5.2-1.5-.6V13H1.6c-.9 0-1.4-1.1-.8-1.7L13.4 1.1z"/></svg></span> Supabase</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#E535AB" d="M12 2L2.5 7.5v11L12 24l9.5-5.5v-11L12 2zm0 2.3l7.5 4.3-3.2 5.5H7.7L4.5 8.6 12 4.3zm-6.5 6l2.3 4H3.8l1.7-4zm2.8 5h7.4l-3.7 6.4-3.7-6.4zm8.9-1l1.7 4h-4l2.3-4z"/><circle cx="12" cy="2" r="2" fill="#E535AB"/><circle cx="2.5" cy="7.5" r="2" fill="#E535AB"/><circle cx="21.5" cy="7.5" r="2" fill="#E535AB"/><circle cx="2.5" cy="18.5" r="2" fill="#E535AB"/><circle cx="21.5" cy="18.5" r="2" fill="#E535AB"/><circle cx="12" cy="24" r="2" fill="#E535AB"/></svg></span> REST &amp; GraphQL</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#16A394" d="M13.2 1.3a1.5 1.5 0 0 0-2.4 0L1.4 14.8a1.5 1.5 0 0 0 .5 2.2l14.4 6.7a1.5 1.5 0 0 0 2-1.4V2.7a1.5 1.5 0 0 0-.7-1.4zm-1.2 3.1l4.8 15.2-12.7-5.9 7.9-9.3z"/><path fill="#0C344B" d="M12 4.4L16.8 19.6V2.7L12 4.4z"/></svg></span> Prisma ORM</div>
                     </div>
                 </div>
 
-                <!-- Row 3: Left to Right -->
+                <!-- Row 3: Mobile & Cloud / DevOps (Left to Right) -->
                 <div class="tech-marquee-row marquee-ltr">
                     <div class="tech-marquee-track">
-                        <div class="skill-badge"><span class="skill-icon">🎭</span> Framer Motion & GSAP</div>
-                        <div class="skill-badge"><span class="skill-icon">🐳</span> Docker & Containers</div>
-                        <div class="skill-badge"><span class="skill-icon">☁️</span> AWS & Vercel Cloud</div>
-                        <div class="skill-badge"><span class="skill-icon">🌐</span> WebGL & Three.js</div>
-                        <div class="skill-badge"><span class="skill-icon">📊</span> Redis & Caching</div>
-                        <div class="skill-badge"><span class="skill-icon">🛠️</span> Redux & Zustand</div>
-                        <div class="skill-badge"><span class="skill-icon">💬</span> WebSockets & Real-time</div>
-                        
-                        <!-- Duplicate 1 -->
-                        <div class="skill-badge"><span class="skill-icon">🎭</span> Framer Motion & GSAP</div>
-                        <div class="skill-badge"><span class="skill-icon">🐳</span> Docker & Containers</div>
-                        <div class="skill-badge"><span class="skill-icon">☁️</span> AWS & Vercel Cloud</div>
-                        <div class="skill-badge"><span class="skill-icon">🌐</span> WebGL & Three.js</div>
-                        <div class="skill-badge"><span class="skill-icon">📊</span> Redis & Caching</div>
-                        <div class="skill-badge"><span class="skill-icon">🛠️</span> Redux & Zustand</div>
-                        <div class="skill-badge"><span class="skill-icon">💬</span> WebSockets & Real-time</div>
+                        <!-- Set 1 -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#02569B" d="M14.3 0L2.3 12l3.7 3.7L21.7 0h-7.4z"/><path fill="#0175C2" d="M14.3 11.1L7.9 17.5l6.4 6.5h7.4l-6.4-6.5 6.4-6.5h-7.4z"/><path fill="#29B6F6" d="M14.3 11.1l-3.7 3.7 3.7 3.7 3.7-3.7-3.7-3.7z"/></svg></span> Flutter</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2.2" fill="#61DAFB"/></svg></span> React Native</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#2496ED" d="M13.9 11.1h2.2v-2.1h-2.2v2.1zm-3-5.5h2.1V3.5h-2.1v2.1zm0 2.7h2.1V6.3h-2.1v2zm-2.9 0h2.1V6.3H8v2zm-3 0h2.1V6.3H5.1v2zm5.9 2.8h2.1V9h-2.1v2.1zm-3 0h2.1V9H8v2.1zm-3 0h2.1V9H5.1v2.1zm-2.9 0h2.1V9H2.2v2.1zM23.8 9.9c-.1-.1-.7-.5-2-.5-.3 0-.7 0-1 .1-.2-1.7-1.7-2.5-1.7-2.6l-.3-.2-.2.3c-.3.4-.5.9-.6 1.4-.2 1-.1 1.9.4 2.7-.6.3-1.6.4-1.7.4H.8a.8.8 0 0 0-.8.7c-.1 1.4.1 2.8.7 4.1.5 1.4 1.4 2.5 2.4 3.1 1.2.7 3.1 1.1 5.3 1.1 1 0 2-.1 2.9-.3 1.3-.2 2.6-.7 3.8-1.4 1-.6 1.9-1.3 2.6-2.1 1.3-1.4 2-3 2.6-4.4h.2c1.4 0 2.2-.5 2.7-1 .3-.3.6-.7.7-1l.1-.3z"/></svg></span> Docker</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#FFFFFF" d="M6.2 8.3c-.8 0-1.4.2-1.8.6-.4.4-.6.9-.6 1.5 0 .6.2 1.1.6 1.5.4.4 1 .6 1.8.6.6 0 1.1-.1 1.5-.4v1c-.5.2-1.1.3-1.8.3-1.1 0-2-.3-2.6-1-.6-.7-.9-1.5-.9-2.6 0-1.1.3-2 1-2.6.7-.6 1.6-.9 2.7-.9.7 0 1.3.1 1.8.3v1c-.4-.2-1-.3-1.7-.3zm5.7-2.5h1.2l2.3 8.3h-1.2l-.6-2.3h-2.1l-.6 2.3H9.7l2.2-8.3zm.8 5h1.6l-.8-3.2-.8 3.2zm6.7-5h1.3l1.5 6.3 1.6-6.3h1.3l-2.2 8.3h-1.3l-1.5-6.1-1.5 6.1h-1.3l-2.2-8.3h1.3l1.6 6.3 1.4-6.3z" transform="scale(0.72) translate(1.5, 3)"/><path fill="#FF9900" d="M19.4 15.6c-2.4 1.8-5.7 2.7-8.7 2.7-4.1 0-7.8-1.5-10.6-4-.2-.2 0-.4.3-.3 3 1.8 6.7 2.8 10.6 2.8 2.6 0 5.5-.5 8.1-1.7.4-.2.7.2.3.5zm.9-1.1c-.3-.4-1.9-.2-2.7-.1-.2 0-.3-.2-.1-.3 1.3-.9 3.5-.6 3.8-.3.3.3-.1 2.5-1.3 3.5-.2.2-.3.1-.2-.1.3-.7.8-2.3.5-2.7z"/></svg></span> AWS Cloud</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#FFFFFF" d="M12 1L24 22H0L12 1z"/></svg></span> Vercel</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#FFA000" d="M3.9 15.7L6.3.5a.5.5 0 0 1 1-.2l2.5 4.8zm16.8 3.7l-2.3-14a.5.5 0 0 0-.9-.3L3.3 19.4l7.9 4.4a1.6 1.6 0 0 0 1.5 0z"/><path fill="#F57C00" d="M14.3 7.1l-1.8-3.5a.5.5 0 0 0-1 0L3.5 18z"/><path fill="#FFCA28" d="M20.7 19.4L18.4 5.4a.5.5 0 0 0-.9-.3L3.3 19.4l7.9 4.4a1.6 1.6 0 0 0 1.5 0z"/></svg></span> Firebase</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#F05032" d="M23.5 10.9L13.1.5a1.5 1.5 0 0 0-2.2 0L8.7 2.6l2.8 2.8c.6-.2 1.4-.1 1.9.4.5.5.7 1.3.4 1.9l2.7 2.7c.6-.2 1.4-.1 1.9.4.7.7.7 1.9 0 2.6-.7.7-1.9.7-2.6 0-.5-.5-.7-1.3-.4-2L12.9 9v6.5c.2.1.3.2.5.3.7.7.7 1.9 0 2.6-.7.7-1.9.7-2.6 0-.7-.7-.7-1.9 0-2.6.2-.2.4-.3.6-.4V8.8c-.2-.1-.4-.2-.6-.4-.5-.5-.7-1.3-.4-2L7.6 3.7.5 10.9c-.6.6-.6 1.6 0 2.2l10.5 10.5c.6.6 1.6.6 2.2 0l10.4-10.4c.6-.7.6-1.6-.1-2.3z"/><circle cx="17.5" cy="11.5" r="1.5" fill="#fff"/><circle cx="10.5" cy="18.5" r="1.5" fill="#fff"/><circle cx="7" cy="5.5" r="1.5" fill="#fff"/></svg></span> Git &amp; CI/CD</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#326CE5" d="M12 .3L1.5 6.4v12.2L12 24.7l10.5-6.1V6.4L12 .3zm0 2.4l8.4 4.9v9.8L12 22.3 3.6 17.4V7.6L12 2.7z"/><circle cx="12" cy="12" r="3.2" fill="#326CE5"/><path fill="#fff" d="M12 5.5v3m0 7v3m-6.5-6.5h3m7 0h3m-2.2-4.8l-2.1 2.1m-4.4 4.4l-2.1 2.1m0-8.6l2.1 2.1m4.4 4.4l2.1 2.1" stroke="#fff" stroke-width="1.2"/></svg></span> Kubernetes</div>
 
-                        <!-- Duplicate 2 -->
-                        <div class="skill-badge"><span class="skill-icon">🎭</span> Framer Motion & GSAP</div>
-                        <div class="skill-badge"><span class="skill-icon">🐳</span> Docker & Containers</div>
-                        <div class="skill-badge"><span class="skill-icon">☁️</span> AWS & Vercel Cloud</div>
-                        <div class="skill-badge"><span class="skill-icon">🌐</span> WebGL & Three.js</div>
-                        <div class="skill-badge"><span class="skill-icon">📊</span> Redis & Caching</div>
-                        <div class="skill-badge"><span class="skill-icon">🛠️</span> Redux & Zustand</div>
-                        <div class="skill-badge"><span class="skill-icon">💬</span> WebSockets & Real-time</div>
+                        <!-- Set 2 (Seamless loop) -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#02569B" d="M14.3 0L2.3 12l3.7 3.7L21.7 0h-7.4z"/><path fill="#0175C2" d="M14.3 11.1L7.9 17.5l6.4 6.5h7.4l-6.4-6.5 6.4-6.5h-7.4z"/><path fill="#29B6F6" d="M14.3 11.1l-3.7 3.7 3.7 3.7 3.7-3.7-3.7-3.7z"/></svg></span> Flutter</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.3" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2.2" fill="#61DAFB"/></svg></span> React Native</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#2496ED" d="M13.9 11.1h2.2v-2.1h-2.2v2.1zm-3-5.5h2.1V3.5h-2.1v2.1zm0 2.7h2.1V6.3h-2.1v2zm-2.9 0h2.1V6.3H8v2zm-3 0h2.1V6.3H5.1v2zm5.9 2.8h2.1V9h-2.1v2.1zm-3 0h2.1V9H8v2.1zm-3 0h2.1V9H5.1v2.1zm-2.9 0h2.1V9H2.2v2.1zM23.8 9.9c-.1-.1-.7-.5-2-.5-.3 0-.7 0-1 .1-.2-1.7-1.7-2.5-1.7-2.6l-.3-.2-.2.3c-.3.4-.5.9-.6 1.4-.2 1-.1 1.9.4 2.7-.6.3-1.6.4-1.7.4H.8a.8.8 0 0 0-.8.7c-.1 1.4.1 2.8.7 4.1.5 1.4 1.4 2.5 2.4 3.1 1.2.7 3.1 1.1 5.3 1.1 1 0 2-.1 2.9-.3 1.3-.2 2.6-.7 3.8-1.4 1-.6 1.9-1.3 2.6-2.1 1.3-1.4 2-3 2.6-4.4h.2c1.4 0 2.2-.5 2.7-1 .3-.3.6-.7.7-1l.1-.3z"/></svg></span> Docker</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#FFFFFF" d="M6.2 8.3c-.8 0-1.4.2-1.8.6-.4.4-.6.9-.6 1.5 0 .6.2 1.1.6 1.5.4.4 1 .6 1.8.6.6 0 1.1-.1 1.5-.4v1c-.5.2-1.1.3-1.8.3-1.1 0-2-.3-2.6-1-.6-.7-.9-1.5-.9-2.6 0-1.1.3-2 1-2.6.7-.6 1.6-.9 2.7-.9.7 0 1.3.1 1.8.3v1c-.4-.2-1-.3-1.7-.3zm5.7-2.5h1.2l2.3 8.3h-1.2l-.6-2.3h-2.1l-.6 2.3H9.7l2.2-8.3zm.8 5h1.6l-.8-3.2-.8 3.2zm6.7-5h1.3l1.5 6.3 1.6-6.3h1.3l-2.2 8.3h-1.3l-1.5-6.1-1.5 6.1h-1.3l-2.2-8.3h1.3l1.6 6.3 1.4-6.3z" transform="scale(0.72) translate(1.5, 3)"/><path fill="#FF9900" d="M19.4 15.6c-2.4 1.8-5.7 2.7-8.7 2.7-4.1 0-7.8-1.5-10.6-4-.2-.2 0-.4.3-.3 3 1.8 6.7 2.8 10.6 2.8 2.6 0 5.5-.5 8.1-1.7.4-.2.7.2.3.5zm.9-1.1c-.3-.4-1.9-.2-2.7-.1-.2 0-.3-.2-.1-.3 1.3-.9 3.5-.6 3.8-.3.3.3-.1 2.5-1.3 3.5-.2.2-.3.1-.2-.1.3-.7.8-2.3.5-2.7z"/></svg></span> AWS Cloud</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#FFFFFF" d="M12 1L24 22H0L12 1z"/></svg></span> Vercel</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#FFA000" d="M3.9 15.7L6.3.5a.5.5 0 0 1 1-.2l2.5 4.8zm16.8 3.7l-2.3-14a.5.5 0 0 0-.9-.3L3.3 19.4l7.9 4.4a1.6 1.6 0 0 0 1.5 0z"/><path fill="#F57C00" d="M14.3 7.1l-1.8-3.5a.5.5 0 0 0-1 0L3.5 18z"/><path fill="#FFCA28" d="M20.7 19.4L18.4 5.4a.5.5 0 0 0-.9-.3L3.3 19.4l7.9 4.4a1.6 1.6 0 0 0 1.5 0z"/></svg></span> Firebase</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#F05032" d="M23.5 10.9L13.1.5a1.5 1.5 0 0 0-2.2 0L8.7 2.6l2.8 2.8c.6-.2 1.4-.1 1.9.4.5.5.7 1.3.4 1.9l2.7 2.7c.6-.2 1.4-.1 1.9.4.7.7.7 1.9 0 2.6-.7.7-1.9.7-2.6 0-.5-.5-.7-1.3-.4-2L12.9 9v6.5c.2.1.3.2.5.3.7.7.7 1.9 0 2.6-.7.7-1.9.7-2.6 0-.7-.7-.7-1.9 0-2.6.2-.2.4-.3.6-.4V8.8c-.2-.1-.4-.2-.6-.4-.5-.5-.7-1.3-.4-2L7.6 3.7.5 10.9c-.6.6-.6 1.6 0 2.2l10.5 10.5c.6.6 1.6.6 2.2 0l10.4-10.4c.6-.7.6-1.6-.1-2.3z"/><circle cx="17.5" cy="11.5" r="1.5" fill="#fff"/><circle cx="10.5" cy="18.5" r="1.5" fill="#fff"/><circle cx="7" cy="5.5" r="1.5" fill="#fff"/></svg></span> Git &amp; CI/CD</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#326CE5" d="M12 .3L1.5 6.4v12.2L12 24.7l10.5-6.1V6.4L12 .3zm0 2.4l8.4 4.9v9.8L12 22.3 3.6 17.4V7.6L12 2.7z"/><circle cx="12" cy="12" r="3.2" fill="#326CE5"/><path fill="#fff" d="M12 5.5v3m0 7v3m-6.5-6.5h3m7 0h3m-2.2-4.8l-2.1 2.1m-4.4 4.4l-2.1 2.1m0-8.6l2.1 2.1m4.4 4.4l2.1 2.1" stroke="#fff" stroke-width="1.2"/></svg></span> Kubernetes</div>
                     </div>
                 </div>
 
-                <!-- Row 4: Right to Left -->
+                <!-- Row 4: AI, Testing, Payment & Security (Right to Left) -->
                 <div class="tech-marquee-row marquee-rtl">
                     <div class="tech-marquee-track">
-                        <div class="skill-badge"><span class="skill-icon">🔒</span> OAuth2 & JWT Security</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> Fastify & Express.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🧠</span> Claude & LLM APIs</div>
-                        <div class="skill-badge"><span class="skill-icon">📈</span> PostHog & Telemetry</div>
-                        <div class="skill-badge"><span class="skill-icon">🧪</span> Jest & Cypress E2E</div>
-                        <div class="skill-badge"><span class="skill-icon">📦</span> Turborepo & Monorepos</div>
-                        <div class="skill-badge"><span class="skill-icon">📱</span> React Native & Expo</div>
-                        <div class="skill-badge"><span class="skill-icon">💳</span> Stripe & Payment APIs</div>
-                        
-                        <!-- Duplicate 1 -->
-                        <div class="skill-badge"><span class="skill-icon">🔒</span> OAuth2 & JWT Security</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> Fastify & Express.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🧠</span> Claude & LLM APIs</div>
-                        <div class="skill-badge"><span class="skill-icon">📈</span> PostHog & Telemetry</div>
-                        <div class="skill-badge"><span class="skill-icon">🧪</span> Jest & Cypress E2E</div>
-                        <div class="skill-badge"><span class="skill-icon">📦</span> Turborepo & Monorepos</div>
-                        <div class="skill-badge"><span class="skill-icon">📱</span> React Native & Expo</div>
-                        <div class="skill-badge"><span class="skill-icon">💳</span> Stripe & Payment APIs</div>
+                        <!-- Set 1 -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#10A37F" d="M22.3 9.8a6 6 0 0 0-.5-4.9 6 6 0 0 0-6.5-2.9 6.1 6.1 0 0 0-10.3 2.2 6 6 0 0 0-4 2.9 6 6 0 0 0 .7 7.1 6 6 0 0 0 .5 4.9 6.1 6.1 0 0 0 6.5 2.9 6 6 0 0 0 4.1 1.9 6.1 6.1 0 0 0 5.8-4.2 6 6 0 0 0 4-2.9 6.1 6.1 0 0 0-.7-7zM13.3 22.4a4.5 4.5 0 0 1-2.9-1l4.8-2.8a.8.8 0 0 0 .4-.7v-6.7l2 1.2v5.5a4.5 4.5 0 0 1-4.3 4.5zM3.6 18.3a4.5 4.5 0 0 1-.5-3l4.8 2.8a.8.8 0 0 0 .8 0l5.8-3.4v2.3L9.7 20a4.5 4.5 0 0 1-6.1-1.7zm-1.3-10.4a4.5 4.5 0 0 1 2.4-2v6.7a.8.8 0 0 0 .4.7l5.8 3.3-2 1.2-4.8-2.8a4.5 4.5 0 0 1-1.8-7.1zm17.4 3.3l-5.8-3.4 2-1.1 4.8 2.8a4.5 4.5 0 0 1 1.8 7.1 4.5 4.5 0 0 1-2.4 2V12a.8.8 0 0 0-.4-.8zm2-4.2a4.5 4.5 0 0 1 .5 3l-4.8-2.8a.8.8 0 0 0-.8 0l-5.8 3.4V7.5L14.3 4a4.5 4.5 0 0 1 6.1 1.7zM9.4 13.7l2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5v-3z"/></svg></span> OpenAI GPT-4o</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="url(#geminiG1)" d="M12 0C12 6.6 6.6 12 0 12c6.6 0 12 5.4 12 12 0-6.6 5.4-12 12-12-6.6 0-12-5.4-12-12z"/><defs><linearGradient id="geminiG1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset="0.35" stop-color="#9B72CB"/><stop offset="0.7" stop-color="#D96570"/><stop offset="1" stop-color="#F28B82"/></linearGradient></defs></svg></span> Gemini API</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#D97757" d="M13.5 2.8l1.4 3.7 3.9-.7-1.7 3.6 3.4 2-3.4 2 1.7 3.6-3.9-.7-1.4 3.7-2.5-3.1-2.5 3.1-1.4-3.7-3.9.7 1.7-3.6-3.4-2 3.4-2-1.7-3.6 3.9.7 1.4-3.7 2.5 3.1z"/></svg></span> Claude 3.5</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#F24E1E" d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 0 0 0 8z"/><path fill="#FF7262" d="M4 12a4 4 0 0 0 4 4h4V8H8a4 4 0 0 0-4 4z"/><path fill="#A259FF" d="M4 4a4 4 0 0 0 4 4h4V0H8a4 4 0 0 0-4 4z"/><path fill="#1ABCFE" d="M12 0h4a4 4 0 0 1 0 8h-4V0z"/><path fill="#0ACF83" d="M20 12a4 4 0 0 1-4 4h-4V8h4a4 4 0 0 1 4 4z"/></svg></span> Figma UI/UX</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#F54E00"/><path fill="#FFD000" d="M12 4a8 8 0 0 0-8 8c0 4.4 3.6 8 8 8s8-3.6 8-8a8 8 0 0 0-8-8zm4.5 9h-2v2h-2v-2h-2v-2h2V9h2v2h2v2z"/></svg></span> PostHog</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#C21325" d="M20.2 11.5c-.3-.2-.7-.4-1.1-.4h-.8l-.8-2.6c-.3-.9-1.1-1.5-2-1.5H8.5c-.9 0-1.7.6-2 1.5L5.7 11.1h-.8c-.4 0-.8.2-1.1.4-.4.3-.6.7-.6 1.2v.3c0 .8.6 1.5 1.4 1.6l.8 5.7c.1.9.9 1.7 1.8 1.7h9.6c.9 0 1.7-.8 1.8-1.7l.8-5.7c.8-.1 1.4-.8 1.4-1.6v-.3c0-.5-.2-.9-.6-1.2zM12 18.5c-2.5 0-4.5-2-4.5-4.5S9.5 9.5 12 9.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5z"/><circle cx="12" cy="14" r="2.5" fill="#fff"/></svg></span> Jest Testing</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#000" stroke="#333" stroke-width="1"/><path fill="url(#turboG1)" d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9zm0 3.5a5.5 5.5 0 0 0-5.5 5.5 5.5 5.5 0 0 0 5.5 5.5 5.5 5.5 0 0 0 5.5-5.5A5.5 5.5 0 0 0 12 6.5z"/><defs><linearGradient id="turboG1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#0070F3"/><stop offset="0.5" stop-color="#F81CE5"/><stop offset="1" stop-color="#EA3323"/></linearGradient></defs></svg></span> Turborepo</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#635BFF"/><path fill="#fff" d="M13.8 9.2c-1.5-.5-2.4-.9-2.4-1.6 0-.5.5-.9 1.3-.9 1.5 0 3.1.6 4.2 1.1l.6-3.8C16.3 3.6 14.5 3 12.1 3 10.4 3 9 3.5 7.9 4.3 6.9 5.2 6.3 6.5 6.3 8c0 2.8 1.8 4 4.6 5 1.8.6 2.4 1.1 2.4 1.8 0 .7-.6 1-1.7 1-1.3 0-3.5-.6-4.9-1.5L6 18.1c1.5.6 3.7 1.3 6 1.3 1.8 0 3.3-.4 4.4-1.2 1.2-.9 1.7-2.2 1.7-3.9 0-2.9-1.7-4.1-4.3-5.1z"/></svg></span> Stripe Pay</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#10B981" d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z"/><path fill="#fff" d="M10 15.5l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4L10 15.5z"/></svg></span> OAuth2 &amp; Security</div>
 
-                        <!-- Duplicate 2 -->
-                        <div class="skill-badge"><span class="skill-icon">🔒</span> OAuth2 & JWT Security</div>
-                        <div class="skill-badge"><span class="skill-icon">⚡</span> Fastify & Express.js</div>
-                        <div class="skill-badge"><span class="skill-icon">🧠</span> Claude & LLM APIs</div>
-                        <div class="skill-badge"><span class="skill-icon">📈</span> PostHog & Telemetry</div>
-                        <div class="skill-badge"><span class="skill-icon">🧪</span> Jest & Cypress E2E</div>
-                        <div class="skill-badge"><span class="skill-icon">📦</span> Turborepo & Monorepos</div>
-                        <div class="skill-badge"><span class="skill-icon">📱</span> React Native & Expo</div>
-                        <div class="skill-badge"><span class="skill-icon">💳</span> Stripe & Payment APIs</div>
+                        <!-- Set 2 (Seamless loop) -->
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#10A37F" d="M22.3 9.8a6 6 0 0 0-.5-4.9 6 6 0 0 0-6.5-2.9 6.1 6.1 0 0 0-10.3 2.2 6 6 0 0 0-4 2.9 6 6 0 0 0 .7 7.1 6 6 0 0 0 .5 4.9 6.1 6.1 0 0 0 6.5 2.9 6 6 0 0 0 4.1 1.9 6.1 6.1 0 0 0 5.8-4.2 6 6 0 0 0 4-2.9 6.1 6.1 0 0 0-.7-7zM13.3 22.4a4.5 4.5 0 0 1-2.9-1l4.8-2.8a.8.8 0 0 0 .4-.7v-6.7l2 1.2v5.5a4.5 4.5 0 0 1-4.3 4.5zM3.6 18.3a4.5 4.5 0 0 1-.5-3l4.8 2.8a.8.8 0 0 0 .8 0l5.8-3.4v2.3L9.7 20a4.5 4.5 0 0 1-6.1-1.7zm-1.3-10.4a4.5 4.5 0 0 1 2.4-2v6.7a.8.8 0 0 0 .4.7l5.8 3.3-2 1.2-4.8-2.8a4.5 4.5 0 0 1-1.8-7.1zm17.4 3.3l-5.8-3.4 2-1.1 4.8 2.8a4.5 4.5 0 0 1 1.8 7.1 4.5 4.5 0 0 1-2.4 2V12a.8.8 0 0 0-.4-.8zm2-4.2a4.5 4.5 0 0 1 .5 3l-4.8-2.8a.8.8 0 0 0-.8 0l-5.8 3.4V7.5L14.3 4a4.5 4.5 0 0 1 6.1 1.7zM9.4 13.7l2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5v-3z"/></svg></span> OpenAI GPT-4o</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="url(#geminiG1)" d="M12 0C12 6.6 6.6 12 0 12c6.6 0 12 5.4 12 12 0-6.6 5.4-12 12-12-6.6 0-12-5.4-12-12z"/></svg></span> Gemini API</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#D97757" d="M13.5 2.8l1.4 3.7 3.9-.7-1.7 3.6 3.4 2-3.4 2 1.7 3.6-3.9-.7-1.4 3.7-2.5-3.1-2.5 3.1-1.4-3.7-3.9.7 1.7-3.6-3.4-2 3.4-2-1.7-3.6 3.9.7 1.4-3.7 2.5 3.1z"/></svg></span> Claude 3.5</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#F24E1E" d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 0 0 0 8z"/><path fill="#FF7262" d="M4 12a4 4 0 0 0 4 4h4V8H8a4 4 0 0 0-4 4z"/><path fill="#A259FF" d="M4 4a4 4 0 0 0 4 4h4V0H8a4 4 0 0 0-4 4z"/><path fill="#1ABCFE" d="M12 0h4a4 4 0 0 1 0 8h-4V0z"/><path fill="#0ACF83" d="M20 12a4 4 0 0 1-4 4h-4V8h4a4 4 0 0 1 4 4z"/></svg></span> Figma UI/UX</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#F54E00"/><path fill="#FFD000" d="M12 4a8 8 0 0 0-8 8c0 4.4 3.6 8 8 8s8-3.6 8-8a8 8 0 0 0-8-8zm4.5 9h-2v2h-2v-2h-2v-2h2V9h2v2h2v2z"/></svg></span> PostHog</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#C21325" d="M20.2 11.5c-.3-.2-.7-.4-1.1-.4h-.8l-.8-2.6c-.3-.9-1.1-1.5-2-1.5H8.5c-.9 0-1.7.6-2 1.5L5.7 11.1h-.8c-.4 0-.8.2-1.1.4-.4.3-.6.7-.6 1.2v.3c0 .8.6 1.5 1.4 1.6l.8 5.7c.1.9.9 1.7 1.8 1.7h9.6c.9 0 1.7-.8 1.8-1.7l.8-5.7c.8-.1 1.4-.8 1.4-1.6v-.3c0-.5-.2-.9-.6-1.2zM12 18.5c-2.5 0-4.5-2-4.5-4.5S9.5 9.5 12 9.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5z"/><circle cx="12" cy="14" r="2.5" fill="#fff"/></svg></span> Jest Testing</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#000" stroke="#333" stroke-width="1"/><path fill="url(#turboG1)" d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9zm0 3.5a5.5 5.5 0 0 0-5.5 5.5 5.5 5.5 0 0 0 5.5 5.5 5.5 5.5 0 0 0 5.5-5.5A5.5 5.5 0 0 0 12 6.5z"/></svg></span> Turborepo</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#635BFF"/><path fill="#fff" d="M13.8 9.2c-1.5-.5-2.4-.9-2.4-1.6 0-.5.5-.9 1.3-.9 1.5 0 3.1.6 4.2 1.1l.6-3.8C16.3 3.6 14.5 3 12.1 3 10.4 3 9 3.5 7.9 4.3 6.9 5.2 6.3 6.5 6.3 8c0 2.8 1.8 4 4.6 5 1.8.6 2.4 1.1 2.4 1.8 0 .7-.6 1-1.7 1-1.3 0-3.5-.6-4.9-1.5L6 18.1c1.5.6 3.7 1.3 6 1.3 1.8 0 3.3-.4 4.4-1.2 1.2-.9 1.7-2.2 1.7-3.9 0-2.9-1.7-4.1-4.3-5.1z"/></svg></span> Stripe Pay</div>
+                        <div class="skill-badge"><span class="skill-icon"><svg viewBox="0 0 24 24"><path fill="#10B981" d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4z"/><path fill="#fff" d="M10 15.5l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4L10 15.5z"/></svg></span> OAuth2 &amp; Security</div>
                     </div>
                 </div>
             </div>
@@ -778,40 +852,40 @@
                     <div class="map-grid-overlay"></div>
 
                     <!-- Executive Minimalist Hotspots Positioned Accurately -->
-                    <div class="map-pin-group active" style="left: 22%; top: 32%;" data-region="usa" data-title="🇺🇸 USA & Canada" data-count="4+ Delivered Projects" data-desc="High-impact SaaS platforms, AI Web Utilities & Next.js Architectures.">
+                    <div class="map-pin-group active" style="left: 22%; top: 32%;" data-region="usa" data-title="<img src='https://flagcdn.com/w40/us.png' class='flag-icon' alt='USA'> USA &amp; Canada" data-count="4+ Delivered Projects" data-desc="High-impact SaaS platforms, AI Web Utilities & Next.js Architectures.">
                         <div class="pin-pulse"></div>
                         <div class="pin-core"></div>
-                        <span class="pin-label">USA (4+)</span>
+                        <span class="pin-label"><img src="https://flagcdn.com/w40/us.png" class="flag-icon-pin" alt="USA"> USA (4+)</span>
                     </div>
 
-                    <div class="map-pin-group" style="left: 49%; top: 25%;" data-region="uk" data-title="🇬🇧 UK & Europe" data-count="3+ Delivered Projects" data-desc="E-Commerce Platforms, Next.js Web Systems, Blistex & Rogue AI.">
+                    <div class="map-pin-group" style="left: 49%; top: 25%;" data-region="uk" data-title="<img src='https://flagcdn.com/w40/gb.png' class='flag-icon' alt='UK'> UK &amp; Europe" data-count="3+ Delivered Projects" data-desc="E-Commerce Platforms, Next.js Web Systems, Blistex & Rogue AI.">
                         <div class="pin-pulse"></div>
                         <div class="pin-core"></div>
-                        <span class="pin-label">UK / EU (3+)</span>
+                        <span class="pin-label"><img src="https://flagcdn.com/w40/gb.png" class="flag-icon-pin" alt="UK"> UK / EU (3+)</span>
                     </div>
 
-                    <div class="map-pin-group" style="left: 60%; top: 43%;" data-region="uae" data-title="🇦🇪 UAE & Middle East" data-count="2+ Delivered Projects" data-desc="Mobile Applications, Admin Dashboards, Enterprise Workflows.">
+                    <div class="map-pin-group" style="left: 60%; top: 43%;" data-region="uae" data-title="<img src='https://flagcdn.com/w40/ae.png' class='flag-icon' alt='UAE'> UAE &amp; Middle East" data-count="2+ Delivered Projects" data-desc="Mobile Applications, Admin Dashboards, Enterprise Workflows.">
                         <div class="pin-pulse"></div>
                         <div class="pin-core"></div>
-                        <span class="pin-label">Dubai (2+)</span>
+                        <span class="pin-label"><img src="https://flagcdn.com/w40/ae.png" class="flag-icon-pin" alt="Dubai"> Dubai (2+)</span>
                     </div>
 
-                    <div class="map-pin-group" style="left: 70%; top: 48%;" data-region="india" data-title="🇮🇳 India (Tech Hubs)" data-count="4+ Delivered Projects" data-desc="Full-Stack Web Systems, Mobile Apps, Mashala Ghar & AI APIs.">
+                    <div class="map-pin-group" style="left: 70%; top: 48%;" data-region="india" data-title="<img src='https://flagcdn.com/w40/in.png' class='flag-icon' alt='India'> India (Tech Hubs)" data-count="4+ Delivered Projects" data-desc="Full-Stack Web Systems, Mobile Apps, Mashala Ghar & AI APIs.">
                         <div class="pin-pulse"></div>
                         <div class="pin-core"></div>
-                        <span class="pin-label">India (4+)</span>
+                        <span class="pin-label"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-pin" alt="India"> India (4+)</span>
                     </div>
 
-                    <div class="map-pin-group" style="left: 84%; top: 72%;" data-region="aus" data-title="🇦🇺 Australia & NZ" data-count="1+ Delivered Projects" data-desc="Custom Glassmorphism Portfolios, Web Systems & Edge Caching.">
+                    <div class="map-pin-group" style="left: 84%; top: 72%;" data-region="aus" data-title="<img src='https://flagcdn.com/w40/au.png' class='flag-icon' alt='Australia'> Australia &amp; NZ" data-count="1+ Delivered Projects" data-desc="Custom Glassmorphism Portfolios, Web Systems & Edge Caching.">
                         <div class="pin-pulse"></div>
                         <div class="pin-core"></div>
-                        <span class="pin-label">Australia (1+)</span>
+                        <span class="pin-label"><img src="https://flagcdn.com/w40/au.png" class="flag-icon-pin" alt="Australia"> Australia (1+)</span>
                     </div>
                 </div>
 
                 <!-- Dynamic Floating Region Info Card (Clean Zero-Overlap) -->
                 <div class="map-region-tooltip" id="map-region-tooltip">
-                    <h4 id="tooltip-title">🇺🇸 USA & Canada</h4>
+                    <h4 id="tooltip-title"><img src="https://flagcdn.com/w40/us.png" class="flag-icon" alt="USA"> USA &amp; Canada</h4>
                     <div class="tooltip-badge" id="tooltip-count">4+ Delivered Projects</div>
                     <p id="tooltip-desc">High-impact SaaS platforms, AI Web Utilities & Next.js Architectures.</p>
                 </div>
@@ -819,58 +893,236 @@
                 <!-- Global Region Selector Buttons -->
                 <div class="map-regions-grid">
                     <button class="region-chip active" data-region="usa">
-                        <strong>🇺🇸 USA & Canada</strong>
+                        <strong><img src="https://flagcdn.com/w40/us.png" class="flag-icon" alt="USA"> USA &amp; Canada</strong>
                         <span>4+ Projects</span>
                     </button>
                     <button class="region-chip" data-region="india">
-                        <strong>🇮🇳 India</strong>
+                        <strong><img src="https://flagcdn.com/w40/in.png" class="flag-icon" alt="India"> India</strong>
                         <span>4+ Projects</span>
                     </button>
                     <button class="region-chip" data-region="uk">
-                        <strong>🇬🇧 UK & Europe</strong>
+                        <strong><img src="https://flagcdn.com/w40/gb.png" class="flag-icon" alt="UK"> UK &amp; Europe</strong>
                         <span>3+ Projects</span>
                     </button>
                     <button class="region-chip" data-region="uae">
-                        <strong>🇦🇪 UAE & Dubai</strong>
+                        <strong><img src="https://flagcdn.com/w40/ae.png" class="flag-icon" alt="UAE"> UAE &amp; Dubai</strong>
                         <span>2+ Projects</span>
                     </button>
                     <button class="region-chip" data-region="aus">
-                        <strong>🇦🇺 Australia</strong>
+                        <strong><img src="https://flagcdn.com/w40/au.png" class="flag-icon" alt="Australia"> Australia</strong>
                         <span>1+ Projects</span>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Performance Comparison Slider Section -->
-        <section class="performance-section">
+        <!-- Performance Comparison Slider & Web Vitals Section -->
+        <section class="performance-section" id="performance">
             <div class="section-heading text-center">
-                <div class="badge"><span class="dot"></span> Speed & Optimization</div>
+                <div class="badge"><span class="dot"></span> 100/100 Core Web Vitals</div>
                 <h2>Engineered For Sub-Second Page Load</h2>
+                <p class="section-subtext" style="max-width:680px; margin: 0.8rem auto 0; color: #a1a1aa; font-size: 0.95rem; line-height: 1.6;">
+                    Every millisecond directly impacts conversion. By combining Next.js 15 Edge SSR, Brotli asset streaming, automated WebP/AVIF pipeline, and zero-layout-shift architecture, your apps load instantly anywhere on the planet.
+                </p>
             </div>
+
+            <!-- Top Lighthouse Gauges Banner -->
+            <div class="lighthouse-audit-bar spotlight-card">
+                <div class="audit-meta">
+                    <div class="audit-badge"><span class="pulse-dot-green"></span> Google Lighthouse 12.0 Audit</div>
+                    <div class="audit-target-url">Target: <code>production-edge-build.app</code></div>
+                </div>
+                <div class="lighthouse-gauges-row">
+                    <!-- Gauge 1: Performance -->
+                    <div class="gauge-card">
+                        <div class="gauge-svg-wrapper">
+                            <svg viewBox="0 0 100 100" class="circular-gauge">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-fill score-100" cx="50" cy="50" r="42"></circle>
+                            </svg>
+                            <span class="gauge-number">100</span>
+                        </div>
+                        <span class="gauge-label">Performance</span>
+                    </div>
+
+                    <!-- Gauge 2: Accessibility -->
+                    <div class="gauge-card">
+                        <div class="gauge-svg-wrapper">
+                            <svg viewBox="0 0 100 100" class="circular-gauge">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-fill score-100" cx="50" cy="50" r="42"></circle>
+                            </svg>
+                            <span class="gauge-number">100</span>
+                        </div>
+                        <span class="gauge-label">Accessibility</span>
+                    </div>
+
+                    <!-- Gauge 3: Best Practices -->
+                    <div class="gauge-card">
+                        <div class="gauge-svg-wrapper">
+                            <svg viewBox="0 0 100 100" class="circular-gauge">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-fill score-100" cx="50" cy="50" r="42"></circle>
+                            </svg>
+                            <span class="gauge-number">100</span>
+                        </div>
+                        <span class="gauge-label">Best Practices</span>
+                    </div>
+
+                    <!-- Gauge 4: SEO -->
+                    <div class="gauge-card">
+                        <div class="gauge-svg-wrapper">
+                            <svg viewBox="0 0 100 100" class="circular-gauge">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-fill score-100" cx="50" cy="50" r="42"></circle>
+                            </svg>
+                            <span class="gauge-number">100</span>
+                        </div>
+                        <span class="gauge-label">SEO</span>
+                    </div>
+                </div>
+
+                <!-- Real-time Diagnostic Trigger -->
+                <div class="speed-diag-btn-wrap">
+                    <button class="btn btn-outline btn-sm speed-test-btn" id="run-speed-test-btn">
+                        <span class="speed-btn-icon">⚡</span>
+                        <span id="speed-btn-label">Run Live Diagnostic Test</span>
+                    </button>
+                    <span class="diag-status-badge" id="speed-diag-result">Status: 100% Passing</span>
+                </div>
+            </div>
+
+            <!-- Core Web Vitals Key Metrics 5-Grid -->
+            <div class="web-vitals-grid">
+                <div class="vitals-card spotlight-card">
+                    <div class="vitals-top">
+                        <span class="vitals-name">TTFB</span>
+                        <span class="vitals-grade good">Fast</span>
+                    </div>
+                    <div class="vitals-val">42<span class="unit">ms</span></div>
+                    <div class="vitals-desc">Time to First Byte</div>
+                    <div class="vitals-bar"><div class="vitals-bar-fill" style="width: 95%;"></div></div>
+                </div>
+
+                <div class="vitals-card spotlight-card">
+                    <div class="vitals-top">
+                        <span class="vitals-name">FCP</span>
+                        <span class="vitals-grade good">Fast</span>
+                    </div>
+                    <div class="vitals-val">0.18<span class="unit">s</span></div>
+                    <div class="vitals-desc">First Contentful Paint</div>
+                    <div class="vitals-bar"><div class="vitals-bar-fill" style="width: 98%;"></div></div>
+                </div>
+
+                <div class="vitals-card spotlight-card">
+                    <div class="vitals-top">
+                        <span class="vitals-name">LCP</span>
+                        <span class="vitals-grade good">Fast</span>
+                    </div>
+                    <div class="vitals-val">0.45<span class="unit">s</span></div>
+                    <div class="vitals-desc">Largest Contentful Paint</div>
+                    <div class="vitals-bar"><div class="vitals-bar-fill" style="width: 92%;"></div></div>
+                </div>
+
+                <div class="vitals-card spotlight-card">
+                    <div class="vitals-top">
+                        <span class="vitals-name">CLS</span>
+                        <span class="vitals-grade good">Zero Shift</span>
+                    </div>
+                    <div class="vitals-val">0.000<span class="unit"></span></div>
+                    <div class="vitals-desc">Cumulative Layout Shift</div>
+                    <div class="vitals-bar"><div class="vitals-bar-fill" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="vitals-card spotlight-card">
+                    <div class="vitals-top">
+                        <span class="vitals-name">INP</span>
+                        <span class="vitals-grade good">60 FPS</span>
+                    </div>
+                    <div class="vitals-val">12<span class="unit">ms</span></div>
+                    <div class="vitals-desc">Interaction to Next Paint</div>
+                    <div class="vitals-bar"><div class="vitals-bar-fill" style="width: 96%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Interactive Speed Comparison Slider with Network Waterfalls -->
             <div class="speed-comparison-card spotlight-card">
+                <div class="comparison-hint-banner">
+                    <span>💡 Drag or swipe the center divider to compare Traditional Stack vs Ganesh Edge Architecture</span>
+                </div>
                 <div class="comparison-slider-container" id="comparison-container">
+                    <!-- Left: Slow Legacy Stack -->
                     <div class="comparison-side side-slow">
                         <div class="side-content-inner">
-                            <div class="speed-badge slow">Standard Slow Web App • 3.8s</div>
+                            <div class="speed-badge slow">⚠️ Legacy Stack • 3.8s Load Time</div>
                             <div class="speed-details">
-                                <h3>Unoptimized Assets & Heavy Bundles</h3>
-                                <p>❌ High LCP & CLS Layout Shifts<br>❌ 12MB Uncompressed JavaScript<br>❌ Slow Server Response Times</p>
+                                <h3>Bloated Bundles &amp; Cold Starts</h3>
+                                <ul class="perf-checklist slow-list">
+                                    <li>❌ <strong>14.2 MB</strong> Uncompressed JS &amp; Unused CSS</li>
+                                    <li>❌ <strong>1.45s</strong> High LCP Delay &amp; CLS Layout Shifts</li>
+                                    <li>❌ Monolithic Origin Bottleneck &amp; No CDN Edge</li>
+                                    <li>❌ High Bounce Rate (~43% drop-off)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Right: Ganesh Edge Engine -->
                     <div class="comparison-side side-fast" id="comparison-fast-layer">
                         <div class="side-content-inner">
-                            <div class="speed-badge fast">Ganesh Web Engine • 0.2s ⚡</div>
+                            <div class="speed-badge fast">⚡ Ganesh Edge Engine • 0.2s Instant</div>
                             <div class="speed-details">
                                 <h3>Sub-Second Edge Execution</h3>
-                                <p>✅ 100/100 Google Lighthouse Score<br>✅ Vercel Edge Serverless Caching<br>✅ Instant 60 FPS Smooth UX</p>
+                                <ul class="perf-checklist fast-list">
+                                    <li>✅ <strong>92 KB</strong> Tree-shaken Brotli Payload</li>
+                                    <li>✅ <strong>0.18s</strong> Instant First Paint &amp; 0.000 CLS</li>
+                                    <li>✅ Global Edge CDN with Serverless Caching</li>
+                                    <li>✅ 3.2x Higher Conversion &amp; Zero Bounce</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Draggable Handle with Floating Badge -->
                     <div class="comparison-handle" id="slider-handle">
+                        <div class="handle-line"></div>
                         <span class="handle-icon">◄ ►</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Optimization Pillars 4-Card Bento -->
+            <div class="optimization-pillars-grid">
+                <div class="pillar-card spotlight-card">
+                    <div class="pillar-icon" style="color: #f15d31; background: rgba(241, 93, 49, 0.12); border-color: rgba(241, 93, 49, 0.3);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h4>Edge SSR &amp; Serverless Caching</h4>
+                    <p>Sub-50ms TTFB across 300+ global edge locations using Vercel Edge Runtime &amp; Cloudflare Workers.</p>
+                </div>
+
+                <div class="pillar-card spotlight-card">
+                    <div class="pillar-icon" style="color: #38bdf8; background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.3);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <h4>Modern Media Pipeline (WebP/AVIF)</h4>
+                    <p>Automated Next/Image transformation delivering 80% smaller image payloads with zero layout shift.</p>
+                </div>
+
+                <div class="pillar-card spotlight-card">
+                    <div class="pillar-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.3);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h4>Aggressive Tree-Shaking &amp; Brotli</h4>
+                    <p>Granular code-splitting guarantees users only download JavaScript for components currently visible on screen.</p>
+                </div>
+
+                <div class="pillar-card spotlight-card">
+                    <div class="pillar-icon" style="color: #a855f7; background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.3);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4>Service Worker PWA &amp; Prefetching</h4>
+                    <p>Instantaneous page transitions via link pre-rendering and background offline asset synchronization.</p>
                 </div>
             </div>
         </section>
@@ -1236,7 +1488,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f15d31, #f59e0b); width:40px; height:40px; border-radius:50%;">SJ</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sarah Jenkins <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Marketing Director, TechFlow (USA 🇺🇸)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Marketing Director, TechFlow (USA <img src="https://flagcdn.com/w40/us.png" class="flag-icon-inline" alt="USA">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1249,7 +1501,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #01875f, #10b981); width:40px; height:40px; border-radius:50%;">MC</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Michael Chen <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Founder, Elevate Startup (Singapore 🇸🇬)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Founder, Elevate Startup (Singapore <img src="https://flagcdn.com/w40/sg.png" class="flag-icon-inline" alt="Singapore">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1262,7 +1514,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); width:40px; height:40px; border-radius:50%;">DR</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">David Ross <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">CTO, Toolify AI Systems (UK 🇬🇧)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">CTO, Toolify AI Systems (UK <img src="https://flagcdn.com/w40/gb.png" class="flag-icon-inline" alt="UK">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1275,7 +1527,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0ea5e9, #6366f1); width:40px; height:40px; border-radius:50%;">EW</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Emily Watson <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, NovaSphere AI (Canada 🇨🇦)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Head of Product, NovaSphere AI (Canada <img src="https://flagcdn.com/w40/ca.png" class="flag-icon-inline" alt="Canada">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1288,7 +1540,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f43f5e, #fb923c); width:40px; height:40px; border-radius:50%;">AV</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Alex Vance <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Managing Partner, Vance Digital (Australia 🇦🇺)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Managing Partner, Vance Digital (Australia <img src="https://flagcdn.com/w40/au.png" class="flag-icon-inline" alt="Australia">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1301,7 +1553,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f15d31, #f59e0b); width:40px; height:40px; border-radius:50%;">SJ</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sarah Jenkins <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Marketing Director, TechFlow (USA 🇺🇸)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Marketing Director, TechFlow (USA <img src="https://flagcdn.com/w40/us.png" class="flag-icon-inline" alt="USA">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1313,7 +1565,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #01875f, #10b981); width:40px; height:40px; border-radius:50%;">MC</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Michael Chen <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Founder, Elevate Startup (Singapore 🇸🇬)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Founder, Elevate Startup (Singapore <img src="https://flagcdn.com/w40/sg.png" class="flag-icon-inline" alt="Singapore">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1325,7 +1577,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); width:40px; height:40px; border-radius:50%;">DR</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">David Ross <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">CTO, Toolify AI Systems (UK 🇬🇧)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">CTO, Toolify AI Systems (UK <img src="https://flagcdn.com/w40/gb.png" class="flag-icon-inline" alt="UK">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1337,7 +1589,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0ea5e9, #6366f1); width:40px; height:40px; border-radius:50%;">EW</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Emily Watson <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, NovaSphere AI (Canada 🇨🇦)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Head of Product, NovaSphere AI (Canada <img src="https://flagcdn.com/w40/ca.png" class="flag-icon-inline" alt="Canada">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1349,7 +1601,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f43f5e, #fb923c); width:40px; height:40px; border-radius:50%;">AV</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Alex Vance <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Managing Partner, Vance Digital (Australia 🇦🇺)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Managing Partner, Vance Digital (Australia <img src="https://flagcdn.com/w40/au.png" class="flag-icon-inline" alt="Australia">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1367,7 +1619,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #10b981, #3b82f6); width:40px; height:40px; border-radius:50%;">SM</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sophia Martinez <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">VP of Engineering, CloudNexus Inc. (Germany 🇩🇪)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">VP of Engineering, CloudNexus Inc. (Germany <img src="https://flagcdn.com/w40/de.png" class="flag-icon-inline" alt="Germany">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1380,7 +1632,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f59e0b, #d97706); width:40px; height:40px; border-radius:50%;">VM</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Vikram Malhotra <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Co-Founder &amp; CEO, FinPay Global (India 🇮🇳)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Co-Founder &amp; CEO, FinPay Global (India <img src="https://flagcdn.com/w40/in.png" class="flag-icon-inline" alt="India">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1393,7 +1645,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #6366f1, #4f46e5); width:40px; height:40px; border-radius:50%;">LO</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Liam O'Connor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Lead Designer, Apex Studio (Ireland 🇮🇪)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Lead Designer, Apex Studio (Ireland <img src="https://flagcdn.com/w40/ie.png" class="flag-icon-inline" alt="Ireland">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1406,7 +1658,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #ec4899, #db2777); width:40px; height:40px; border-radius:50%;">CD</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Chloe Dubois <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">E-Commerce Director, Maison Luxe (France 🇫🇷)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">E-Commerce Director, Maison Luxe (France <img src="https://flagcdn.com/w40/fr.png" class="flag-icon-inline" alt="France">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1419,7 +1671,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0d9488, #0f766e); width:40px; height:40px; border-radius:50%;">TM</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Tariq Al-Mansoor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, Oasis Retail Tech (UAE 🇦🇪)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Head of Product, Oasis Retail Tech (UAE <img src="https://flagcdn.com/w40/ae.png" class="flag-icon-inline" alt="UAE">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1432,7 +1684,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #10b981, #3b82f6); width:40px; height:40px; border-radius:50%;">SM</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Sophia Martinez <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">VP of Engineering, CloudNexus Inc. (Germany 🇩🇪)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">VP of Engineering, CloudNexus Inc. (Germany <img src="https://flagcdn.com/w40/de.png" class="flag-icon-inline" alt="Germany">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1444,7 +1696,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #f59e0b, #d97706); width:40px; height:40px; border-radius:50%;">VM</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Vikram Malhotra <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Co-Founder &amp; CEO, FinPay Global (India 🇮🇳)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Co-Founder &amp; CEO, FinPay Global (India <img src="https://flagcdn.com/w40/in.png" class="flag-icon-inline" alt="India">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1456,7 +1708,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #6366f1, #4f46e5); width:40px; height:40px; border-radius:50%;">LO</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Liam O'Connor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Lead Designer, Apex Studio (Ireland 🇮🇪)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Lead Designer, Apex Studio (Ireland <img src="https://flagcdn.com/w40/ie.png" class="flag-icon-inline" alt="Ireland">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1468,7 +1720,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #ec4899, #db2777); width:40px; height:40px; border-radius:50%;">CD</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Chloe Dubois <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">E-Commerce Director, Maison Luxe (France 🇫🇷)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">E-Commerce Director, Maison Luxe (France <img src="https://flagcdn.com/w40/fr.png" class="flag-icon-inline" alt="France">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1480,7 +1732,7 @@
                                 <div class="client-avatar avatar-img" style="background: linear-gradient(135deg, #0d9488, #0f766e); width:40px; height:40px; border-radius:50%;">TM</div>
                                 <div class="client-details">
                                     <h4 style="font-size:0.95rem; font-weight:600; color:#fff;">Tariq Al-Mansoor <span class="verified-tick" style="color:#22c55e; font-size:0.8rem;">✓ Verified</span></h4>
-                                    <span style="font-size:0.8rem; color:#94a3b8;">Head of Product, Oasis Retail Tech (UAE 🇦🇪)</span>
+                                    <span style="font-size:0.8rem; color:#94a3b8; display:inline-flex; align-items:center; gap:4px;">Head of Product, Oasis Retail Tech (UAE <img src="https://flagcdn.com/w40/ae.png" class="flag-icon-inline" alt="UAE">)</span>
                                 </div>
                             </div>
                         </div>
@@ -1718,7 +1970,8 @@
                 <div style="display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap;">
                     <button type="submit" class="btn btn-primary modal-submit-btn" style="flex: 1; min-width: 180px;">Send Proposal 🚀</button>
                     <button type="button" id="modal-whatsapp-direct-btn" class="btn whatsapp-btn" style="flex: 1; min-width: 180px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 2rem; font-size: 0.92rem; text-decoration: none; cursor: pointer; border: none; padding: 0.8rem 1.2rem;">
-                        <span>💬 Chat on WhatsApp ↗</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42 1.55 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32C4.24 15 3.8 13.47 3.8 11.91c.01-4.54 3.7-8.24 8.25-8.24zm-1.52 4.66c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1.02 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.07-.1-.23-.16-.48-.29-.25-.12-1.47-.72-1.69-.8-.23-.08-.37-.12-.56.13-.11.12-.41.51-.63.76-.12.12-.27.13-.46.04-.25-.11-1.11-.41-2.13-1.32-.79-.7-1.31-1.56-1.44-1.79-.12-.25-.01-.39.1-.5.1-.1.25-.27.36-.39.11-.11.15-.2.23-.37.08-.17.04-.31-.02-.43-.06-.12-.57-1.34-.78-1.85-.2-.49-.4-.43-.56-.43-.12 0-.28-.01-.47-.01z"/></svg>
+                        <span>Chat on WhatsApp ↗</span>
                     </button>
                 </div>
             </form>
