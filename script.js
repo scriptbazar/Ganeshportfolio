@@ -1904,12 +1904,12 @@ window.addEventListener('scroll', () => {
     lastScrollY = currentScrollY;
 }, { passive: true });
 
-// Register PWA Service Worker for 0ms Offline Cache
-if ('serviceWorker' in navigator) {
+// Register PWA Service Worker for 0ms Offline Cache (Top Window only)
+if ('serviceWorker' in navigator && window.self === window.top) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
             .then(reg => console.log('GANESHDEV ServiceWorker registered:', reg.scope))
-            .catch(err => console.log('ServiceWorker registration failed:', err));
+            .catch(err => console.log('ServiceWorker registration skipped:', err));
     });
 }
 
