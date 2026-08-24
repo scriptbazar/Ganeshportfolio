@@ -2354,6 +2354,12 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     .quick-btn { width: 100% !important; justify-content: center !important; }
     .contact-form { padding: 1.2rem 1rem !important; border-radius: 1.2rem !important; box-sizing: border-box !important; width: 100% !important; }
 
+    .github-stats-section { padding: 1.8rem 0 0.8rem !important; width: 100% !important; }
+    .global-map-section { padding: 0.8rem 0 2rem !important; width: 100% !important; }
+    .github-card-wrapper { margin-top: 1rem !important; padding: 1.2rem 1rem !important; width: 100% !important; box-sizing: border-box !important; }
+    .map-card-wrapper { margin-top: 1rem !important; padding: 1.2rem 1rem !important; width: 100% !important; box-sizing: border-box !important; }
+    .contribution-matrix { margin-top: 1rem !important; padding: 1rem 0.8rem !important; }
+
     .footer-content { flex-direction: column !important; gap: 1rem !important; text-align: center !important; }
 
     .modal-card { padding: 1.4rem !important; width: 94% !important; max-height: 92vh !important; border-radius: 1.4rem !important; }
@@ -2868,7 +2874,7 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
 
 /* 3. GitHub Live Stats Section */
 .github-stats-section {
-    padding: 5rem 0;
+    padding: 3rem 0 1rem;
 }
 
 .github-card-wrapper {
@@ -4252,7 +4258,7 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
    INTERACTIVE GLOBAL CLIENT MAP (200+ DELIVERIES)
 ====================================================== */
 .global-map-section {
-    padding: 6rem 0;
+    padding: 1.5rem 0 3.5rem;
 }
 
 .map-card-wrapper {
