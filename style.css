@@ -1954,19 +1954,44 @@ canvas {
 .mobile-nav-drawer.active {
     right: 0;
 }
+.mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.drawer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+}
 .close-drawer-btn {
-    align-self: flex-end;
     background: transparent;
     border: none;
-    color: #aaa;
-    font-size: 2rem;
+    color: #a1a1aa;
+    font-size: 1.8rem;
     cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.close-drawer-btn:hover {
+    color: #f15d31;
+    transform: rotate(90deg);
 }
 .mobile-drawer-links {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 1.35rem;
+    margin-top: 0.5rem;
 }
 .mobile-link {
     color: #e4e4e7;

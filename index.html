@@ -39,7 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="preload" as="image" href="frames/frame_0000.jpg">
-    <link rel="stylesheet" href="style.css?v=5.5">
+    <link rel="stylesheet" href="style.css?v=5.6">
     <style>
         .status-pill-green {
             display: inline-flex !important;
@@ -155,7 +155,10 @@
     
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-        <button class="close-drawer-btn" id="close-drawer-btn">&times;</button>
+        <div class="mobile-drawer-header">
+            <span class="drawer-logo">GANESHDEV</span>
+            <button class="close-drawer-btn" id="close-drawer-btn" aria-label="Close Menu">&times;</button>
+        </div>
         <div class="mobile-drawer-links">
             <a href="#about" class="mobile-link"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> About</a>
             <a href="#services" class="mobile-link"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Services</a>
