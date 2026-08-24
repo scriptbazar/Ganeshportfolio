@@ -83,26 +83,54 @@ function updateProgressBar() {
         if (progress >= 100) {
             setTimeout(() => {
                 progressBar.style.opacity = '0';
-            }, 500);
+            }, 300);
         }
     }
 }
 
+// Ensure progress bar never lingers on screen (auto fade after 1.5s)
+setTimeout(() => {
+    if (progressBar) progressBar.style.opacity = '0';
+}, 1500);
+
+function drawFrame(img) {
+    if (!context || !img || !img.complete || img.naturalWidth === 0) return;
+    try {
+        context.drawImage(img, 0, 0, 1920, 1080);
+    } catch (e) {}
+}
+
 // Preload the first image and draw it immediately
 const firstImage = new Image();
-firstImage.src = currentFrame(0);
 firstImage.onload = () => {
-    if (context) context.drawImage(firstImage, 0, 0);
     images[0] = firstImage;
+    drawFrame(firstImage);
     updateProgressBar();
     preloadImages();
 };
+firstImage.onerror = () => {
+    preloadImages();
+};
+firstImage.src = currentFrame(0);
+
+// If already in browser cache
+if (firstImage.complete && firstImage.naturalWidth > 0) {
+    images[0] = firstImage;
+    drawFrame(firstImage);
+    preloadImages();
+}
 
 function preloadImages() {
   for (let i = 1; i < frameCount; i++) {
     const img = new Image();
+    img.onload = () => {
+        updateProgressBar();
+        if (i === 1 && (!images[0] || images[0].naturalWidth === 0)) {
+            drawFrame(img);
+        }
+    };
+    img.onerror = () => updateProgressBar();
     img.src = currentFrame(i);
-    img.onload = () => updateProgressBar();
     images[i] = img;
   }
 }
@@ -127,15 +155,38 @@ window.addEventListener('scroll', () => {
 function updateImage(scrollTop) {
   if (document.hidden || !context) return;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollFraction = Math.max(0, Math.min(1, scrollTop / maxScroll));
+  const scrollFraction = Math.max(0, Math.min(1, maxScroll > 0 ? scrollTop / maxScroll : 0));
   const frameIndex = Math.min(
     frameCount - 1,
     Math.floor(scrollFraction * frameCount)
   );
   
-  if (images[frameIndex] && images[frameIndex].complete) {
-      context.drawImage(images[frameIndex], 0, 0);
+  let targetImg = images[frameIndex];
+  // Fallback to nearest loaded frame if current index is still downloading
+  if (!targetImg || !targetImg.complete || targetImg.naturalWidth === 0) {
+      for (let offset = 1; offset < 30; offset++) {
+          if (frameIndex - offset >= 0 && images[frameIndex - offset] && images[frameIndex - offset].complete && images[frameIndex - offset].naturalWidth > 0) {
+              targetImg = images[frameIndex - offset];
+              break;
+          }
+          if (frameIndex + offset < frameCount && images[frameIndex + offset] && images[frameIndex + offset].complete && images[frameIndex + offset].naturalWidth > 0) {
+              targetImg = images[frameIndex + offset];
+              break;
+          }
+      }
+      if (!targetImg || !targetImg.complete || targetImg.naturalWidth === 0) {
+          targetImg = images[0] || firstImage;
+      }
   }
+
+  drawFrame(targetImg);
+}
+
+// Initial draw trigger
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => updateImage(window.scrollY || 0));
+} else {
+    updateImage(window.scrollY || 0);
 }
 
 /* ===================================================
@@ -1385,12 +1436,12 @@ if (sliderContainer && fastLayer && sliderHandle) {
         isDragging = true;
         cachedSliderRect = sliderContainer.getBoundingClientRect();
         if (e.touches && e.touches[0]) setSliderPos(e.touches[0].clientX);
-    });
+    }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         setSliderPos(e.touches[0].clientX);
-    });
+    }, { passive: true });
 
     window.addEventListener('touchend', () => {
         isDragging = false;
