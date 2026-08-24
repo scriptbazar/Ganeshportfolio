@@ -367,8 +367,8 @@ h1, h2, h3 { font-weight: normal; }
 .logo {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 1.4rem;
-    letter-spacing: 0.5px;
+    font-size: 1.65rem;
+    letter-spacing: 0.8px;
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -381,40 +381,40 @@ h1, h2, h3 { font-weight: normal; }
 }
 .nav-pill {
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 2.5rem;
-    padding: 0.25rem 0.3rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 3rem;
+    padding: 0.35rem 0.45rem;
     display: flex;
-    gap: 0.1rem;
+    gap: 0.25rem;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25);
     box-sizing: border-box;
     flex-shrink: 0;
 }
 .nav-pill a {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.88);
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.92rem;
     font-weight: 500;
-    padding: 0.35rem 0.68rem;
-    border-radius: 1.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
     transition: all 0.25s ease;
     background: transparent;
     display: inline-flex;
     align-items: center;
-    gap: 0.32rem;
+    gap: 0.45rem;
     white-space: nowrap;
     flex-shrink: 0;
 }
 .nav-pill a svg {
-    width: 13.5px;
-    height: 13.5px;
-    min-width: 13.5px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
     stroke: currentColor;
     fill: none;
-    stroke-width: 2;
+    stroke-width: 2.2;
     stroke-linecap: round;
     stroke-linejoin: round;
     transition: transform 0.2s ease;
@@ -440,16 +440,18 @@ h1, h2, h3 { font-weight: normal; }
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.75rem;
     flex-shrink: 0;
     white-space: nowrap;
 }
 
 .nav-actions .btn {
     white-space: nowrap !important;
-    padding: 0.42rem 0.95rem !important;
-    font-size: 0.82rem !important;
+    padding: 0.52rem 1.2rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
     flex-shrink: 0;
+    border-radius: 2rem !important;
 }
 
 .navbar .btn-outline {
@@ -2012,8 +2014,8 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
 /* Comprehensive Responsive Breakpoints */
 @media (max-width: 1200px) {
     .content { padding: 1.5rem 2.5rem; }
-    .nav-pill a { padding: 0.32rem 0.6rem; font-size: 0.78rem; gap: 0.28rem; }
-    .nav-pill a svg { width: 13px; height: 13px; min-width: 13px; }
+    .nav-pill a { padding: 0.42rem 0.8rem; font-size: 0.86rem; gap: 0.35rem; }
+    .nav-pill a svg { width: 15px; height: 15px; min-width: 15px; }
 }
 
 @media (max-width: 1080px) {
