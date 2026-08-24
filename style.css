@@ -2417,28 +2417,14 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
 }
 
 @media (max-width: 768px) {
-    .status-indicator-badge { display: none; }
-    .cmd-k-trigger-btn { display: none; }
-    .bottom-dock-bar-container {
-        bottom: 1.2rem !important;
-        gap: 0.5rem !important;
-        width: max-content !important;
-        max-width: 96vw !important;
-    }
-    .floating-dock-wrapper {
-        padding: 0.4rem 0.6rem !important;
-        gap: 0.4rem !important;
-        border-radius: 2.5rem !important;
-    }
-    .dock-item {
-        width: 38px !important;
-        height: 38px !important;
-    }
+    .status-indicator-badge { display: none !important; }
+    .cmd-k-trigger-btn { display: none !important; }
+    .bottom-dock-bar-container { display: none !important; }
     .scroll-to-top-btn {
-        bottom: 1.2rem !important;
-        right: 1rem !important;
-        width: 40px !important;
-        height: 40px !important;
+        bottom: 1.5rem !important;
+        right: 1.2rem !important;
+        width: 42px !important;
+        height: 42px !important;
     }
 }
 
@@ -4625,16 +4611,11 @@ body.drawer-open, body.modal-active {
 
 /* 4. Mobile Floating Dock Ergonomics */
 @media (max-width: 768px) {
-    .floating-dock-wrapper {
-        padding: 0.4rem 0.6rem;
-        gap: 0.4rem;
-    }
-    .dock-item {
-        width: 38px;
-        height: 38px;
+    .bottom-dock-bar-container {
+        display: none !important;
     }
     .theme-picker {
-        display: none; /* Keep mobile navbar clean */
+        display: none !important; /* Keep mobile navbar clean */
     }
 }
 
