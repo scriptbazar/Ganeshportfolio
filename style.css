@@ -2566,61 +2566,91 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
     bottom: auto !important;
     left: auto !important;
     transform: none !important;
-    background: rgba(18, 19, 28, 0.75);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(13, 14, 22, 0.85);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 3rem;
-    padding: 0.5rem 0.8rem;
+    padding: 0.38rem 0.55rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.42rem;
     pointer-events: auto !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(241, 93, 49, 0.15);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 0 25px rgba(241, 93, 49, 0.12);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
 }
 
 .floating-dock-wrapper:hover {
-    transform: translateY(-2px) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 30px rgba(241, 93, 49, 0.2);
 }
 
 .dock-item {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #e4e4e7;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.dock-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease;
+}
+
+.dock-cmd-badge {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #e4e4e7;
 }
 
 .dock-item:hover {
-    background: #f15d31;
-    border-color: #f15d31;
-    transform: scale(1.15) translateY(-4px);
-    box-shadow: 0 8px 20px rgba(241, 93, 49, 0.5);
+    background: linear-gradient(135deg, #f15d31 0%, #d44318 100%);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: scale(1.22) translateY(-6px);
+    box-shadow: 0 10px 25px rgba(241, 93, 49, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+.dock-item:hover .dock-cmd-badge {
+    color: #ffffff;
+}
+
+.dock-item:hover .dock-icon {
+    transform: scale(1.08);
 }
 
 .dock-tooltip {
     position: absolute;
     top: -38px;
-    background: #18181b;
-    color: #fff;
-    padding: 0.25rem 0.6rem;
-    border-radius: 6px;
+    background: #0f1016;
+    color: #ffffff;
+    padding: 0.25rem 0.65rem;
+    border-radius: 2rem;
     font-size: 0.72rem;
+    font-weight: 500;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
     transform: translateY(6px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
 .dock-item:hover .dock-tooltip {
