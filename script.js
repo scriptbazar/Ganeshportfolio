@@ -888,7 +888,7 @@ function downloadGaneshResume() {
         <div class="subtitle">Senior Full-Stack Engineer &amp; Mobile App Architect</div>
         <div class="contacts">
             <span>✉️ <a href="mailto:scriptbazar76@gmail.com">scriptbazar76@gmail.com</a></span>
-            <span>💬 <a href="https://wa.me/91706008603">+91 706008603</a></span>
+            <span>💬 <a href="https://wa.me/91706008603">Chat on WhatsApp</a></span>
             <span>🌐 <a href="https://github.com/scriptbazar">github.com/scriptbazar</a></span>
         </div>
     </div>
@@ -1268,7 +1268,7 @@ const tabFiles = {
         <p class="t-indent"><span class="t-blue">"specialties"</span>: [<span class="t-green">"Ultra-Fast Next.js 15 Web Apps"</span>, <span class="t-green">"Flutter/React Native Apps"</span>, <span class="t-green">"LLM AI Workflows"</span>]</p>
         <p>}</p>`,
     'contact.config': `<p><span class="t-purple">export const</span> <span class="t-yellow">contactConfig</span> = {</p>
-        <p class="t-indent"><span class="t-blue">whatsapp</span>: <span class="t-green">'+91 706008603'</span>,</p>
+        <p class="t-indent"><span class="t-blue">whatsapp</span>: <span class="t-green">'Instant Chat Active'</span>,</p>
         <p class="t-indent"><span class="t-blue">email</span>: <span class="t-green">'scriptbazar76@gmail.com'</span>,</p>
         <p class="t-indent"><span class="t-blue">github</span>: <span class="t-green">'https://github.com/scriptbazar/'</span>,</p>
         <p class="t-indent"><span class="t-blue">responseGuarantee</span>: <span class="t-green">'Within 24 Hours'</span></p>
