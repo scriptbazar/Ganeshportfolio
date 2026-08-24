@@ -1271,26 +1271,26 @@ if (matrixCells) {
     }
 }
 
-// Asynchronous Live GitHub REST API Data Sync for @scriptbazar
+// Asynchronous Live GitHub REST API Data Sync for @scriptbazar with smart 2-hour caching
 async function fetchLiveGitHubStats() {
-    try {
-        const userRes = await fetch('https://api.github.com/users/scriptbazar');
-        if (userRes.ok) {
-            const userData = await userRes.json();
+    const CACHE_KEY = 'gh_stats_scriptbazar_cache';
+    const CACHE_TIME_KEY = 'gh_stats_scriptbazar_time';
+    const TWO_HOURS = 2 * 60 * 60 * 1000;
+
+    const renderData = (userData, reposData) => {
+        if (userData) {
             const reposEl = document.getElementById('gh-stat-repos');
             const bioEl = document.getElementById('gh-user-bio');
             const sinceEl = document.getElementById('gh-stat-since');
             
             if (reposEl) reposEl.innerText = '7';
-            if (bioEl && userData.name) bioEl.innerText = `${userData.name} • Active GitHub Contributor since ${new Date(userData.created_at).getFullYear()}`;
+            if (bioEl && userData.name) bioEl.innerText = `${userData.name} • Active GitHub Contributor since ${new Date(userData.created_at || '2023-01-01').getFullYear()}`;
             if (sinceEl && userData.created_at) sinceEl.innerText = new Date(userData.created_at).getFullYear();
         }
 
-        const reposRes = await fetch('https://api.github.com/users/scriptbazar/repos?per_page=100&sort=updated');
-        if (reposRes.ok) {
-            const reposData = await reposRes.json();
+        if (Array.isArray(reposData) && reposData.length > 0) {
             const reposContainer = document.getElementById('gh-repos-container');
-            if (reposContainer && Array.isArray(reposData) && reposData.length > 0) {
+            if (reposContainer) {
                 const topRepos = reposData.slice(0, 4);
                 reposContainer.innerHTML = topRepos.map(r => `
                     <a href="${r.html_url}" target="_blank" class="gh-repo-chip spotlight-card">
@@ -1304,8 +1304,38 @@ async function fetchLiveGitHubStats() {
                 `).join('');
             }
         }
+    };
+
+    // 1. Check if cached data exists and is still valid
+    try {
+        const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        if (cachedTime && cachedData && (Date.now() - Number(cachedTime) < TWO_HOURS)) {
+            const parsed = JSON.parse(cachedData);
+            renderData(parsed.user, parsed.repos);
+            return;
+        }
+    } catch (e) {}
+
+    // 2. Fetch fresh data from GitHub with rate-limit protection
+    try {
+        const userRes = await fetch('https://api.github.com/users/scriptbazar');
+        if (!userRes.ok) return;
+        const userData = await userRes.json();
+
+        const reposRes = await fetch('https://api.github.com/users/scriptbazar/repos?per_page=100&sort=updated');
+        if (!reposRes.ok) return;
+        const reposData = await reposRes.json();
+
+        renderData(userData, reposData);
+
+        // Save to cache
+        try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ user: userData, repos: reposData }));
+            localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+        } catch (e) {}
     } catch (err) {
-        console.log('GitHub Live API Sync initialized with cached data.', err);
+        // Graceful fallback to static DOM defaults without error logging
     }
 }
 fetchLiveGitHubStats();
