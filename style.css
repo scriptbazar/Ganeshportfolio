@@ -1923,8 +1923,8 @@ canvas {
     padding: 0.4rem;
 }
 .hamburger-btn span {
-    width: 24px;
-    height: 2px;
+    width: 26px;
+    height: 2.5px;
     background: #fff;
     border-radius: 2px;
     transition: all 0.3s ease;
@@ -2210,8 +2210,12 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
         overflow-x: hidden !important;
         box-sizing: border-box !important;
     }
-    .navbar { margin-bottom: 2rem !important; padding: 0.8rem 0.5rem !important; }
-    .logo { font-size: 1.2rem !important; }
+    .navbar { margin-bottom: 2rem !important; padding: 0.9rem 0.8rem !important; }
+    .logo { 
+        font-size: clamp(1.55rem, 5.5vw, 1.85rem) !important; 
+        font-weight: 700 !important; 
+        letter-spacing: 0.8px !important; 
+    }
     .nav-actions .btn-outline { display: none !important; }
 
     .hero-top-text { font-size: 1rem !important; margin-bottom: 0 !important; }
