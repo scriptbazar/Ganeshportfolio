@@ -2715,10 +2715,9 @@ button, a, .chip, .filter-btn, .skill-badge, .service-card, .project-card {
 @media (max-width: 768px) {
     .status-indicator-badge { display: none !important; }
     .cmd-k-trigger-btn { display: none !important; }
-    .bottom-dock-bar-container { display: none !important; }
     #frame-progress-bar { display: none !important; }
     .scroll-to-top-btn {
-        bottom: 1.5rem !important;
+        bottom: calc(4.8rem + env(safe-area-inset-bottom, 0px)) !important;
         right: 1.2rem !important;
         width: 42px !important;
         height: 42px !important;
@@ -3662,7 +3661,6 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
 
 @media (max-width: 768px) {
     .nav-actions .btn { display: none !important; }
-    .desktop-only-dock { display: none !important; }
     .custom-cursor-dot, .custom-cursor-ring { display: none !important; }
     .github-header {
         flex-direction: column !important;
@@ -4069,7 +4067,6 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
 
 /* 3. Mobile 48px Minimum Touch Targets & GPU Momentum Scroll (<= 768px) */
 @media (max-width: 768px) {
-    .dock-item,
     .nav-link,
     .filter-btn,
     .faq-question,
@@ -4923,13 +4920,102 @@ body.drawer-open, body.modal-active {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px var(--theme-glow, rgba(241, 93, 49, 0.25));
 }
 
-/* 4. Mobile Floating Dock Ergonomics */
+/* 4. Mobile Floating Dock Ergonomics & Responsiveness */
 @media (max-width: 768px) {
     .bottom-dock-bar-container {
+        position: fixed !important;
+        bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px)) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        max-width: calc(100vw - 16px) !important;
+        width: max-content !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 9999 !important;
+        margin: 0 auto !important;
+    }
+
+    .floating-dock-wrapper {
+        padding: 0.32rem 0.45rem !important;
+        gap: 0.32rem !important;
+        border-radius: 2.5rem !important;
+        background: rgba(13, 14, 22, 0.92) !important;
+        backdrop-filter: blur(28px) saturate(190%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 0 20px rgba(241, 93, 49, 0.15) !important;
+    }
+
+    .dock-item {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        border-radius: 50% !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .dock-icon svg {
+        width: 15px !important;
+        height: 15px !important;
+    }
+
+    .dock-cmd-badge {
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+    }
+
+    .desktop-only-dock {
         display: none !important;
     }
+
     .theme-picker {
         display: none !important; /* Keep mobile navbar clean */
+    }
+}
+
+@media (max-width: 380px) {
+    .bottom-dock-bar-container {
+        bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px)) !important;
+        max-width: calc(100vw - 8px) !important;
+    }
+
+    .floating-dock-wrapper {
+        padding: 0.25rem 0.35rem !important;
+        gap: 0.22rem !important;
+    }
+
+    .dock-item {
+        width: 33px !important;
+        height: 33px !important;
+        min-width: 33px !important;
+        min-height: 33px !important;
+    }
+
+    .dock-icon svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .dock-cmd-badge {
+        font-size: 0.62rem !important;
+    }
+}
+
+@media (hover: none) {
+    .dock-tooltip {
+        display: none !important;
+    }
+
+    .dock-item:active {
+        transform: scale(0.92) !important;
+        background: linear-gradient(135deg, #f15d31 0%, #d44318 100%) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        color: #ffffff !important;
     }
 }
 
