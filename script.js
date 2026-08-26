@@ -18,24 +18,176 @@ const safeStorage = {
     }
 };
 
+// Web Audio API Sound Effects Synthesizer (0ms Latency, Zero External Assets)
+const audioCtxManager = {
+    ctx: null,
+    isMuted: safeStorage.getItem('ganeshdev_sound_muted') === 'true',
+    init() {
+        if (!this.ctx && typeof (window.AudioContext || window.webkitAudioContext) !== 'undefined') {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            this.ctx = new AudioCtx();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+            const resumeAudio = () => {
+                if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+                window.removeEventListener('click', resumeAudio);
+                window.removeEventListener('keydown', resumeAudio);
+            };
+            window.addEventListener('click', resumeAudio, { once: true });
+            window.addEventListener('keydown', resumeAudio, { once: true });
+        }
+    },
+    toggleMute() {
+        this.isMuted = !this.isMuted;
+        safeStorage.setItem('ganeshdev_sound_muted', this.isMuted);
+        this.updateButtonState();
+        if (typeof showToast === 'function') {
+            showToast(this.isMuted ? '🔇 Sound FX Muted' : '🔊 Sound FX Enabled');
+        }
+        if (!this.isMuted) this.playSuccess();
+    },
+    updateButtonState() {
+        document.querySelectorAll('.sound-toggle-btn').forEach(btn => {
+            const icon = btn.querySelector('.sound-icon');
+            if (icon) icon.textContent = this.isMuted ? '🔇' : '🔊';
+            if (this.isMuted) {
+                btn.classList.add('muted');
+                btn.setAttribute('title', 'Unmute Sound FX (Web Audio)');
+            } else {
+                btn.classList.remove('muted');
+                btn.setAttribute('title', 'Mute Sound FX (Web Audio)');
+            }
+        });
+    },
+    playTone(freq, type = 'sine', duration = 0.08, gainVal = 0.1) {
+        if (this.isMuted) return;
+        try {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, now);
+            gain.gain.setValueAtTime(gainVal, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + duration);
+        } catch (e) {}
+    },
+    playClick() {
+        this.playTone(620, 'sine', 0.04, 0.08);
+    },
+    playKeypress() {
+        this.playTone(780, 'triangle', 0.03, 0.04);
+    },
+    playSuccess() {
+        if (this.isMuted) return;
+        try {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            [523.25, 659.25, 783.99].forEach((freq, i) => {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now + i * 0.07);
+                gain.gain.setValueAtTime(0.09, now + i * 0.07);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.07 + 0.14);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now + i * 0.07);
+                osc.stop(now + i * 0.07 + 0.14);
+            });
+        } catch (e) {}
+    },
+    playTheme() {
+        if (this.isMuted) return;
+        try {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            [440, 554.37, 659.25, 880].forEach((freq, i) => {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, now + i * 0.05);
+                gain.gain.setValueAtTime(0.08, now + i * 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.05 + 0.16);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now + i * 0.05);
+                osc.stop(now + i * 0.05 + 0.16);
+            });
+        } catch (e) {}
+    },
+    playLaser() {
+        if (this.isMuted) return;
+        try {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(900, now);
+            osc.frequency.exponentialRampToValueAtTime(160, now + 0.12);
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.12);
+        } catch (e) {}
+    },
+    playExplosion() {
+        if (this.isMuted) return;
+        try {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(180, now);
+            osc.frequency.exponentialRampToValueAtTime(30, now + 0.22);
+            gain.gain.setValueAtTime(0.22, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.22);
+        } catch (e) {}
+    }
+};
+
 // Theme Customizer & Color Preset Manager
 function initThemeCustomizer() {
     const savedTheme = safeStorage.getItem('ganeshdev_theme') || 'orange';
-    applyTheme(savedTheme);
+    applyTheme(savedTheme, false);
 
     document.querySelectorAll('.theme-dot').forEach(dot => {
         dot.addEventListener('click', () => {
             const theme = dot.getAttribute('data-theme');
-            applyTheme(theme);
+            applyTheme(theme, true);
             safeStorage.setItem('ganeshdev_theme', theme);
             if (typeof showToast === 'function') {
                 showToast(`🎨 Accent theme switched to ${theme.toUpperCase()}!`);
             }
         });
     });
+
+    document.querySelectorAll('.sound-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            audioCtxManager.toggleMute();
+        });
+    });
+    audioCtxManager.updateButtonState();
 }
 
-function applyTheme(theme) {
+function applyTheme(theme, playSound = true) {
     if (theme === 'orange') {
         document.documentElement.removeAttribute('data-theme');
     } else {
@@ -49,6 +201,10 @@ function applyTheme(theme) {
             dot.classList.remove('active');
         }
     });
+
+    if (playSound && typeof audioCtxManager !== 'undefined') {
+        audioCtxManager.playTheme();
+    }
 }
 
 if (document.readyState === 'loading') {
@@ -1047,52 +1203,179 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Cmd+K Filter Options
+// Cmd+K Filter Options, Keyboard Navigation & Instant Search Highlighting
+let cmdKSelectedIndex = 0;
+
+function updateCmdKActiveOption(options) {
+    options.forEach((opt, idx) => {
+        if (idx === cmdKSelectedIndex) {
+            opt.classList.add('active');
+            opt.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        } else {
+            opt.classList.remove('active');
+        }
+    });
+}
+
 if (cmdKInput && cmdKList) {
     cmdKInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
+        const query = e.target.value.toLowerCase().trim();
         const options = cmdKList.querySelectorAll('.cmd-k-option');
+        const headers = cmdKList.querySelectorAll('.cmd-k-category-header');
+        let visibleCount = 0;
+
         options.forEach(opt => {
-            const text = opt.innerText.toLowerCase();
-            if (text.includes(query)) {
+            const strongEl = opt.querySelector('.opt-text strong');
+            const spanEl = opt.querySelector('.opt-text span');
+            const rawTitle = strongEl ? (strongEl.getAttribute('data-raw-title') || strongEl.innerText) : '';
+            const rawSub = spanEl ? (spanEl.getAttribute('data-raw-sub') || spanEl.innerText) : '';
+
+            if (strongEl && !strongEl.hasAttribute('data-raw-title')) strongEl.setAttribute('data-raw-title', rawTitle);
+            if (spanEl && !spanEl.hasAttribute('data-raw-sub')) spanEl.setAttribute('data-raw-sub', rawSub);
+
+            const combinedText = `${rawTitle} ${rawSub}`.toLowerCase();
+
+            if (!query || combinedText.includes(query)) {
                 opt.style.display = 'flex';
+                visibleCount++;
+                if (query) {
+                    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                    if (strongEl) strongEl.innerHTML = rawTitle.replace(regex, '<span class="cmd-k-highlight">$1</span>');
+                    if (spanEl) spanEl.innerHTML = rawSub.replace(regex, '<span class="cmd-k-highlight">$1</span>');
+                } else {
+                    if (strongEl) strongEl.innerText = rawTitle;
+                    if (spanEl) spanEl.innerText = rawSub;
+                }
             } else {
                 opt.style.display = 'none';
             }
         });
+
+        // Hide headers if searching
+        headers.forEach(h => {
+            h.style.display = query ? 'none' : 'block';
+        });
+
+        const visibleOptions = Array.from(options).filter(opt => opt.style.display !== 'none');
+        cmdKSelectedIndex = 0;
+        updateCmdKActiveOption(visibleOptions);
+    });
+
+    cmdKInput.addEventListener('keydown', (e) => {
+        const visibleOptions = Array.from(cmdKList.querySelectorAll('.cmd-k-option')).filter(opt => opt.style.display !== 'none');
+        if (visibleOptions.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            cmdKSelectedIndex = (cmdKSelectedIndex + 1) % visibleOptions.length;
+            updateCmdKActiveOption(visibleOptions);
+            if (typeof audioCtxManager !== 'undefined') audioCtxManager.playKeypress();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            cmdKSelectedIndex = (cmdKSelectedIndex - 1 + visibleOptions.length) % visibleOptions.length;
+            updateCmdKActiveOption(visibleOptions);
+            if (typeof audioCtxManager !== 'undefined') audioCtxManager.playKeypress();
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            const activeOption = visibleOptions[cmdKSelectedIndex] || visibleOptions[0];
+            if (activeOption) {
+                activeOption.click();
+            }
+        }
     });
 }
 
-// Cmd+K Option Execution
+// Cmd+K Option Execution Handler with Audio Integration
 document.querySelectorAll('.cmd-k-option').forEach(opt => {
     opt.addEventListener('click', () => {
         const action = opt.getAttribute('data-action');
         if (cmdKModal) cmdKModal.classList.remove('active');
+        if (typeof updateModalActiveState === 'function') updateModalActiveState();
+        if (typeof audioCtxManager !== 'undefined') audioCtxManager.playClick();
         
         if (action === 'contact-modal') {
             const modal = document.getElementById('contact-modal');
             if (modal) modal.classList.add('active');
+            if (typeof updateModalActiveState === 'function') updateModalActiveState();
+        } else if (action === 'download-resume') {
+            downloadGaneshResume();
         } else if (action === 'play-game') {
-            if (arcadeModal) arcadeModal.classList.add('active');
+            if (arcadeModal) {
+                arcadeModal.classList.add('active');
+                if (typeof updateModalActiveState === 'function') updateModalActiveState();
+            }
+        } else if (action === 'goto-homepage') {
+            if (window.location.pathname.includes('projects.html')) {
+                window.location.href = 'index.html';
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         } else if (action === 'goto-projects') {
-            const sec = document.getElementById('projects');
-            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            const sec = document.getElementById('projects') || document.getElementById('projects-archive');
+            if (sec) {
+                sec.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.location.href = 'projects.html';
+            }
         } else if (action === 'goto-services') {
             const sec = document.getElementById('services');
             if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-        } else if (action === 'whatsapp' || action === 'telegram') {
-            window.open('https://wa.me/91706008603', '_blank');
+            else window.location.href = 'index.html#services';
+        } else if (action === 'goto-skills') {
+            const sec = document.getElementById('skills');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            else window.location.href = 'index.html#skills';
+        } else if (action === 'goto-terminal') {
+            const sec = document.getElementById('interactive-terminal');
+            if (sec) {
+                sec.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    const input = document.getElementById('terminal-input');
+                    if (input) input.focus();
+                }, 400);
+            } else {
+                window.location.href = 'index.html#about';
+            }
+        } else if (action === 'goto-performance') {
+            const sec = document.getElementById('performance');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            else window.location.href = 'index.html#performance';
+        } else if (action === 'goto-testimonials') {
+            const sec = document.getElementById('testimonials');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            else window.location.href = 'index.html#testimonials';
+        } else if (action === 'goto-faq') {
+            const sec = document.getElementById('faq');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            else window.location.href = 'index.html#faq';
+        } else if (action.startsWith('filter-')) {
+            const filterCategory = action.replace('filter-', '');
+            const filterBtn = document.querySelector(`.filter-btn[data-filter="${filterCategory}"]`);
+            if (filterBtn) {
+                filterBtn.click();
+                const grid = document.querySelector('.projects-grid');
+                if (grid) grid.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else if (action.startsWith('set-theme-')) {
+            const themeName = action.replace('set-theme-', '');
+            applyTheme(themeName, true);
+            safeStorage.setItem('ganeshdev_theme', themeName);
+            showToast(`🎨 Theme switched to ${themeName.toUpperCase()}!`);
+        } else if (action === 'toggle-sound') {
+            audioCtxManager.toggleMute();
+        } else if (action === 'whatsapp') {
+            window.open('https://wa.me/91706008603?text=Hi%20Ganesh,%20I%20saw%20your%20portfolio%20and%20projects.%20I%20would%20like%20to%20discuss%20a%20project.', '_blank');
         } else if (action === 'github') {
             window.open('https://github.com/scriptbazar/', '_blank');
         } else if (action === 'copy-email') {
             navigator.clipboard.writeText('scriptbazar76@gmail.com');
-            showToast('📋 Email address copied to clipboard!');
+            showToast('📋 Email copied: scriptbazar76@gmail.com');
         }
     });
 });
 
 // 2. Linear.app Cursor Spotlight Glow on Cards (Optimized: Zero Forced Reflow)
-document.querySelectorAll('.project-card, .service-card, .stat-card, .tilt-card').forEach(card => {
+document.querySelectorAll('.project-card, .service-card, .stat-card, .tilt-card, .bento-card, .marquee-testimonial-card, .terminal-card').forEach(card => {
     card.classList.add('spotlight-card');
     let cachedRect = null;
     let rafId = null;
@@ -1168,62 +1451,238 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 revealElements.forEach(el => revealObserver.observe(el));
 
 /* ===================================================
-   INTERACTIVE FEATURES LOGIC
+   ADVANCED INTERACTIVE TERMINAL PLAYGROUND CLI ENGINE
 ====================================================== */
 
-// 1. Accent Color Switcher Logic
-const colorDots = document.querySelectorAll('.color-dot');
-colorDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        colorDots.forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
-        const hex = dot.getAttribute('data-color');
-        
-        // Update CSS Root variables
-        document.documentElement.style.setProperty('--accent-color', hex);
-        
-        // Update all inline accent elements
-        document.querySelectorAll('.stat-counter, .highlight-text, .t-cursor, .gh-number').forEach(el => {
-            el.style.color = hex;
-        });
-        
-        document.querySelectorAll('.btn-primary, .handle-icon').forEach(btn => {
-            btn.style.background = hex;
-            btn.style.borderColor = hex;
-        });
-
-        showToast(`✨ Accent Theme updated to ${hex.toUpperCase()}!`);
-    });
-});
-
-// 2. Interactive Terminal Playground Logic
 const terminalInput = document.getElementById('terminal-input');
 const terminalHistory = document.getElementById('terminal-history');
 const termChips = document.querySelectorAll('.term-chip');
+let termCommandHistory = [];
+let termHistoryIndex = -1;
+let matrixIntervalId = null;
 
-const termCommands = {
-    'help': 'Available commands: <span class="t-yellow">skills</span>, <span class="t-yellow">projects</span>, <span class="t-yellow">stats</span>, <span class="t-yellow">hire</span>, <span class="t-yellow">clear</span>',
-    'skills': 'Core Stack: <span class="t-green">Next.js 15, React, Node.js, Tailwind CSS, Flutter, AI APIs</span>',
-    'projects': 'Explore: <a href="https://ganeshkumar-delta.vercel.app/projects.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: 600;">Click here to explore all projects ↗</a>',
-    'stats': 'Deliveries: <span class="t-orange">14+</span> | Experience: <span class="t-orange">2+ Years</span> | Positive Rating: <span class="t-green">99%</span>',
-    'hire': 'Status: <span class="t-green">Available for Freelance & Contract Work 🚀</span>. Click <span class="t-yellow">Start a Project</span> to propose!',
-};
+function renderMatrixRain() {
+    if (matrixIntervalId) clearInterval(matrixIntervalId);
+    
+    const canvasId = 'matrix-canvas-' + Date.now();
+    const canvasHTML = `<canvas id="${canvasId}" class="term-matrix-canvas" width="600" height="140"></canvas>`;
+    
+    setTimeout(() => {
+        const c = document.getElementById(canvasId);
+        if (!c) return;
+        const ctx = c.getContext('2d');
+        const chars = '0123456789ABCDEF@#$%&*+=-/\\|{}[]GANESHDEV';
+        const fontSize = 11;
+        const columns = Math.floor(c.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        matrixIntervalId = setInterval(() => {
+            ctx.fillStyle = 'rgba(9, 10, 15, 0.15)';
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            ctx.fillStyle = '#22c55e';
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > c.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }, 33);
+
+        // Auto clean matrix after 12s to save CPU
+        setTimeout(() => {
+            if (matrixIntervalId) {
+                clearInterval(matrixIntervalId);
+                matrixIntervalId = null;
+            }
+        }, 12000);
+    }, 50);
+
+    return canvasHTML;
+}
+
+const termQuotes = [
+    '"Simplicity is the soul of efficiency." – Austin Freeman',
+    '"Make it work, make it right, make it fast." – Kent Beck',
+    '"Code is like humor. When you have to explain it, it’s bad." – Cory House',
+    '"First, solve the problem. Then, write the code." – John Johnson'
+];
 
 function executeTermCommand(cmd) {
-    const cleanCmd = cmd.trim().toLowerCase();
-    if (!cleanCmd) return;
+    const rawCmd = cmd.trim();
+    if (!rawCmd) return;
     
-    if (cleanCmd === 'clear') {
+    termCommandHistory.push(rawCmd);
+    termHistoryIndex = termCommandHistory.length;
+
+    const parts = rawCmd.toLowerCase().split(' ');
+    const mainCmd = parts[0];
+    const arg = parts.slice(1).join(' ');
+
+    if (typeof audioCtxManager !== 'undefined') audioCtxManager.playKeypress();
+
+    if (mainCmd === 'clear' || mainCmd === 'cls') {
+        if (matrixIntervalId) clearInterval(matrixIntervalId);
         if (terminalHistory) terminalHistory.innerHTML = '';
         return;
     }
 
-    const output = termCommands[cleanCmd] || `Command not found: <span class="t-red">'${cleanCmd}'</span>. Type <span class="t-yellow">'help'</span> for list of commands.`;
-    
+    let output = '';
+
+    switch (mainCmd) {
+        case 'help':
+            output = `
+                <div style="margin-bottom:0.3rem;"><strong style="color:#fde047;">⚡ GANESHDEV CLI v2.5 — Available Commands:</strong></div>
+                <table class="t-cmd-table">
+                    <tr><td>skills</td><td>Core tech stack &amp; framework proficiencies</td></tr>
+                    <tr><td>projects</td><td>Featured production web &amp; mobile apps</td></tr>
+                    <tr><td>matrix</td><td>Launch falling digital rain code simulation</td></tr>
+                    <tr><td>theme &lt;color&gt;</td><td>Switch accent (orange, cyan, purple, green, rose)</td></tr>
+                    <tr><td>hire / start</td><td>Open proposal &amp; quotation request form</td></tr>
+                    <tr><td>game / arcade</td><td>Launch 30-second Bug Blaster arcade challenge</td></tr>
+                    <tr><td>about / bio</td><td>Developer background, experience &amp; mission</td></tr>
+                    <tr><td>stats</td><td>Project metrics, review score &amp; Web Vitals</td></tr>
+                    <tr><td>contact</td><td>Direct WhatsApp, Email &amp; GitHub channels</td></tr>
+                    <tr><td>sound &lt;toggle&gt;</td><td>Toggle Web Audio synthesis sound FX</td></tr>
+                    <tr><td>quote</td><td>Random inspirational engineering philosophy</td></tr>
+                    <tr><td>date / time</td><td>Show current local date &amp; system time</td></tr>
+                    <tr><td>whoami</td><td>Display current user authorization role</td></tr>
+                    <tr><td>clear</td><td>Clear all terminal history and logs</td></tr>
+                </table>
+            `;
+            break;
+
+        case 'skills':
+            output = `
+                <div style="line-height:1.7;">
+                    <div><span class="t-purple">Frontend:</span> Next.js 15, React 19, TypeScript, Tailwind CSS, WebGL, PWA <span class="t-green">[99%]</span></div>
+                    <div><span class="t-blue">Backend:</span> Node.js, Express, Fastify, Edge Serverless, Redis, PostgreSQL <span class="t-green">[95%]</span></div>
+                    <div><span class="t-orange">Mobile &amp; App:</span> Flutter, React Native, Android SDK, Chrome Extensions API <span class="t-green">[92%]</span></div>
+                    <div><span class="t-pink">AI &amp; Automation:</span> OpenAI GPT-4o, Claude 3.5 Sonnet, Flow AI, Vector DBs <span class="t-green">[94%]</span></div>
+                </div>
+            `;
+            break;
+
+        case 'projects':
+            output = `
+                <div style="line-height:1.7;">
+                    <div>🚀 <strong class="t-yellow">Toolify AI Ecosystem:</strong> 160+ AI tools web platform &amp; Play Store App (50k+ users)</div>
+                    <div>⚡ <strong class="t-cyan">FlowAuto Pro:</strong> Chrome Extension for multi-tab automated form filling</div>
+                    <div>💳 <strong class="t-green">UniversalPay Gateway:</strong> Web3 and multi-currency payment checkout solution</div>
+                    <div>📖 <strong class="t-orange">Shrimad Bhagavad Gita:</strong> Spiritual &amp; educational Android Play Store App</div>
+                    <div style="margin-top:0.4rem;"><a href="projects.html" target="_blank" style="color:#38bdf8; text-decoration:underline; font-weight:600;">Click here to view all 16+ production projects in archive ↗</a></div>
+                </div>
+            `;
+            break;
+
+        case 'matrix':
+            if (typeof audioCtxManager !== 'undefined') audioCtxManager.playLaser();
+            output = `
+                <div class="t-matrix">⚡ INITIALIZING MATRIX RAIN STREAM... Type 'clear' to exit.</div>
+                ${renderMatrixRain()}
+            `;
+            break;
+
+        case 'theme':
+            const validThemes = ['orange', 'cyan', 'purple', 'green', 'rose'];
+            if (arg && validThemes.includes(arg)) {
+                applyTheme(arg, true);
+                safeStorage.setItem('ganeshdev_theme', arg);
+                output = `🎨 Theme switched successfully to <span class="t-green">${arg.toUpperCase()}</span>!`;
+            } else {
+                output = `Usage: <span class="t-yellow">theme &lt;name&gt;</span>. Options: <span class="t-orange">orange</span>, <span class="t-cyan">cyan</span>, <span class="t-purple">purple</span>, <span class="t-green">green</span>, <span class="t-pink">rose</span>.`;
+            }
+            break;
+
+        case 'hire':
+        case 'start':
+        case 'proposal':
+            const cModal = document.getElementById('contact-modal');
+            if (cModal) {
+                cModal.classList.add('active');
+                if (typeof updateModalActiveState === 'function') updateModalActiveState();
+            }
+            output = `🚀 <span class="t-green">Contact modal opened!</span> Ready to build high-impact web and mobile apps.`;
+            break;
+
+        case 'game':
+        case 'arcade':
+            if (arcadeModal) {
+                arcadeModal.classList.add('active');
+                if (typeof updateModalActiveState === 'function') updateModalActiveState();
+            }
+            output = `👾 <span class="t-yellow">Launching Bug Blaster Arcade Game!</span> Defeat bugs within 30 seconds.`;
+            break;
+
+        case 'about':
+        case 'bio':
+            output = `
+                <div><strong>Ganesh Kumar</strong> — Senior Full-Stack Engineer &amp; Mobile App Architect with 2+ years of production experience crafting ultra-fast web apps, cross-platform Android/iOS applications, and intelligent AI workflows. 16+ production deliveries globally.</div>
+            `;
+            break;
+
+        case 'stats':
+            output = `
+                <div style="line-height:1.7;">
+                    <div>📦 <strong class="t-orange">Completed Deliveries:</strong> 16+ Production Apps</div>
+                    <div>⭐ <strong class="t-green">Client Satisfaction:</strong> 99% 5-Star Reviews</div>
+                    <div>⚡ <strong class="t-cyan">Core Web Vitals:</strong> 100/100 Google Lighthouse Speed</div>
+                    <div>🌍 <strong class="t-yellow">Global Footprint:</strong> Clients across 6+ Countries</div>
+                </div>
+            `;
+            break;
+
+        case 'contact':
+            output = `
+                <div style="line-height:1.7;">
+                    <div>💬 WhatsApp: <a href="https://wa.me/91706008603" target="_blank" style="color:#22c55e;">+91 706008603 ↗</a></div>
+                    <div>✉️ Email: <a href="mailto:scriptbazar76@gmail.com" style="color:#38bdf8;">scriptbazar76@gmail.com ↗</a></div>
+                    <div>🐙 GitHub: <a href="https://github.com/scriptbazar" target="_blank" style="color:#c084fc;">github.com/scriptbazar ↗</a></div>
+                </div>
+            `;
+            break;
+
+        case 'sound':
+            if (arg === 'on') {
+                if (audioCtxManager.isMuted) audioCtxManager.toggleMute();
+                output = '🔊 Sound FX Enabled.';
+            } else if (arg === 'off') {
+                if (!audioCtxManager.isMuted) audioCtxManager.toggleMute();
+                output = '🔇 Sound FX Muted.';
+            } else {
+                audioCtxManager.toggleMute();
+                output = audioCtxManager.isMuted ? '🔇 Sound FX Muted.' : '🔊 Sound FX Enabled.';
+            }
+            break;
+
+        case 'date':
+        case 'time':
+            output = `🕒 Current Time: <span class="t-cyan">${new Date().toLocaleString()}</span>`;
+            break;
+
+        case 'whoami':
+            output = `👤 Role: <span class="t-green">Guest Client / Collaborator</span> (Authorized to inspect code and initiate project proposals).`;
+            break;
+
+        case 'quote':
+            const randomQuote = termQuotes[Math.floor(Math.random() * termQuotes.length)];
+            output = `<span class="t-purple">${randomQuote}</span>`;
+            break;
+
+        default:
+            output = `Command not recognized: <span class="t-red">'${rawCmd}'</span>. Type <span class="t-yellow">'help'</span> for list of commands.`;
+            break;
+    }
+
     if (terminalHistory) {
         const line = document.createElement('div');
-        line.style.margin = '0.4rem 0';
-        line.innerHTML = `<div><span class="t-prompt">$</span> ${cleanCmd}</div><div style="color:#d4d4d8; padding-left:1rem;">${output}</div>`;
+        line.style.margin = '0.45rem 0';
+        line.innerHTML = `<div><span class="t-prompt">$</span> ${rawCmd}</div><div style="color:#d4d4d8; padding-left:0.8rem; margin-top:0.2rem;">${output}</div>`;
         terminalHistory.appendChild(line);
         const termBody = document.getElementById('terminal-output-body');
         if (termBody) termBody.scrollTop = termBody.scrollHeight;
@@ -1235,6 +1694,19 @@ if (terminalInput) {
         if (e.key === 'Enter') {
             executeTermCommand(terminalInput.value);
             terminalInput.value = '';
+        } else if (e.key === 'ArrowUp') {
+            if (termCommandHistory.length > 0 && termHistoryIndex > 0) {
+                termHistoryIndex--;
+                terminalInput.value = termCommandHistory[termHistoryIndex] || '';
+            }
+        } else if (e.key === 'ArrowDown') {
+            if (termCommandHistory.length > 0 && termHistoryIndex < termCommandHistory.length - 1) {
+                termHistoryIndex++;
+                terminalInput.value = termCommandHistory[termHistoryIndex] || '';
+            } else {
+                termHistoryIndex = termCommandHistory.length;
+                terminalInput.value = '';
+            }
         }
     });
 }
@@ -1695,6 +2167,7 @@ if (arcadeCanvas) {
                 
                 if (scoreEl) scoreEl.innerText = gameScore;
                 createExplosion(t.x, t.y, t.color);
+                if (typeof audioCtxManager !== 'undefined') audioCtxManager.playExplosion();
                 spawnFloatingText(t.x, t.y, multiplier > 1 ? `🔥 ${multiplier}X COMBO! +${earnedPts}` : `+${earnedPts}`, t.color);
                 targets.splice(i, 1);
                 showToast(multiplier > 1 ? `🔥 ${multiplier}X COMBO! +${earnedPts} PTS` : `💥 +${earnedPts} PTS (${t.label})`);

@@ -77,6 +77,16 @@
                 <a href="index.html#contact" class="nav-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact</a>
             </div>
             <div class="nav-actions">
+                <div class="theme-picker" title="Switch Accent Color Theme">
+                    <button class="theme-dot active" data-theme="orange" style="background:#f15d31;" title="Orange Theme" aria-label="Orange Theme"></button>
+                    <button class="theme-dot" data-theme="cyan" style="background:#06b6d4;" title="Cyan Theme" aria-label="Cyan Theme"></button>
+                    <button class="theme-dot" data-theme="purple" style="background:#a855f7;" title="Purple Theme" aria-label="Purple Theme"></button>
+                    <button class="theme-dot" data-theme="green" style="background:#10b981;" title="Emerald Theme" aria-label="Emerald Theme"></button>
+                    <button class="theme-dot" data-theme="rose" style="background:#f43f5e;" title="Rose Theme" aria-label="Rose Theme"></button>
+                </div>
+                <button class="sound-toggle-btn magnetic-btn" id="sound-toggle-btn" title="Toggle Sound FX (Web Audio)" aria-label="Toggle Sound Effects">
+                    <span class="sound-icon">🔊</span>
+                </button>
                 <a href="#resume" class="btn btn-outline magnetic-btn" id="resume-btn">Resume 📄</a>
                 <button class="btn btn-primary open-modal-btn magnetic-btn">Start a Project <span class="arrow">↗</span></button>
                 <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Mobile Navigation">
@@ -730,6 +740,162 @@
             <path d="M18 15l-6-6-6 6"/>
         </svg>
     </button>
+
+    <!-- Command Palette Modal -->
+    <div class="modal-overlay cmd-k-modal-overlay" id="cmd-k-modal">
+        <div class="cmd-k-modal-card">
+            <div class="cmd-k-search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="cmd-k-input" placeholder="Type a command or search section (e.g. Projects, Contact, Skills)..." autocomplete="off">
+                <kbd class="esc-badge">ESC</kbd>
+            </div>
+            <div class="cmd-k-options-list" id="cmd-k-list">
+                <div class="cmd-k-category-header">⚡ Popular Actions</div>
+                <div class="cmd-k-option active" data-action="contact-modal">
+                    <span class="opt-icon">🚀</span>
+                    <div class="opt-text">
+                        <strong>Start a Project / Hire Me</strong>
+                        <span>Request a custom proposal, pricing & timeline</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="download-resume">
+                    <span class="opt-icon">📄</span>
+                    <div class="opt-text">
+                        <strong>Download Professional CV / Resume</strong>
+                        <span>Print-ready PDF / Detailed Tech Matrix</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="play-game">
+                    <span class="opt-icon">🎮</span>
+                    <div class="opt-text">
+                        <strong>Play Bug Blaster Arcade Game</strong>
+                        <span>30-Second Developer Mini Arcade Challenge</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+
+                <div class="cmd-k-category-header">🧭 Navigation & Sections</div>
+                <div class="cmd-k-option" data-action="goto-homepage">
+                    <span class="opt-icon">🏠</span>
+                    <div class="opt-text">
+                        <strong>Return to Homepage</strong>
+                        <span>Full interactive portfolio experience</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="goto-projects">
+                    <span class="opt-icon">📁</span>
+                    <div class="opt-text">
+                        <strong>Portfolio Projects Archive</strong>
+                        <span>Web Apps, Mobile Apps, Chrome Extensions (16+ Projects)</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="filter-web">
+                    <span class="opt-icon">🌐</span>
+                    <div class="opt-text">
+                        <strong>Filter: Web Platforms</strong>
+                        <span>Next.js 15, SaaS, AI web platforms</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="filter-extension">
+                    <span class="opt-icon">🧩</span>
+                    <div class="opt-text">
+                        <strong>Filter: Chrome Extensions</strong>
+                        <span>FlowAuto Pro, Multi-Tab automations</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="filter-ecommerce">
+                    <span class="opt-icon">🛒</span>
+                    <div class="opt-text">
+                        <strong>Filter: E-Commerce & Marketplaces</strong>
+                        <span>Online stores, payment gateways, product catalogs</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+
+                <div class="cmd-k-category-header">🎨 Themes & Audio Settings</div>
+                <div class="cmd-k-option" data-action="set-theme-orange">
+                    <span class="opt-icon">🟠</span>
+                    <div class="opt-text">
+                        <strong>Switch Theme: Radiant Orange (Default)</strong>
+                        <span>Modern Silicon Valley Tech Glow</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="set-theme-cyan">
+                    <span class="opt-icon">🌐</span>
+                    <div class="opt-text">
+                        <strong>Switch Theme: Electric Cyan</strong>
+                        <span>Futuristic Neon Sci-Fi Theme</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="set-theme-purple">
+                    <span class="opt-icon">🟣</span>
+                    <div class="opt-text">
+                        <strong>Switch Theme: Cyberpunk Purple</strong>
+                        <span>Ultra-Vibrant Deep Violet Theme</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="set-theme-green">
+                    <span class="opt-icon">🟢</span>
+                    <div class="opt-text">
+                        <strong>Switch Theme: Emerald Matrix</strong>
+                        <span>Terminal Hacker Green Theme</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="set-theme-rose">
+                    <span class="opt-icon">🌸</span>
+                    <div class="opt-text">
+                        <strong>Switch Theme: Rose Gold</strong>
+                        <span>Luxury Warm Crimson Accent</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="toggle-sound">
+                    <span class="opt-icon">🔊</span>
+                    <div class="opt-text">
+                        <strong>Toggle Sound FX & Audio Synthesizer</strong>
+                        <span>Enable / Mute interactive audio cues</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+
+                <div class="cmd-k-category-header">📬 Quick Contact & Socials</div>
+                <div class="cmd-k-option" data-action="whatsapp">
+                    <span class="opt-icon">💬</span>
+                    <div class="opt-text">
+                        <strong>WhatsApp Direct 1-on-1 Chat</strong>
+                        <span>+91 706008603 (Instant Reply)</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="github">
+                    <span class="opt-icon">🐙</span>
+                    <div class="opt-text">
+                        <strong>Open GitHub Profile</strong>
+                        <span>github.com/scriptbazar (Open Source Repositories)</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+                <div class="cmd-k-option" data-action="copy-email">
+                    <span class="opt-icon">✉️</span>
+                    <div class="opt-text">
+                        <strong>Copy Email Address</strong>
+                        <span>scriptbazar76@gmail.com</span>
+                    </div>
+                    <kbd>↵</kbd>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Custom Cursor Ring -->
     <div class="custom-cursor-dot" id="cursor-dot"></div>
