@@ -2843,49 +2843,7 @@ body:has(.modal-overlay.active) .scroll-to-top-btn {
    ULTRA-PREMIUM NEW FEATURES CSS
 ====================================================== */
 
-/* 1. Accent Color Switcher & Sound Toggle */
-.sound-toggle-btn {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    flex-shrink: 0;
-    user-select: none;
-}
-
-.sound-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.16);
-    transform: scale(1.12);
-    border-color: var(--theme-primary, #f15d31);
-    box-shadow: 0 0 18px var(--theme-glow, rgba(241, 93, 49, 0.45));
-}
-
-.sound-toggle-btn:active {
-    transform: scale(0.92);
-}
-
-.sound-toggle-btn.muted {
-    opacity: 0.65;
-    border-color: rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.sound-toggle-btn.muted:hover {
-    opacity: 1;
-    border-color: #ef4444;
-    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
-}
+/* 1. Accent Color Switcher */
 
 .accent-switcher {
     display: inline-flex;
